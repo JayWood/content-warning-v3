@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+#Dreamweaver .TMP files
+*.TMP
+*.tmp
+
+# Log Files
+*_log
+*.log
+
+# Backup files
+*.bak
+*.lwbak
+
+# Cache
+cache
+cache_off
+cache_disabled
+backups
+_notes
+.ftpquota
+
+# DW File
+dw_php_codehinting.config
+
+# OS Files
+.DS_Store
+.DS_Store?
+=======
+wp-content/uploads
+
+>>>>>>> 734f97bb1f6b82815b03f904a4b519112724d44c

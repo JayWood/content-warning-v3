@@ -1,0 +1,15 @@
+/* CSS Document */
+.cwv3_box{background: transparent;}
+
+/* Undocumented cBox colors */
+#cboxLoadingOverlay, #cboxContent, #cboxLoadedContent{background-color: #FFF !important;}
+
+#cwv3_auth{border: 3px solid #ccc; background: #FFF;}
+#cwv3_auth div{padding: 0.25em}
+#cwv3_title{color: #FFF; font-weight: bold; text-align:center; background: #f00;}
+#cwv3_btns{overflow:hidden;}
+#cwv3_btns div a{ display: block; width: 100%; text-align:center; color: #FFF; font-weight:bold; text-decoration:none;}
+#cwv3_enter{float:left; width: 40%;}
+#cwv3_enter a{background-color: #0C3;}
+#cwv3_exit{float:right; width: 40%;}
+#cwv3_exit a{background-color: #F00;}
