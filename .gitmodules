@@ -1,0 +1,3 @@
+[submodule "lib/jw-options-framework"]
+	path = lib/jw-options-framework
+	url = git://github.com/JayWood/jw-options-framework.git
