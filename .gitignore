@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Dreamweaver .TMP files
 *.TMP
 *.tmp
@@ -24,8 +23,7 @@ dw_php_codehinting.config
 
 # OS Files
 .DS_Store
-.DS_Store?
-=======
-wp-content/uploads
 
->>>>>>> 734f97bb1f6b82815b03f904a4b519112724d44c
+#npm stuffs
+node_modules/
+.sass_cache
