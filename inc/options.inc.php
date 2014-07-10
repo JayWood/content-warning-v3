@@ -1,4 +1,4 @@
-<?
+<?php
 // Get categories
 $cat_list = get_categories();
 $final_cat_list = array();

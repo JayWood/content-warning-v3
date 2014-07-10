@@ -1,4 +1,4 @@
-<?
+<?php
 	
 class CWV3{
 	
@@ -41,17 +41,17 @@ class CWV3{
 		
 		$img = get_option('cwv3_bg_image', '');
 		$color = get_option('cwv3_bg_color');
-		?><style type="text/css"><?
+		?><style type="text/css"><?php
 		if(!empty($img)){
 			?>
-				#cboxOverlay{background:url(<?=$img?>) no-repeat top center; background-color:<?=$color['color'];?>;}
-			<?
+				#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
+			<?php
 		}else{
 			?>
-				#cboxOverlay{background-image:url(<?=$img?>) no-repeat top center; background-color:<?=$color['color'];?>;}
-			<?
+				#cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
+			<?php
 		}
-		?></style><?
+		?></style><?php
 	}
 	
 	public function render_lazy_mans_css(){
@@ -296,13 +296,13 @@ class CWV3{
     	<!-- CWV3 Dialog -->
         <div style="display: none">
             <div id="cwv3_auth">
-                <div id="cwv3_title"><? if($dtype == true): ?><? echo get_option('cwv3_den_title'); ?><? else: ?><? echo get_option('cwv3_d_title'); ?><? endif; ?></div>
-                <div id="cwv3_content"><? if($dtype === true): ?><? echo do_shortcode( get_option('cwv3_den_msg') ); ?><? else: ?><? echo do_shortcode( get_option('cwv3_d_msg') ); ?><? endif; ?></div>
-                <div id="cwv3_btns"><? if($dtype !== true): ?><div id="cwv3_enter"><a href="javascript:;" id="cw_enter_link"><? echo (!empty($etxt) ? $etxt : 'Enter'); ?></a></div><? endif; ?><div id="cwv3_exit"><a href="javascript:;" id="cw_exit_link"><? echo (!empty($extxt) ? $extxt : 'Exit'); ?></a></div></div>
+                <div id="cwv3_title"><?php if($dtype == true): ?><?php echo get_option('cwv3_den_title'); ?><?php else: ?><?php echo get_option('cwv3_d_title'); ?><?php endif; ?></div>
+                <div id="cwv3_content"><?php if($dtype === true): ?><?php echo do_shortcode( get_option('cwv3_den_msg') ); ?><?php else: ?><?php echo do_shortcode( get_option('cwv3_d_msg') ); ?><?php endif; ?></div>
+                <div id="cwv3_btns"><?php if($dtype !== true): ?><div id="cwv3_enter"><a href="javascript:;" id="cw_enter_link"><?php echo (!empty($etxt) ? $etxt : 'Enter'); ?></a></div><?php endif; ?><div id="cwv3_exit"><a href="javascript:;" id="cw_exit_link"><?php echo (!empty($extxt) ? $extxt : 'Exit'); ?></a></div></div>
             </div>
         </div>
         <!-- END CWV3 Dialog -->
-	<?
+	<?php
 	}
 	
 	public function render_metabox($post){
@@ -313,13 +313,13 @@ class CWV3{
         
         
 		?>
-        <? //wp_die(print_r($curval), true); ?>
+        <?php //wp_die(print_r($curval), true); ?>
         <label for="cwv3_auth">Use authorization for this content:</label>
-        <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <? checked('yes', $curval, true); ?> value="yes" <?=$disabled;?>/><br />
-        <? if($sw[0] == 'enabled') : ?>
+        <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked('yes', $curval, true); ?> value="yes" <?php echo $disabled;?>/><br />
+        <?php if($sw[0] == 'enabled') : ?>
 	                <p class="description">Cannot be changed while site wide option is enabled.</p>
-        <? endif; ?>
-        <?
+        <?php endif; ?>
+        <?php
 	}
 	
 	
@@ -339,14 +339,14 @@ class CWV3{
 				$disabled = $sw[0] == 'enabled' ? 'disabled="disabled"' : ''; ?>
 				
 				<label for="cwv3_auth">
-					<input type="checkbox" id="cwv3_auth" name="cwv3_auth" <? checked('yes', $curval, true); ?> value="yes" <?=$disabled;?>/> 
-					<span class="checkbox-title">Use CWv2 for this content <?=$post->ID ?></span>
-					<? if($sw[0] == 'enabled') : ?>
+					<input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked('yes', $curval, true); ?> value="yes" <?php echo $disabled; ?>/> 
+					<span class="checkbox-title">Use CWv2 for this content <?php echo $post->ID; ?></span>
+					<?php if($sw[0] == 'enabled') : ?>
 						<span class="description">(Cannot be changed while site wide option is enabled.)</span>
-					<? endif; ?>
+					<?php endif; ?>
 				</label>
 				
-				<?
+				<?php
 				 break;
 			 }
 			?>

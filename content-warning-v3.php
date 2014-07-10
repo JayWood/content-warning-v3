@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 Plugin Name:	Content Warning v2
 Plugin URI:		http://plugish.com/plugins/content-warning-v3
