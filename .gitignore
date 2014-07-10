@@ -26,4 +26,4 @@ dw_php_codehinting.config
 
 #npm stuffs
 node_modules/
-.sass_cache
+.sass-cache/
