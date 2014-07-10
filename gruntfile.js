@@ -59,6 +59,19 @@ module.exports = function ( grunt ){
 				dest: 'css/cwv3.min.css',
 			}
 		},
+		rsync: {
+			options: {
+				args: ["--verbose", "--archive"],
+				exclude: ["node_modules",".*","README.md"],
+				recursive: true
+			},
+			dist: {
+				options: {
+					src: "./",
+					dest: "~/svn/content-warning-v2/"
+				}
+			}
+		},
 		watch: {
 			gruntfile: {
 				files: '<%= jshint.gruntfile.src %>',
@@ -75,6 +88,10 @@ module.exports = function ( grunt ){
 			js: {
 				files: ['js/*.js', '!js/*.min.js'],
 				tasks: ['uglify']
+			},
+			readme: {
+				files: ['readme.txt', 'content-warning-v3.php'],
+				tasks: ['rsync']
 			}
 		}
 	});
@@ -85,7 +102,8 @@ module.exports = function ( grunt ){
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-rsync');
 
 	// Default task
-	grunt.registerTask('default', ['jshint', 'sass', 'uglify', 'cssmin']);
+	grunt.registerTask('default', ['jshint', 'sass', 'uglify', 'cssmin', 'rsync']);
 };
