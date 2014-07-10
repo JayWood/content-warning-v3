@@ -1,9 +1,9 @@
 // JavaScript Document
 jQuery(document).ready(function($) {
 	var wpdata = cwv3_params;
-	
-	var enter = $('cw_enter_link');
-	var exit = $('cw_exit_link');
+	//console.log(wpdata);
+	var enter = $('#cw_enter_link');
+	var exit = $('#cw_exit_link');
 	
 	if(wpdata.sd == true){
 		var cboxObj = $.colorbox(
@@ -19,19 +19,25 @@ jQuery(document).ready(function($) {
 				onLoad: function(){
 					$('#cboxClose').remove();
 				},
-				className: 'cwv3_box'
+				className: 'cwv3_box',
+				opacity:	cwv3_params.opacity
 			}
 		);
-				
+		
 		enter.click(function(e){
+			//console.log(e);
 			$.post(wpdata.admin_url, {action: wpdata.action, nonce: wpdata.nonce, id: wpdata.id, method: 'enter'}, function(e){
-				// Deal with the response from the 'entry' handler.
+				if(cwv3_params.enter == "#"){
+					$.colorbox.close();
+				}else{
+					window.location = wpdata.enter;
+				}
 			});
 		});	
 			
 		exit.click(function(e){
 			$.post(wpdata.admin_url, {action: wpdata.action, nonce: wpdata.nonce, id: wpdata.id, method: 'exit'}, function(e){
-				// Deal with the response from the 'exit' handler.
+				window.location = wpdata.exit;
 			});
 		});
 	}

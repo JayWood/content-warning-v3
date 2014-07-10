@@ -1,5 +1,4 @@
 <?
-
 // Get categories
 $cat_list = get_categories();
 $final_cat_list = array();
@@ -133,15 +132,22 @@ $cwv3_op_data = array(
 		),
 		'bg_opacity'	=>	array(
 			'name'	=>	'Background Opacity',
-			'desc'	=>	'Input a number from 0-100, the latter being completely opaque.',
-			'type'	=>	'text',
-			'def'	=>	75
+			'desc'	=>	'Input a float value from 0-1, the latter being completely opaque.',
+			'type'	=>	'number',
+			'def'	=>	0.85,
+			'step'	=>	0.01
 		),
 		'bg_color'	=>	array(
 			'name'	=>	'Background Color',
 			'desc'	=>	'The Overlay color.',
 			'type'	=>	'color',
 			'fields'	=>	array('color'=>'#000000')
+		),
+		'css'	=>	array(
+			'name'	=>	'Custom CSS',
+			'desc'	=>	'For a completely custom look, just drop your css here.',
+			'type'	=>	'textbox',
+			'def'	=>	''
 		),
 		'cat_list'	=>	array(
 			'name'	=>	'Category restrictions',

@@ -1,9 +1,7 @@
 /* CSS Document */
 .cwv3_box{background: transparent;}
-
 /* Undocumented cBox colors */
 #cboxLoadingOverlay, #cboxContent, #cboxLoadedContent{background-color: #FFF !important;}
-
 #cwv3_auth{border: 3px solid #ccc; background: #FFF;}
 #cwv3_auth div{padding: 0.25em}
 #cwv3_title{color: #FFF; font-weight: bold; text-align:center; background: #f00;}
