@@ -68,7 +68,7 @@ module.exports = function ( grunt ){
 			dist: {
 				options: {
 					src: "./",
-					dest: "~/svn/content-warning-v2/"
+					dest: "~/svn/content-warning-v2/trunk"
 				}
 			}
 		},
