@@ -58,6 +58,12 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
+= 3.5.1 =
+* PHP Cleanup
+* Setup GRUNT for sass, jshint, and a few others
+* Fixed Short tags, users should no long have issues with activating the plugin.
+* Other fixes I can't remember.
+
 = 3.48 =
 * Fixed IE Bug by removing debug function in javascript.
 
