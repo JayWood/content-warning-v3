@@ -9,28 +9,28 @@ class CWV3{
 	public function __construct(){
 		// Styling and such
 		add_action('init', array( &$this, 'register_frontend_data') );
-		add_action('wp_enqueue_scripts', array(&$this, 'load_dependancies') );
+		add_action('wp_enqueue_scripts', array( $this, 'load_dependancies') );
 		
-		add_action('wp_footer', array(&$this, 'renderDialog'));
+		add_action('wp_footer', array( $this, 'renderDialog'));
 		
 		// Post Meta Box for this.
-		add_action('add_meta_boxes', array(&$this, 'cw_meta'));
-		add_action('save_post', array(&$this, 'cwv3_meta_save'));
+		add_action('add_meta_boxes', array( $this, 'cw_meta'));
+		add_action('save_post', array( $this, 'cwv3_meta_save'));
 		
 		// AJAX Handle
-		add_action('wp_ajax_cwv3_ajax', array(&$this, 'handle_ajax'));
-		add_action('wp_ajax_nopriv_cwv3_ajax', array(&$this, 'handle_ajax'));
+		add_action('wp_ajax_cwv3_ajax', array( $this, 'handle_ajax'));
+		add_action('wp_ajax_nopriv_cwv3_ajax', array( $this, 'handle_ajax'));
 		
 		// Post column filters
-		add_filter('manage_page_posts_columns', array(&$this, 'post_cols'));
-		add_filter('manage_post_posts_columns', array(&$this, 'post_cols'));
+		add_filter('manage_page_posts_columns', array( $this, 'post_cols'));
+		add_filter('manage_post_posts_columns', array( $this, 'post_cols'));
 		
 		
 		//add_action('quick_edit_custom_box', array(&$this, 'display_qe'), 10, 2);
 		
 		// Post column info
-		add_action('manage_posts_custom_column', array(&$this, 'set_col_data'));
-		add_action('manage_pages_custom_column', array(&$this, 'set_col_data'));
+		add_action('manage_posts_custom_column', array( $this, 'set_col_data'));
+		add_action('manage_pages_custom_column', array( $this, 'set_col_data'));
 		
 		add_action('admin_head', array(&$this, 'render_lazy_mans_css'));
 		
