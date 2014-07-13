@@ -7,8 +7,8 @@ Author: 		Jerry Wood Jr.
 Version:		3.5.1
 Author URI:		http://plugish.com
 */
-require_once (dirname(__FILE__).'/inc/options.inc.php');
-require_once (dirname(__FILE__).'/lib/jw_simple_options/simple_options.php');
-require_once (dirname(__FILE__).'/class/main.class.php');
-$cwv3_options = new JW_SIMPLE_OPTIONS($cwv3_op_data);
-register_uninstall_hook(__FILE__, $cwv3_options->uninstall() );
+require_once dirname( __FILE__ ).'/inc/options.inc.php';
+require_once dirname( __FILE__ ).'/lib/jw_simple_options/simple_options.php';
+require_once dirname( __FILE__ ).'/class/main.class.php';
+$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
+register_uninstall_hook( __FILE__, $cwv3_options->uninstall() );
