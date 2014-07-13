@@ -6,9 +6,7 @@
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 
-[Report an issue](https://github.com/JayWood/content-warning-v3/issues)
-
-[Make a pull request](https://github.com/JayWood/content-warning-v3/pulls)
+[Report an issue](https://github.com/JayWood/content-warning-v3/issues) | [Make a pull request](https://github.com/JayWood/content-warning-v3/pulls)
 
 * Complete core rewrite, I threw everything out the window and wrote this from scratch.
 * Use Colorbox for (hopefully) a responsive layout and neat transitions.
