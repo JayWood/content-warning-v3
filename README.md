@@ -49,6 +49,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.5.2
+* More PHP Cleanup to WP Standards
+* Updated Colorbox to v1.5.10 [Github Changelog](https://github.com/jackmoore/colorbox#changelog)
+* Fixed Colorbox popup to show like it is supposed to, broke it in 3.5.1, sorry!
+* Updated JW Simple Options framework to latest.
+* More little things I can't remember.
+
 ### 3.5.1
 * PHP Cleanup
 * Setup GRUNT for sass, jshint, and a few others
