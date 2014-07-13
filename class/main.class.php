@@ -2,11 +2,7 @@
 
 class CWV3 {
 
-	function CWV3() {
-		$this->__construct();
-	}
-
-	public function __construct() {
+	public function CWV3() {
 		// Styling and such
 		add_action( 'init', array( &$this, 'register_frontend_data' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dependancies' ) );
@@ -136,14 +132,14 @@ class CWV3 {
 
 		$elink = get_option( 'cwv3_enter_link' );
 		$exlink = get_option( 'cwv3_exit_link' );
-		$p_ID = ( is_home() ) ? -1 : ( is_attachment() ? $post->post_parent : ( is_archive() || is_search() ) ? -2 : $post->ID );
+		$p_ID = ( is_front_page() ) ? -1 : ( is_attachment() ? $post->post_parent : ( is_archive() || is_search() ) ? -2 : $post->ID );
 		$d = get_option( 'cwv3_denial' );
 		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
 				'action'    => 'cwv3_ajax',
 				'nonce'     => wp_create_nonce( 'cwv3_ajax_'.$p_ID ),
 				'admin_url' => admin_url( 'admin-ajax.php' ),
 				'id'        => $p_ID,
-				'sd'        => ( $this->check_data() == false || ( $this->check_data() == 3 && $d[0] == 'enabled' ) ) ? true : false,
+				'sd'        => ( $this->check_data() == false || ( $this->check_data() == 3 && !empty( $d ) ) ) ? true : false,
 				'enter'     => !empty( $elink ) ? $elink : '#',
 				'exit'      => !empty( $exlink ) ? $exlink : 'http://google.com',
 				'opacity'   => get_option( 'cwv3_bg_opacity', 0.85 )
@@ -225,9 +221,9 @@ class CWV3 {
 			return true;
 		}
 		$cData = array(
-			'pages'      => json_decode( stripslashes( $_COOKIE['cwv3_pages'] ), true ),
-			'posts'      => json_decode( stripslashes( $_COOKIE['cwv3_posts'] ), true ),
-			'categories' => json_decode( stripslashes( $_COOKIE['cwv3_cats'] ), true )
+			'pages'      => json_decode( stripslashes( @$_COOKIE['cwv3_pages'] ), true ),
+			'posts'      => json_decode( stripslashes( @$_COOKIE['cwv3_posts'] ), true ),
+			'categories' => json_decode( stripslashes( @$_COOKIE['cwv3_cats'] ), true )
 		);
 
 		//return print_r($cData, true);
@@ -236,15 +232,15 @@ class CWV3 {
 		$hm = get_option( 'cwv3_homepage' );
 		$mi = get_option( 'cwv3_misc' );
 
-		if ( $sw[0] == 'enabled' ) {
+		if ( ! empty( $sw ) ) {
 			return !empty( $cData['pages']['sitewide'] ) ? $cData['pages']['sitewide'] : false;
 		}
 
-		if ( is_home() && $hm[0] == 'enabled' ) {
+		if ( is_front_page() && !empty( $hm ) ) {
 			return !empty( $cData['pages']['home'] ) ? $cData['pages']['home'] : false;
 		}
 
-		if ( ( is_archive() || is_search() ) && $mi[0] == 'enabled' ) {
+		if ( ( is_archive() || is_search() ) && !empty( $mi ) ) {
 			// Protect misc pages aswell
 			return !empty( $cData['pages']['other'] ) ? $cData['pages']['other'] : false;
 		}
@@ -264,11 +260,11 @@ class CWV3 {
 			return !empty( $cData['categories'][$post->ID] ) ? $cData['categories'][$id] : false;
 		}
 		// Since that's not the case, we need to check post_meta data and see if this post is protected.
-		if ( get_post_meta( $post->ID, 'cwv3_auth', true ) == 'yes' && !is_home() ) {
+		if ( get_post_meta( $post->ID, 'cwv3_auth', true ) == 'yes' && !is_front_page() ) {
 			return !empty( $cData['posts'][$post->ID] ) ? $cData['posts'][$id] : false;
 		}
 
-		return 'failed all checks';
+		return true;
 	}
 
 	public function inCat( $catIDs, $catArray ) {
