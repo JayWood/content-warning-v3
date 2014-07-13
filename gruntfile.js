@@ -105,5 +105,6 @@ module.exports = function ( grunt ){
 	grunt.loadNpmTasks('grunt-rsync');
 
 	// Default task
-	grunt.registerTask('default', ['jshint', 'sass', 'uglify', 'cssmin', 'rsync']);
+	grunt.registerTask('default', ['jshint', 'sass', 'uglify', 'cssmin']);
+	grunt.registerTask('sync', ['rsync']);
 };
