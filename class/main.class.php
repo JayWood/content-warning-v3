@@ -149,11 +149,13 @@ class CWV3 {
 	public function register_frontend_data() {
 		// Colorbox w/ MIT License
 		wp_register_style( 'colorbox', plugins_url( 'js/colorbox.1.5.10/colorbox.css', dirname( __FILE__ ) ), '', '1.4.14', 'ALL' );
-		wp_register_script( 'colorbox_js', plugins_url( 'js/colorbox.1.5.10/jquery.colorbox.min.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.4.14', true );
+
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : ".min";
+		wp_register_script( 'colorbox_js', plugins_url( "js/colorbox.1.5.10/jquery.colorbox{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.14', true );
 
 		// Main data
-		wp_register_script( 'cwv3_js', plugins_url( 'js/cwv3.js', dirname( __FILE__ ) ), array( 'colorbox_js' ), uniqid(), true );
-		wp_register_style( 'cwv3_css', plugins_url( 'css/cwv3.css', dirname( __FILE__ ) ), array( 'colorbox' ), '1.0' );
+		wp_register_script( 'cwv3_js', plugins_url( "js/cwv3{$min}.js", dirname( __FILE__ ) ), array( 'colorbox_js' ), uniqid(), true );
+		wp_register_style( 'cwv3_css', plugins_url( "css/cwv3{$min}.css", dirname( __FILE__ ) ), array( 'colorbox' ), '1.0' );
 	}
 
 	public function set_cookie( $id, $action ) {
