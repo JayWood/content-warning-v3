@@ -13,7 +13,7 @@ A plugin that provides a warning box with a ton more options completely re-writt
 * Some new options as requested FREQUENTLY
 * You just need to check this out, you really do...
 
-[Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk)
+[Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk) | [Download from Official Wordpress.org](http://wordpress.org/plugins/content-warning-v2)
 
 **NOTE:**
 

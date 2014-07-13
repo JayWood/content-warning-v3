@@ -3,11 +3,20 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 3.5.1
+Tested up to: 3.9.1
+Stable tag: 3.5.2
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
+
+> Major bugfix release.  Verified working with 3.9.1
+
+= Support Requests =
+All support requests should be on the new Github Repo.
+
+= Want to Contribute? =
+Make a [Pull Request](https://github.com/JayWood/content-warning-v3) to the Github's project development branch.
+
 This plugin provides a neat little warning and denial box to warn your users of possibly offensive content. 
 
 = v3 Is Here =
@@ -23,6 +32,12 @@ This plugin provides a neat little warning and denial box to warn your users of 
 > If the exit link is left empty, users will be redirected to google.
 
 == Installation ==
+
+= Default Method =
+1. Go to Settings > Plugins in your administrator panel.
+1. Click `Add New`
+1. Search for Content Warning v2
+1. Click install.
 
 = Easy Method =
 1. Download the zip file.
@@ -43,6 +58,16 @@ This plugin provides a neat little warning and denial box to warn your users of 
 
 This plugin is tested and proven to work with WordPress 3.4
 
+= Why aren't you answering support questions? =
+
+All support questions should be directed to the github issues section, just [open a ticket](https://github.com/JayWood/content-warning-v3/issues).
+
+** How to get support **
+* Provide a detailed explination of what the issue is, `it's broken` tickets will be closed.
+* Detail what you have done to try and fix the problem.
+* Provide a detailed list of options that are set.
+* Give a link to your site or the affected page.
+
 = The plugin is broken, fix it. = 
 
 Please do not contact me with questions like this.  If you cannot be descriptive with your problem I cannot help you.
@@ -57,6 +82,16 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.5.2 =
+* More PHP Cleanup to WP Standards
+* Updated Colorbox to v1.5.10 [Github Changelog](https://github.com/jackmoore/colorbox#changelog)
+* Fixed Colorbox popup to show like it is supposed to, broke it in 3.5.1, sorry!
+* Updated JW Simple Options framework to latest.
+* Updated stable tag to latest WP Version
+* Updated tested tag to latest WP Version
+* More little things I can't remember.
+
 
 = 3.5.1 =
 * PHP Cleanup
@@ -77,54 +112,6 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * New Category Options
 * New Misc. Page options (archive/search)
 * Tons of new features.
-
-= 2.4.17 =
-* Fixed bug that would redirect users to google if they click enter.  This bug was due to the "enter" option in the admin panel being empty, which now defaults to a hash sign, and forces the thickbox to just close and let the user view the page.
-* Added default value to exit link, now goes to google if left empty.
-
-= 2.4.16 =
-* Fixed Cookie Bug due to users wishing to enter/exit being redirected prior to the cookie being set.
-* Removed "Enabled" option, no real reason to have it as it's understood that if you have the plugin active you want to use it anyhow.
-
-= 2.4.15 =
-* Fixed exit/enter issues.
-* Minor id change to settings page.
-* Properlly registered scripts and styles.
-
-= 2.4.14 =
-* Fixed the enter link issue.
-
-= 2.4.13 =
-* Removed the annoying debug code.
-* This does not fix the bug where some users can't see the dialog.  That seems to only affect a few users.
-
-= 2.4.12 =
-* **FIX** Bug ignoring site-wide function.
-* **ADD** Notes and tips in admin panel.
-
-= 2.4.9 =
-* **FIX** Bug showing dialog ignoring cookie and session data.
-* **ADD** Added element ID's across admin panel to allow for easier jQuery work coming up.
-
-= 2.4.7 =
-* Major AJAX security fix. (Requires 3.3)
-* Re-arranged dialog panel
-* Added Enter/Exit text options again.
-* Complete rewrite of HELP for 3.3
-
-= 2.4.5 =
-* Added YooThemes compatability.
-* Added wp_head dpendancy again, it's necessary as YOOthemes overrides the previous get_header function for some reason.
-
-= 2.4.4 =
-* Added site-wide function back originally caused by improper tabulated elements with short-hand if statements.
-* Added themeing tab (code not implimented yet)
-
-= 2.4 =
-* Shortened ajax timing to zero, though it's still not instant.
-* Added denial function.  The denial option will show the dialog (with your customizations/message) to users that have previously been denied.
-* Compressed admin and front-end css and javascript for a 40% increase in performance.
-
 
 == Upgrade Notice ==
 = 2.0 =
