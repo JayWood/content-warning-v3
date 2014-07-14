@@ -165,32 +165,25 @@ class CWV3 {
 		$sw = get_option( 'cwv3_sitewide' );
 		$hm = get_option( 'cwv3_homepage' );
 		$mi = get_option( 'cwv3_misc' );
-		if ( get_magic_quotes_gpc() == true ) {
-			$cData = array(
-				'pages'      => json_decode( stripslashes( $_COOKIE['cwv3_pages'] ) ),
-				'posts'      => json_decode( stripslashes( $_COOKIE['cwv3_posts'] ) ),
-				'categories' => json_decode( stripslashes( $_COOKIE['cwv3_cats'] ) )
-			);
-		}else {
-			$cData = array(
-				'pages'      => json_decode( $_COOKIE['cwv3_pages'] ),
-				'posts'      => json_decode( $_COOKIE['cwv3_posts'] ),
-				'categories' => json_decode( $_COOKIE['cwv3_cats'] )
-			);
-		}
-		if ( $sw[0] == 'enabled' ) {
+
+		$cData = array(
+			'pages'      => json_decode( stripslashes( $_COOKIE['cwv3_pages'] ) ),
+			'posts'      => json_decode( stripslashes( $_COOKIE['cwv3_posts'] ) ),
+			'categories' => json_decode( stripslashes( $_COOKIE['cwv3_cats'] ) )
+		);
+
+		if ( !empty( $sw ) == 'enabled' ) {
 			$cData['pages']->sitewide = $action;
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}
 
-		if ( $hm[0] == 'enabled' && $id == -1 ) {
+		if ( !empty( $hm ) == 'enabled' && $id == -1 ) {
 			$cData['pages']->home = $action;
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}
 
-		if ( $mi[0] == 'enabled' && $id == -2 ) {
+		if ( !empty( $mi ) == 'enabled' && $id == -2 ) {
 			$cData['pages']->other = $action;
-			//return print_r($cData, true);
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}
 
@@ -228,7 +221,6 @@ class CWV3 {
 			'categories' => json_decode( stripslashes( @$_COOKIE['cwv3_cats'] ), true )
 		);
 
-		//return print_r($cData, true);
 
 		$sw = get_option( 'cwv3_sitewide' );
 		$hm = get_option( 'cwv3_homepage' );
@@ -311,7 +303,6 @@ class CWV3 {
 
 
 ?>
-        <?php //wp_die(print_r($curval), true); ?>
         <label for="cwv3_auth">Use authorization for this content:</label>
         <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $curval, true ); ?> value="yes" <?php echo $disabled;?>/><br />
         <?php if ( $sw[0] == 'enabled' ) : ?>
