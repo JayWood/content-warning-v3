@@ -83,7 +83,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
-== 3.5.3 ==
+= 3.5.3 =
 * **HOTFIX** Cookie logic
 
 = 3.5.2 =
