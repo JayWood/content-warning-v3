@@ -52,6 +52,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.5.3
+* HOTFIX - Fixes cookie logic
+
 ### 3.5.2
 * More PHP Cleanup to WP Standards
 * Updated Colorbox to v1.5.10 [Github Changelog](https://github.com/jackmoore/colorbox#changelog)
