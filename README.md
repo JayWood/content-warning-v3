@@ -1,7 +1,6 @@
 # Content Warning v3
 [![Repo Status](http://plugish.com/svg_images/passing.svg)](https://wordpress.org/plugins/content-warning-v2/)
 [![Download Count](http://plugish.com/svg_images/cwv3_downloads.svg)](https://wordpress.org/plugins/content-warning-v2/)
-[![Stable Tag](http://plugish.com/svg_images/cwv3_stable.svg)](https://wordpress.org/plugins/content-warning-v2/)
 [![License](http://plugish.com/svg_images/license.svg)](https://wordpress.org/plugins/content-warning-v2/)
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
