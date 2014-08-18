@@ -290,7 +290,7 @@ class CWV3 {
             <div id="cwv3_auth">
                 <div id="cwv3_title"><?php if ( $dtype == true ): ?><?php echo get_option( 'cwv3_den_title' ); ?><?php else: ?><?php echo get_option( 'cwv3_d_title' ); ?><?php endif; ?></div>
                 <div id="cwv3_content"><?php if ( $dtype === true ): ?><?php echo do_shortcode( get_option( 'cwv3_den_msg' ) ); ?><?php else: ?><?php echo do_shortcode( get_option( 'cwv3_d_msg' ) ); ?><?php endif; ?></div>
-                <div id="cwv3_btns"><?php if ( $dtype !== true ): ?><div id="cwv3_enter"><a href="javascript:;" id="cw_enter_link"><?php echo !empty( $etxt ) ? $etxt : 'Enter'; ?></a></div><?php endif; ?><div id="cwv3_exit"><a href="javascript:;" id="cw_exit_link"><?php echo !empty( $extxt ) ? $extxt : 'Exit'; ?></a></div></div>
+                <div id="cwv3_btns"><?php if ( $dtype !== true ): ?><div id="cwv3_enter"><a href="#" id="cw_enter_link"><?php echo !empty( $etxt ) ? $etxt : 'Enter'; ?></a></div><?php endif; ?><div id="cwv3_exit"><a href="#" id="cw_exit_link"><?php echo !empty( $extxt ) ? $extxt : 'Exit'; ?></a></div></div>
             </div>
         </div>
         <!-- END CWV3 Dialog -->
