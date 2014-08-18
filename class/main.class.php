@@ -39,13 +39,15 @@ class CWV3 {
 		$color = get_option( 'cwv3_bg_color' );
 		?><style type="text/css"><?php
 		if ( !empty( $img ) ) {
-?>
-				#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
-			<?php
+			?>#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}<?php
 		}else {
-?>
-				#cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
-			<?php
+			?>#cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}<?php
+		}
+		$custom_css = get_option( 'cwv3_css' );
+		if( !empty( $custom_css ) ){
+			echo '<!-- CWV3 Custom CSS -->';
+			echo $custom_css;
+			echo '<!-- /CWV3 Custom CSS -->';
 		}
 		?></style><?php
 	}
