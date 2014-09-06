@@ -51,6 +51,12 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.5.4
+* [jgraup](https://github.com/jgraup) - Fixed indexing errors [issue #6](https://github.com/JayWood/content-warning-v3/issues/6)
+* Output custom css, for some reason I forgot [fixes issue #3](https://github.com/JayWood/content-warning-v3/issues/3)
+* Stopped using javascript:; for buttons, in some browsers that just didn't work well [fixes issue #2 and #1](https://github.com/JayWood/content-warning-v3/issues/2)
+* Versioning update to WP 4.0, and tested.
+
 ### 3.5.3
 * HOTFIX - Fixes cookie logic
 
