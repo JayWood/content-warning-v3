@@ -3,8 +3,8 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 3.5.3
+Tested up to: 4.0
+Stable tag: 3.5.4
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
@@ -56,7 +56,7 @@ This plugin provides a neat little warning and denial box to warn your users of 
 
 == Frequently Asked Questions ==
 
-This plugin is tested and proven to work with WordPress 3.4
+This plugin is tested and proven to work with WordPress 4.0
 
 = Why aren't you answering support questions? =
 
@@ -82,6 +82,12 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.5.4 =
+* [jgraup](https://github.com/jgraup) - Fixed indexing errors [issue #6](https://github.com/JayWood/content-warning-v3/issues/6)
+* Output custom css, for some reason I forgot [fixes issue #3](https://github.com/JayWood/content-warning-v3/issues/3)
+* Stopped using javascript:; for buttons, in some browsers that just didn't work well [fixes issue #2 and #1](https://github.com/JayWood/content-warning-v3/issues/2)
+* Versioning update to WP 4.0, and tested.
 
 = 3.5.3 =
 * **HOTFIX** Cookie logic
