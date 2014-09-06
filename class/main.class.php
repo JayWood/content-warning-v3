@@ -37,6 +37,11 @@ class CWV3 {
 		$img = get_option( 'cwv3_bg_image', '' );
 		$color = get_option( 'cwv3_bg_color' );
 		?><style type="text/css"><?php
+		$custom_css = get_option( 'cwv3_css' );
+		if( !empty( $custom_css ) ){
+			echo $custom_css;
+		}
+
 		if ( !empty( $img ) ) { 
 		?>
 				#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
