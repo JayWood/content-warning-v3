@@ -21,7 +21,6 @@ class CWV3 {
 		add_filter( 'manage_page_posts_columns', array( $this, 'post_cols' ) );
 		add_filter( 'manage_post_posts_columns', array( $this, 'post_cols' ) );
 
-
 		//add_action('quick_edit_custom_box', array(&$this, 'display_qe'), 10, 2);
 
 		// Post column info
@@ -38,17 +37,15 @@ class CWV3 {
 		$img = get_option( 'cwv3_bg_image', '' );
 		$color = get_option( 'cwv3_bg_color' );
 		?><style type="text/css"><?php
-		if ( !empty( $img ) ) {
-			?>#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}<?php
-		}else {
-			?>#cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}<?php
-		}
-		$custom_css = get_option( 'cwv3_css' );
-		if( !empty( $custom_css ) ){
-			echo '<!-- CWV3 Custom CSS -->';
-			echo $custom_css;
-			echo '<!-- /CWV3 Custom CSS -->';
-		}
+		if ( !empty( $img ) ) { 
+		?>
+				#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
+		<?php
+		}else { 
+		?>
+				#cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}
+		<?php
+		} 
 		?></style><?php
 	}
 
@@ -91,7 +88,8 @@ class CWV3 {
 	}
 
 	public function cwv3_meta_save( $post_id ) {
-		if ( 'page' == $_POST['post_type'] )
+		// check isset before access (edit by @jgraup) 
+		if ( isset($_POST['post_type']) && 'page' == $_POST['post_type'] )
 			if ( !current_user_can( 'edit_page', $post_id ) )
 				return;
 			else
@@ -101,9 +99,12 @@ class CWV3 {
 				if ( !isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) )
 					return;
 
-				$mydata = sanitize_text_field( $_POST['cwv3_auth'] );
+		// check isset before access (edit by @jgraup) 
+		if(isset($_POST['cwv3_auth']))
+		{
+			$mydata = sanitize_text_field( $_POST['cwv3_auth'] );
 			update_post_meta( $post_id, 'cwv3_auth', $mydata );
-
+		}
 	}
 
 	public function handle_ajax() {
@@ -169,12 +170,20 @@ class CWV3 {
 		$mi = get_option( 'cwv3_misc' );
 
 		$cData = array(
-			'pages'      => json_decode( stripslashes( $_COOKIE['cwv3_pages'] ) ),
-			'posts'      => json_decode( stripslashes( $_COOKIE['cwv3_posts'] ) ),
-			'categories' => json_decode( stripslashes( $_COOKIE['cwv3_cats'] ) )
+			// check isset before access (edit by @jgraup) 
+			'pages'      => !isset($_COOKIE['cwv3_pages']) ? '' : json_decode( stripslashes( $_COOKIE['cwv3_pages'] ) ),
+			'posts'      => !isset($_COOKIE['cwv3_posts']) ? '' : json_decode( stripslashes( $_COOKIE['cwv3_posts'] ) ),
+			'categories' => !isset($_COOKIE['cwv3_cats']) ? ''  : json_decode( stripslashes( $_COOKIE['cwv3_cats'] ) )
 		);
 
-		if ( !empty( $sw ) == 'enabled' ) {
+		// ensure we're using  valid objects (edit by @jgraup)
+		foreach ($cData as $key => $value) {
+		    if(is_scalar($value)){
+		        $cData[$key] = new stdClass;
+		    }
+		}		
+ 
+		if ( !empty( $sw ) == 'enabled' ) { 
 			$cData['pages']->sitewide = $action;
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}
@@ -217,12 +226,13 @@ class CWV3 {
 			//Don't want to hender the feed, just in case.
 			return true;
 		}
-		$cData = array(
-			'pages'      => json_decode( stripslashes( @$_COOKIE['cwv3_pages'] ), true ),
-			'posts'      => json_decode( stripslashes( @$_COOKIE['cwv3_posts'] ), true ),
-			'categories' => json_decode( stripslashes( @$_COOKIE['cwv3_cats'] ), true )
-		);
 
+		$cData = array(
+			// check isset before access (edit by @jgraup) 
+			'pages'      => !isset($_COOKIE['cwv3_pages']) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_pages'] ), true ),
+			'posts'      => !isset($_COOKIE['cwv3_posts']) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_posts'] ), true ),
+			'categories' => !isset($_COOKIE['cwv3_cats']) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_cats'] ), true )
+		);
 
 		$sw = get_option( 'cwv3_sitewide' );
 		$hm = get_option( 'cwv3_homepage' );
@@ -290,7 +300,7 @@ class CWV3 {
             <div id="cwv3_auth">
                 <div id="cwv3_title"><?php if ( $dtype == true ): ?><?php echo get_option( 'cwv3_den_title' ); ?><?php else: ?><?php echo get_option( 'cwv3_d_title' ); ?><?php endif; ?></div>
                 <div id="cwv3_content"><?php if ( $dtype === true ): ?><?php echo do_shortcode( get_option( 'cwv3_den_msg' ) ); ?><?php else: ?><?php echo do_shortcode( get_option( 'cwv3_d_msg' ) ); ?><?php endif; ?></div>
-                <div id="cwv3_btns"><?php if ( $dtype !== true ): ?><div id="cwv3_enter"><a href="#" id="cw_enter_link"><?php echo !empty( $etxt ) ? $etxt : 'Enter'; ?></a></div><?php endif; ?><div id="cwv3_exit"><a href="#" id="cw_exit_link"><?php echo !empty( $extxt ) ? $extxt : 'Exit'; ?></a></div></div>
+                <div id="cwv3_btns"><?php if ( $dtype !== true ): ?><div id="cwv3_enter"><a href="javascript:;" id="cw_enter_link"><?php echo !empty( $etxt ) ? $etxt : 'Enter'; ?></a></div><?php endif; ?><div id="cwv3_exit"><a href="javascript:;" id="cw_exit_link"><?php echo !empty( $extxt ) ? $extxt : 'Exit'; ?></a></div></div>
             </div>
         </div>
         <!-- END CWV3 Dialog -->
@@ -302,8 +312,6 @@ class CWV3 {
 		$curval = get_post_meta( $post->ID, 'cwv3_auth', true );
 		$sw = get_option( 'cwv3_sitewide' );
 		$disabled = $sw[0] == 'enabled' ? 'disabled="disabled"' : '';
-
-
 ?>
         <label for="cwv3_auth">Use authorization for this content:</label>
         <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $curval, true ); ?> value="yes" <?php echo $disabled;?>/><br />
