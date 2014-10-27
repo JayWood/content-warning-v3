@@ -10,9 +10,10 @@ foreach($cat_list as $cw_cat){
 }
 $cwv3_op_data = array(
 	'plugin_title'	=>	'Content Warning v3',
-	'prefix'	=>	'cwv3_',
-	'menu_title'	=>	'CWv3 Options',
-	'slug'	=>	'cwv3_options',
+	'prefix'		=>	'cwv3_',
+	'menu_title'	=>	'Content Warning v3',
+	'menu_type'		=>	'option',
+	'slug'			=>	'cwv3_options',
 	'opData'	=>	array(
 		'sitewide'	=>	array(
 			'name'	=>	'Sitewide',
