@@ -53,7 +53,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ### 3.5.5
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
-* BUGFIX - Fixed Enter/Exit URL's not being respected.
+* BUGFIX - Fixed Enter/Exit URLs not being respected.
 * Sniffed and updated core code to match WordPress rules and coding standards
 * Removed a couple methods in favor of built-in WordPress methods.
 * Modified dialog output code and escaped its output accordingly.
