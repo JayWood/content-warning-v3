@@ -83,6 +83,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
+= 3.5.5 =
+* [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
+* BUGFIX - Fixed Enter/Exit URLs not being respected.
+* Sniffed and updated core code to match WordPress rules and coding standards
+* Removed a couple methods in favor of built-in WordPress methods.
+* Modified dialog output code and escaped its output accordingly.
+
 = 3.5.4 =
 * [jgraup](https://github.com/jgraup) - Fixed indexing errors [issue #6](https://github.com/JayWood/content-warning-v3/issues/6)
 * Output custom css, for some reason I forgot [fixes issue #3](https://github.com/JayWood/content-warning-v3/issues/3)
