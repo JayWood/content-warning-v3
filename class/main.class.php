@@ -198,19 +198,19 @@ class CWV3 {
 		}
 
 		$type = get_post_type( $id );
-		if ( $type == 'post' ) {
-			$catData = get_option( "cwv3_cat_list" );
+		if ( 'post' == $type ) {
+			$catData = get_option( 'cwv3_cat_list' );
 			$curCat = get_the_category( $id );
 			if ( $this->in_cat( $catData, $curCat ) ) {
 				$cData['categories']->$id = $action;
 				return setcookie( 'cwv3_cats', json_encode( $cData['categories'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
-			}else if ( get_post_meta( $id, 'cwv3_auth', true ) == 'yes' ) {
+			} else if ( 'yes' == get_post_meta( $id, 'cwv3_auth', true ) ) {
 					$cData['posts']->$id = $action;
 					return setcookie( 'cwv3_posts', json_encode( $cData['posts'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 				}
 		}
 
-		if ( get_post_meta( $id, 'cwv3_auth', true ) == 'yes' ) {
+		if ( 'yes' == get_post_meta( $id, 'cwv3_auth', true ) ) {
 			$cData['pages']->$id = $action;
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}
