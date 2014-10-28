@@ -49,6 +49,15 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * If your browser does not have cookies enabled, the plugin will not store your response.
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
 
+## TODO
+
+- [ ] Localization
+- [ ] Make use of jquery.cookie
+- [ ] Include API / Template Tags
+	- [ ] Document API / Template Tags
+- [ ] Custom popup, remove colorbox dependency
+
+
 ## Changelog
 
 ### 3.5.5
@@ -85,3 +94,4 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ### 3.48
 * Fixed IE Bug by removing debug function in javascript.
+
