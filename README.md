@@ -51,11 +51,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## TODO
 
-- [ ] Localization #10
-- [ ] Make use of jquery.cookie #11
-- [ ] Include API / Template Tags #12
-	- [ ] Document API / Template Tags #13
-- [ ] Custom popup, remove colorbox dependency $14
+- [ ] Localization issue #10
+- [ ] Make use of jquery.cookie issue #11
+- [ ] Include API / Template Tags issue #12
+	- [ ] Document API / Template Tags issue #13
+- [ ] Custom popup, remove colorbox dependency issue #14
 
 
 ## Changelog
