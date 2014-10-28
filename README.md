@@ -51,11 +51,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## TODO
 
-- [ ] Localization issue #10
-- [ ] Make use of jquery.cookie issue #11
-- [ ] Include API / Template Tags issue #12
-	- [ ] Document API / Template Tags issue #13
-- [ ] Custom popup, remove colorbox dependency issue #14
+- [ ] Localization [#10](https://github.com/JayWood/content-warning-v3/issues/10)
+- [ ] Make use of jquery.cookie [#11](https://github.com/JayWood/content-warning-v3/issues/11)
+- [ ] Include API / Template Tags [#12](https://github.com/JayWood/content-warning-v3/issues/12)
+	- [ ] Document API / Template Tags [#13](https://github.com/JayWood/content-warning-v3/issues/13)
+- [ ] Custom popup, remove colorbox dependency [#14](https://github.com/JayWood/content-warning-v3/issues/14)
 
 
 ## Changelog
