@@ -9,6 +9,7 @@
 # Backup files
 *.bak
 *.lwbak
+*.map
 
 # Cache
 cache
