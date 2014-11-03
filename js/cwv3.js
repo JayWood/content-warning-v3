@@ -1,4 +1,23 @@
 /* global cwv3_params */
+
+window.cwv3 = ( function( window, document, $ ){
+
+	var app = {};
+
+	app.cache = function(){
+		
+	};
+
+	app.init = function(){
+
+	};
+
+	$( document ).ready( app.init );
+
+	return app;
+
+})( window, document, jQuery );
+
 jQuery(document).ready(function($) {
 	var enter = $('#cw_enter_link');
 	var exit = $('#cw_exit_link');
@@ -25,7 +44,7 @@ jQuery(document).ready(function($) {
 			if( typeof(e) !== "undefined" ){
 				e.preventDefault();
 			}
-			//console.log(e);
+
 			$.post(cwv3_params.admin_url, {action: cwv3_params.action, nonce: cwv3_params.nonce, id: cwv3_params.id, method: 'enter'}, function(){
 				if(cwv3_params.enter === "#"){
 					$.colorbox.close();

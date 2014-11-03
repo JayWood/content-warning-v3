@@ -31,22 +31,7 @@ class CWV3 {
 	}
 
 	public function override_css() {
-
-		$img = get_option( 'cwv3_bg_image', '' );
-		$color = get_option( 'cwv3_bg_color' );
-		?><style type="text/css"><?php
-		$custom_css = get_option( 'cwv3_css', '' );
-
-		if ( ! empty( $custom_css ) ){
-			echo $custom_css;
-		}
-
-		if ( ! empty( $img ) ) {
-			?>#cboxOverlay{background:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;}<?php
-		}else {
-			?> #cboxOverlay{background-image:url(<?php echo $img; ?>) no-repeat top center; background-color:<?php echo $color['color']; ?>;} <?php
-		}
-		?></style><?php
+		cwv3_the_css();
 	}
 
 	public function render_lazy_mans_css() {
@@ -222,57 +207,7 @@ class CWV3 {
 	}
 
 	public function check_data() {
-		global $post;
-
-		if ( is_feed() ) {
-			//Don't want to hender the feed, just in case.
-			return true;
-		}
-
-		$cData = array(
-			// check isset before access (edit by @jgraup)
-			'pages'      => ! isset( $_COOKIE['cwv3_pages'] ) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_pages'] ), true ),
-			'posts'      => ! isset( $_COOKIE['cwv3_posts'] ) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_posts'] ), true ),
-			'categories' => ! isset( $_COOKIE['cwv3_cats'] ) ? '' : json_decode( stripslashes( @$_COOKIE['cwv3_cats'] ), true )
-		);
-
-		$sw = get_option( 'cwv3_sitewide' );
-		$hm = get_option( 'cwv3_homepage' );
-		$mi = get_option( 'cwv3_misc' );
-
-		if ( ! empty( $sw ) ) {
-			return ! empty( $cData['pages']['sitewide'] ) ? $cData['pages']['sitewide'] : false;
-		}
-
-		if ( is_front_page() && ! empty( $hm ) ) {
-			return ! empty( $cData['pages']['home'] ) ? $cData['pages']['home'] : false;
-		}
-
-		if ( ( is_archive() || is_search() ) && ! empty( $mi ) ) {
-			// Protect misc pages aswell
-			return ! empty( $cData['pages']['other'] ) ? $cData['pages']['other'] : false;
-		}
-
-		if ( is_page() && 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) ) {
-			$c = $cData['pages'][ $post->ID ];
-			return ! empty( $c ) ? $c : false;
-		}
-
-		$id = ( is_attachment() ? $post->post_parent : $post->ID );
-		// First see if categories are setup in the admin side.
-		$catData = get_option( 'cwv3_cat_list' );
-		$curCat = get_the_category( $id );
-		if ( 'post' == get_post_type( $id ) && $this->in_cat( $catData, $curCat ) ) {
-			// If the current category is selected in the admin page, that means the administrator wishes to protect it.
-			// respect the admin's wishes and do it.
-			return ! empty( $cData['categories'][ $post->ID ] ) ? $cData['categories'][ $id ] : false;
-		}
-		// Since that's not the case, we need to check post_meta data and see if this post is protected.
-		if ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) && ! is_front_page() ) {
-			return ! empty( $cData['posts'][ $post->ID ] ) ? $cData['posts'][ $id ] : false;
-		}
-
-		return true;
+		return cwv3_auth_reply();
 	}
 
 	public function in_cat( $catIDs, $catArray ) {
@@ -292,36 +227,8 @@ class CWV3 {
 
 	public function render_dialog() {
 
-		$d = get_option( 'cwv3_denial' );
-		if ( 3 == $this->check_data() && 'enabled' == $d[0] ) {
-			$dtype = true;
-		}else {
-			$dtype = false;
-		}
-		$etxt         = get_option( 'cwv3_enter_txt', 'Enter' );
-		$extxt        = get_option( 'cwv3_exit_txt', 'Exit' );
+		cwv3_the_dialog();
 
-		$cwv3_title   = ( true == $dtype ) ? get_option( 'cwv3_den_title' ) : get_option( 'cwv3_d_title' );
-		$cwv3_content = ( true == $dtype ) ? get_option( 'cwv3_den_msg' ) : get_option( 'cwv3_d_msg' );
-
-		$exit_url     = get_option( 'cwv3_exit_link', '#' );
-		$enter_url    = get_option( 'cwv3_enter_link', '#' );
-?>
-    	<!-- CWV3 Dialog -->
-        <div style="display: none">
-            <div id="cwv3_auth">
-                <div id="cwv3_title"><?php echo esc_attr( $title ); ?></div>
-                <div id="cwv3_content"><?php echo wp_kses_post( $cwv3_content ); ?></div>
-                <div id="cwv3_btns">
-                	<?php if ( true !== $dtype ): ?>
-                		<div id="cwv3_enter"><a href="<?php echo esc_url( $enter_url ); ?>" id="cw_enter_link"><?php echo esc_attr( $etxt ); ?></a></div>
-                	<?php endif; ?>
-                		<div id="cwv3_exit"><a href="<?php echo esc_url( $exit_url ); ?>" id="cw_exit_link"><?php echo esc_attr( $extxt ); ?></a></div>
-                	</div>
-            </div>
-        </div>
-        <!-- END CWV3 Dialog -->
-	<?php
 	}
 
 	public function render_metabox( $post ) {

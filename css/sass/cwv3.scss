@@ -54,3 +54,19 @@
 #cwv3_exit a {
   background-color: #F00;
 }
+
+.cwv3_dialog{
+
+  &.js{
+
+    .auth{
+      display: none;
+    }
+
+    .denied{
+      display: none;
+    }
+    
+  }
+
+}

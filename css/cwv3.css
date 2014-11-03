@@ -54,4 +54,9 @@
   background-color: #F00;
 }
 
-/*# sourceMappingURL=cwv3.css.map */
+.cwv3_dialog.js .auth {
+  display: none;
+}
+.cwv3_dialog.js .denied {
+  display: none;
+}
