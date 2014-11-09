@@ -1,15 +1,53 @@
 /* global cwv3_params */
-
 window.cwv3 = ( function( window, document, $ ){
 
 	var app = {};
 
 	app.cache = function(){
-		
+		app.$dialog = $('.cwv3_dialog');
+		app.$auth = app.$dialog.find( '.cwv3.auth' );
+		app.$denial = app.$dialog.find( '.cwv3.denied' );
+		app.$exit = app.$dialog.find( '.cwv3_exit' );
+		app.$enter = app.$dialog.find( '.cwv3_enter' );
 	};
 
 	app.init = function(){
+		app.cache();
 
+		// Register handlers
+		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
+		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
+	};
+
+	app.enter_handler = function( evt ){
+		evt.preventDefault();
+
+	};
+
+	app.exit_handler = function( evt ){
+		evt.preventDefault();
+
+	};
+
+	app.set_cookie = function(){
+		// Set the cookie
+	};
+
+	app.show_colorbox = function(){
+		// Here we show colorbox
+		$.colorbox({
+			scrolling    : false,
+			overlayClose : false,
+			escKey       : false,
+			inline       : true,
+			href         : '#cwv3_dialog',
+			loop         : false,
+			className    : 'cwv3_dialog',
+			opacity      : cwv3_params.opacity,
+			onLoad       : function(){
+				$('#cboxClose').remove();
+			},
+		});
 	};
 
 	$( document ).ready( app.init );
@@ -17,6 +55,7 @@ window.cwv3 = ( function( window, document, $ ){
 	return app;
 
 })( window, document, jQuery );
+
 /*
 jQuery(document).ready(function($) {
 	var enter = $('#cw_enter_link');
