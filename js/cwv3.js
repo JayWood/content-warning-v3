@@ -17,7 +17,7 @@ window.cwv3 = ( function( window, document, $ ){
 	return app;
 
 })( window, document, jQuery );
-
+/*
 jQuery(document).ready(function($) {
 	var enter = $('#cw_enter_link');
 	var exit = $('#cw_exit_link');
@@ -65,4 +65,4 @@ jQuery(document).ready(function($) {
 	}
 	
 	
-});
+});*/

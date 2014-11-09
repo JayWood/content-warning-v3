@@ -83,6 +83,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
+= 3.6.0 =
+* Split methods and hooks from main class file, will prevent overhead.
+* Moved to use of cookie.js
+* Created API file for methods.
+
 = 3.5.5 =
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
 * BUGFIX - Fixed Enter/Exit URLs not being respected.

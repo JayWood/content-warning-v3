@@ -7,10 +7,16 @@ Author: 		Jerry Wood Jr.
 Version:		3.6.0
 Author URI:		http://plugish.com
 */
-require_once dirname( __FILE__ ) . '/inc/options.inc.php';
-require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
-require_once dirname( __FILE__ ) . '/inc/api.php'
-require_once dirname( __FILE__ ) . '/class/main.class.php';
+require_once dirname( __FILE__ ) . '/inc/api.php';
 
-$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
-register_uninstall_hook( __FILE__, $cwv3_options->uninstall() );
+if ( is_admin() ){
+	require_once dirname( __FILE__ ) . '/inc/options.inc.php';
+	require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
+	require_once dirname( __FILE__ ) . '/class/admin.class.php';
+
+	$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
+	register_uninstall_hook( __FILE__, $cwv3_options->uninstall() );
+} else {
+	require_once dirname( __FILE__ ) . '/class/main.class.php';
+}
+
