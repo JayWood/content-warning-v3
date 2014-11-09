@@ -49,14 +49,9 @@ class CWV3 {
 		$p_ID = ( is_front_page() ) ? -1 : ( is_attachment() ? $post->post_parent : ( is_archive() || is_search() ) ? -2 : $post->ID );
 		$d = get_option( 'cwv3_denial' );
 		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
-			'action'    => 'cwv3_ajax',
-			'nonce'     => wp_create_nonce( 'cwv3_ajax_'.$p_ID ),
-			'admin_url' => admin_url( 'admin-ajax.php' ),
-			'id'        => $p_ID,
-			'sd'        => ( $this->check_data() == false || ( $this->check_data() == 3 && ! empty( $d ) ) ) ? true : false,
-			'enter'     => ! empty( $elink ) ? $elink : '#',
-			'exit'      => ! empty( $exlink ) ? $exlink : 'http://google.com',
-			'opacity'   => get_option( 'cwv3_bg_opacity', 0.85 )
+			'id'          => $p_ID,
+			'opacity'     => get_option( 'cwv3_bg_opacity', 0.85 ),
+			'cookie_path' => SITECOOKIEPATH,
 		) );
 	}
 
