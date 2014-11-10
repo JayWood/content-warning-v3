@@ -52,6 +52,7 @@ class CWV3 {
 			'id'          => $p_ID,
 			'opacity'     => get_option( 'cwv3_bg_opacity', 0.85 ),
 			'cookie_path' => SITECOOKIEPATH,
+			'cookie_name' => $this->get_cookie_name(),
 		) );
 	}
 
@@ -68,6 +69,23 @@ class CWV3 {
 		// Main data
 		wp_register_script( 'cwv3_js', plugins_url( "js/cwv3{$min}.js", dirname( __FILE__ ) ), array( 'colorbox_js', 'jquery_cookie' ), '3.6.0', true );
 		wp_register_style( 'cwv3_css', plugins_url( "css/cwv3{$min}.css", dirname( __FILE__ ) ), array( 'colorbox' ), '1.0' );
+	}
+
+	public function get_cookie_name(){
+
+		$sitewide    = get_option( 'cwv3_sitewide' );
+		$homepage    = get_option( 'cwv3_homepage' );
+		$misc        = get_option( 'cwv3_misc' );
+
+		if( 'enabled' == ! empty( $sitewide ) ){
+			return 'sitewide';
+		}
+
+		if( 'enabled' == ! empty( $homepage ) && is_front_page() ){
+			return 'homepage';
+		}
+
+		return false;
 	}
 
 	public function set_cookie( $id, $action ) {
