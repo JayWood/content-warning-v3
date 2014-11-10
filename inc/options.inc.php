@@ -53,12 +53,7 @@ $cwv3_op_data = array(
 			'type' => 'text',
 			'def'  => '1',
 		),
-/*		'death'		=>	array(
-			'name'	=>	'Cookie Life',
-			'desc'	=>	'How long before the cookie expires.',
-			'type'	=>	'timeframe',
-			'def'	=>	array( 'multiplier' => 1, 'time' => 60 * 60 * 24 ),
-		),*/
+		
 		// Dialog Options
 		'd_title'	=>	array(
 			'name'	=>	__( 'Dialog Title', 'cwv3' ),
