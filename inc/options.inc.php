@@ -50,10 +50,10 @@ $cwv3_op_data = array(
 		'death' => array(
 			'name' => __( 'Cookie Life', 'cwv3' ),
 			'desc' => __( 'Time in days for the cookie to expire', 'cwv3' ),
-			'type' => 'text',
+			'type' => 'number',
 			'def'  => '1',
 		),
-		
+
 		// Dialog Options
 		'd_title'	=>	array(
 			'name'	=>	__( 'Dialog Title', 'cwv3' ),
