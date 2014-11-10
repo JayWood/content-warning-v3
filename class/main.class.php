@@ -8,32 +8,10 @@ class CWV3 {
 
 		add_action( 'wp_footer', array( $this, 'render_dialog' ) );
 		add_action( 'wp_head', array( $this, 'override_css' ) );
-
-		// AJAX Handle
-		/*add_action( 'wp_ajax_cwv3_ajax', array( $this, 'handle_ajax' ) );
-		add_action( 'wp_ajax_nopriv_cwv3_ajax', array( $this, 'handle_ajax' ) );*/
 	}
 
 	public function override_css() {
 		cwv3_the_css();
-	}
-
-	public function handle_ajax() {
-		$post_id = intval( $_POST['id'] );
-
-		check_ajax_referer( 'cwv3_ajax_'.$post_id, 'nonce' );
-
-		if ( 'exit' == $_POST['method'] ) {
-			$d = get_option( 'cwv3_denial' );
-			if ( 'enabled' == $d[0] ) {
-				$resp = $this->set_cookie( $post_id, 3 );
-			}
-			$resp = 'denied';
-		}else {
-			$resp = $this->set_cookie( $post_id, 1 );
-		}
-		echo $resp;
-		die;
 	}
 
 	public function load_dependancies() {
@@ -44,15 +22,14 @@ class CWV3 {
 		wp_enqueue_style( 'cwv3_css' );
 		wp_enqueue_script( 'cwv3_js' );
 
-		$elink = get_option( 'cwv3_enter_link' );
-		$exlink = get_option( 'cwv3_exit_link' );
-		$p_ID = ( is_front_page() ) ? -1 : ( is_attachment() ? $post->post_parent : ( is_archive() || is_search() ) ? -2 : $post->ID );
-		$d = get_option( 'cwv3_denial' );
 		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
-			'id'          => $p_ID,
-			'opacity'     => get_option( 'cwv3_bg_opacity', 0.85 ),
-			'cookie_path' => SITECOOKIEPATH,
-			'cookie_name' => $this->get_cookie_name(),
+			'opacity'       => get_option( 'cwv3_bg_opacity', 0.85 ),
+			'cookie_path'   => SITECOOKIEPATH,
+			'cookie_name'   => $this->get_cookie_name(),
+			'cookie_time'   => $cookie_death,
+			'denial'        => get_option( 'cwv3_denial', 'enabled' ),
+			'denial_method' => get_option( 'cwv3_method_show', 'redirect' ),
+
 		) );
 	}
 
@@ -72,18 +49,68 @@ class CWV3 {
 	}
 
 	public function get_cookie_name(){
+		global $post;
 
 		$sitewide    = get_option( 'cwv3_sitewide' );
 		$homepage    = get_option( 'cwv3_homepage' );
 		$misc        = get_option( 'cwv3_misc' );
 
-		if( 'enabled' == ! empty( $sitewide ) ){
+		if ( 'enabled' == ! empty( $sitewide ) ){
 			return 'sitewide';
 		}
 
-		if( 'enabled' == ! empty( $homepage ) && is_front_page() ){
+		if ( 'enabled' == ! empty( $homepage ) && is_front_page() ){
 			return 'homepage';
 		}
+
+		if ( 'enabled' == ! empty( $misc ) && ( is_search() || is_archive() ) ){
+			return 'misc';
+		}
+
+		// Don't need people looking at attachments that belong to a
+		// protected post.
+		if ( is_attachment() && isset( $post->post_parent ) ) {
+			// Special consideration needs to be taken to check if the post parent is in-fact
+			// gated in any way, if so, return its ID here.
+			$is_gated = $this->check_post( $post->post_parent );
+			if ( true === $is_gated ){
+				return $post->post_parent;
+			}
+		}
+
+		/*$type = get_post_type( $id );
+		if ( 'post' == $type ) {
+			$catData = get_option( 'cwv3_cat_list' );
+			$curCat = get_the_category( $id );
+			if ( $this->in_cat( $catData, $curCat ) ) {
+				$cData['categories']->$id = $action;
+				return setcookie( 'cwv3_cats', json_encode( $cData['categories'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
+			} else if ( 'yes' == get_post_meta( $id, 'cwv3_auth', true ) ) {
+					$cData['posts']->$id = $action;
+					return setcookie( 'cwv3_posts', json_encode( $cData['posts'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
+				}
+		}
+
+		if ( 'yes' == get_post_meta( $id, 'cwv3_auth', true ) ) {
+			$cData['pages']->$id = $action;
+			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
+		}*/
+
+		return false;
+	}
+
+	/**
+	 * Check Post
+	 * Checks a post ID to see if it's supposed to be
+	 * gated in any way, either by metabox, or category from the
+	 * regular category taxonomy.
+	 * 	
+	 * @param  int 	$post_id Post ID
+	 * @return bool          TRUE | FALSE
+	 */
+	public function check_post( $post_id ){
+
+		$meta = get_post_meta( $post_id, $key, true );
 
 		return false;
 	}
