@@ -17,6 +17,9 @@ window.cwv3 = ( function( window, document, $ ){
 		// Register handlers
 		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
 		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
+
+		var cookie_name = 'cwv3_cookie_' + cwv3_params.id;
+		
 	};
 
 	app.enter_handler = function( evt ){
