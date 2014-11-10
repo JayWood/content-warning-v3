@@ -72,9 +72,46 @@ class CWV3 {
 		if ( is_attachment() && isset( $post->post_parent ) ) {
 			// Special consideration needs to be taken to check if the post parent is in-fact
 			// gated in any way, if so, return its ID here.
-			$is_gated = $this->check_post( $post->post_parent );
+			$is_gated = $this->is_gated( $post->post_parent );
 			if ( true === $is_gated ){
 				return $post->post_parent;
+			}
+		}
+
+		if ( is_single() && isset( $post->ID ) ){
+			$is_gated = $this->is_gated( $post->ID );
+			if ( true == $is_gated ){
+				return $post->ID;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check Post
+	 * Checks a post ID to see if it's supposed to be
+	 * gated in any way, either by metabox, or category from the
+	 * regular category taxonomy.
+	 * 	
+	 * @param  int 	$post_id Post ID
+	 * @return bool          TRUE | FALSE
+	 */
+	public function is_gated( $post_id ){
+
+		$meta = get_post_meta( $post_id, 'cwv3_auth', true );
+
+		if ( ! empty( $meta ) ) {
+			return true;
+		} else {
+			// The post itself was not gated, check categories.
+			$category_array = get_option( 'cwv3_cat_list', array() );
+			if ( ! empty( $category_array ) ){
+				// We have categories to check, so let us do so.
+				$current_categories = get_the_category( $post_id );
+				if ( $this->in_cat( $category_array, $current_categories ) ){
+					// @TODO Continue here
+				}
 			}
 		}
 
@@ -95,22 +132,6 @@ class CWV3 {
 			$cData['pages']->$id = $action;
 			return setcookie( 'cwv3_pages', json_encode( $cData['pages'] ), ( $time['multiplier'] * $time['time'] )+time(), COOKIEPATH, COOKIE_DOMAIN, false );
 		}*/
-
-		return false;
-	}
-
-	/**
-	 * Check Post
-	 * Checks a post ID to see if it's supposed to be
-	 * gated in any way, either by metabox, or category from the
-	 * regular category taxonomy.
-	 * 	
-	 * @param  int 	$post_id Post ID
-	 * @return bool          TRUE | FALSE
-	 */
-	public function check_post( $post_id ){
-
-		$meta = get_post_meta( $post_id, $key, true );
 
 		return false;
 	}
