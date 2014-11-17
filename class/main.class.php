@@ -23,12 +23,13 @@ class CWV3 {
 		wp_enqueue_script( 'cwv3_js' );
 
 		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
-			'opacity'       => get_option( 'cwv3_bg_opacity', 0.85 ),
-			'cookie_path'   => SITECOOKIEPATH,
-			'cookie_name'   => $this->get_cookie_name(),
-			'cookie_time'   => $cookie_death,
-			'denial'        => get_option( 'cwv3_denial', 'enabled' ),
-			'denial_method' => get_option( 'cwv3_method_show', 'redirect' ),
+			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
+			'cookie_path'    => SITECOOKIEPATH,
+			'cookie_name'    => $this->get_cookie_name(),
+			'cookie_time'    => $cookie_death,
+			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
+			'denial_method'  => get_option( 'cwv3_method_show', 'redirect' ),
+			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
 
 		) );
 	}
@@ -38,7 +39,7 @@ class CWV3 {
 
 		// Colorbox w/ MIT License
 		wp_register_style( 'colorbox', plugins_url( 'js/colorbox.1.5.10/colorbox.css', dirname( __FILE__ ) ), '', '1.5.10', 'ALL' );
-		wp_register_script( 'colorbox_js', plugins_url( "js/colorbox.1.5.10/jquery.colorbox{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.5.10', true );
+		wp_register_script( 'colorbox_js', plugins_url( "js/colorbox.1.5.10/jquery.colorbox{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.5.14', true );
 
 		// Jquery Cookie
 		wp_register_script( 'jquery_cookie', plugins_url( "js/jquery_cookie{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.1', true );
