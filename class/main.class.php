@@ -38,8 +38,8 @@ class CWV3 {
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Colorbox w/ MIT License
-		wp_register_style( 'colorbox', plugins_url( 'js/colorbox.1.5.10/colorbox.css', dirname( __FILE__ ) ), '', '1.5.10', 'ALL' );
-		wp_register_script( 'colorbox_js', plugins_url( "js/colorbox.1.5.10/jquery.colorbox{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.5.14', true );
+		wp_register_style( 'colorbox', plugins_url( 'js/colorbox.1.5.14/colorbox.css', dirname( __FILE__ ) ), '', '1.5.10', 'ALL' ); // Keeping old css version
+		wp_register_script( 'colorbox_js', plugins_url( "js/colorbox.1.5.14/jquery.colorbox{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.5.14', true );
 
 		// Jquery Cookie
 		wp_register_script( 'jquery_cookie', plugins_url( "js/jquery_cookie{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.1', true );
