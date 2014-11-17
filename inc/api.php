@@ -62,6 +62,7 @@ function cwv3_get_js_dialog(){
 
 	ob_start();
 	?>
+	<!-- CWV3 JS Dialog -->
 	<div id="cwv3_dialog" class="cwv3_dialog js">
 		<div class="cwv3 auth">
 			<div class="cwv3_title"><?php echo esc_attr( $cwv3_title ); ?></div>
@@ -85,6 +86,7 @@ function cwv3_get_js_dialog(){
 			</div>
 		</div>
 	</div>
+	<!-- END CWV3 JS Dialog -->
 	<?php
 	$dialog_output = ob_get_clean();
 	return apply_filters( 'cwv3_js_dialog_output', $dialog_output );

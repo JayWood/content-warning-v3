@@ -5,10 +5,14 @@ window.cwv3 = ( function( window, document, $ ){
 
 	app.cache = function(){
 		app.$dialog = $('.cwv3_dialog');
-		app.$auth = app.$dialog.find( '.cwv3.auth' );
+		app.$auth   = app.$dialog.find( '.cwv3.auth' );
 		app.$denial = app.$dialog.find( '.cwv3.denied' );
-		app.$exit = app.$dialog.find( '.cwv3_exit' );
-		app.$enter = app.$dialog.find( '.cwv3_enter' );
+		app.$exit   = app.$dialog.find( '.cwv3_exit' );
+		app.$enter  = app.$dialog.find( '.cwv3_enter' );
+		app.cookie_name = ( '' !== cwv3_params.cookie_name ) ? 'cwv3_cookie_' + cwv3_params.cookie_name : false;
+		app.redirect_url = ( '' === cwv3_params.redirect_url || '#' === cwv3_params.redirect_url ) ? 'http://google.com' : cwv3_params.redirect_url;
+
+		$.colorbox.resize();
 	};
 
 	app.init = function(){
@@ -18,7 +22,11 @@ window.cwv3 = ( function( window, document, $ ){
 		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
 		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
 
-		var cookie_name = 'cwv3_cookie_' + cwv3_params.id;
+		if( app.cookie_name ){
+			// We need to set a cookie, so show the dialog.
+			app.show_popup();
+		}
+
 		
 	};
 
@@ -36,21 +44,20 @@ window.cwv3 = ( function( window, document, $ ){
 		// Set the cookie
 	};
 
-	app.show_colorbox = function(){
-		// Here we show colorbox
-		$.colorbox({
-			scrolling    : false,
-			overlayClose : false,
-			escKey       : false,
-			inline       : true,
-			href         : '#cwv3_dialog',
-			loop         : false,
-			className    : 'cwv3_dialog',
-			opacity      : cwv3_params.opacity,
-			onLoad       : function(){
-				$('#cboxClose').remove();
-			},
-		});
+	app.show_popup = function(){
+		
+	};
+
+	app.dialog_switch = function(){
+		var cookie_data = $.cookie( app.cookie_name );
+		if( 'denied' === cookie_data ){
+			//app.$auth.remove(); // Remove the main dialog
+			if( 'redirect' === cwv3_params.denial_method ){
+				window.location.replace( app.redirect_url );
+			}
+		} else if( undefined === cookie_data ){
+			// app.$denial.remove(); // Remove the denied box instead.
+		}
 	};
 
 	$( document ).ready( app.init );
@@ -107,4 +114,4 @@ jQuery(document).ready(function($) {
 	}
 	
 	
-});*/
+}); */
