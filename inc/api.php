@@ -72,7 +72,7 @@ function cwv3_get_js_dialog(){
 					<a href="<?php echo esc_url( $enter_url ); ?>"><?php echo esc_attr( $enter_text ); ?></a>
 				</div>
 				<div class="cwv3_exit">
-					<a href="<?php echo esc_url( $exit_url ); ?>"><?php echo esc_attr( $exit_url ); ?></a>
+					<a href="<?php echo esc_url( $exit_url ); ?>"><?php echo esc_attr( $exit_text ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -81,7 +81,7 @@ function cwv3_get_js_dialog(){
 			<div class="cwv3_content"><?php echo wp_kses_post( $cwv3_denial_message ); ?></div>
 			<div class="cwv3_btns">
 				<div class="cwv3_exit">
-					<a href="<?php echo esc_url( $exit_url ); ?>"><?php echo esc_attr( $exit_url ); ?></a>
+					<a href="<?php echo esc_url( $exit_url ); ?>"><?php echo esc_attr( $exit_text ); ?></a>
 				</div>
 			</div>
 		</div>
