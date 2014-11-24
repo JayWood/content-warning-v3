@@ -20,6 +20,7 @@ function cwv3_get_css(){
 	$image      = get_option( 'cwv3_bg_image', '' );
 	$color      = get_option( 'cwv3_bg_color', '' );
 	$custom_css = get_option( 'cwv3_css', '' );
+	$opacity    = get_option( 'cwv3_bg_opacity', '' );
 
 	$bg_image_css = ! empty( $image ) ? 'background-image: url( '. esc_url( $img ) . ' ) no-repeat top center;' : '';
 	$bg_color_css = ! empty( $color ) ? 'background-color: ' . $color['color'] . ';' : '';
@@ -28,7 +29,15 @@ function cwv3_get_css(){
 	?>
 	<!-- CWV3 CSS -->
 	<style type="text/css">
-	.cwv3.dialog-overlay{<?php echo $bg_image_css . $bg_color_css; ?>}
+	.cwv3.dialog-overlay{
+		<?php echo $bg_image_css . $bg_color_css; ?>
+		<?php if ( ! empty( $opacity ) ): ?>
+		opacity: <?php echo floatval( $opacity ); ?>;
+		-moz-opacity: <?php echo floatval( $opacity ); ?>;
+		-webkit-opacity: <?php echo floatval( $opacity ); ?>;
+		<?php endif; ?>
+
+	}
 	<?php
 	if ( ! empty( $custom_css ) ){
 		echo apply_filters( 'cwv3_custom_css', $custom_css );
