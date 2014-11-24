@@ -30,7 +30,7 @@ class CWV3 {
 			'cookie_name'    => $this->get_cookie_name(),
 			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ),
 			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
-			'denial_method'  => get_option( 'cwv3_method_show', 'redirect' ),
+			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
 			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
 
 		) );

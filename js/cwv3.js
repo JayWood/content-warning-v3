@@ -14,6 +14,7 @@ window.cwv3 = ( function( window, document, $ ){
 		app.$overlay     = $( '.cwv3.dialog-overlay' );
 		app.cookie_name  = ( '' !== cwv3_params.cookie_name ) ? 'cwv3_cookie_' + cwv3_params.cookie_name : false;
 		app.redirect_url = ( '' === cwv3_params.redirect_url || '#' === cwv3_params.redirect_url ) ? 'http://google.com' : cwv3_params.redirect_url;
+		app.cookie_data  = $.cookie( app.cookie_name );
 	};
 
 	app.init = function(){
@@ -45,7 +46,9 @@ window.cwv3 = ( function( window, document, $ ){
 // opacity cookie_path cookie_name cookie_time denial_enabled denial_method redirect_url   
 	app.exit_handler = function( evt ){
 		evt.preventDefault();
-		app.set_cookie( 'exit' );
+		if( 'denied' !== app.cookie_data ){
+			app.set_cookie( 'exit' );
+		}
 		var $exit_url = app.$exit.find( 'a' ).attr( 'href' );
 		if( '#' === $exit_url || '' === $exit_url ){
 			window.location.replace( 'http://google.com' );
@@ -70,16 +73,14 @@ window.cwv3 = ( function( window, document, $ ){
 	};
 
 	app.dialog_switch = function(){
-		var cookie_data = $.cookie( app.cookie_name );
-		console.log( app.cookie_name );
-		if( 'denied' === cookie_data ){
+		if( 'denied' === app.cookie_data ){
 			app.$auth.remove(); // Remove the main dialog
 			if( 'redirect' === cwv3_params.denial_method ){
 				window.location.replace( app.redirect_url );
 			} else {
 				app.show_popup();
 			}
-		} else if( undefined === cookie_data ){
+		} else if( undefined === app.cookie_data ){
 			app.$denial.remove(); // Remove the denied box instead.
 			app.show_popup();
 		}
@@ -96,53 +97,3 @@ window.cwv3 = ( function( window, document, $ ){
 	return app;
 
 })( window, document, jQuery );
-
-/*
-jQuery(document).ready(function($) {
-	var enter = $('#cw_enter_link');
-	var exit = $('#cw_exit_link');
-	
-	if(cwv3_params.sd === "1"){
-		$.colorbox(
-			{
-				scrolling:	false,
-				overlayClose:	false,
-				escKey:	false,
-				inline:	true,
-				href: '#cwv3_auth',
-				maxWidth: '80%',
-				loop: false,
-				onLoad: function(){
-					$('#cboxClose').remove();
-				},
-				className: 'cwv3_box',
-				opacity:	cwv3_params.opacity
-			}
-		);
-		
-		enter.click(function(e){
-			if( typeof(e) !== "undefined" ){
-				e.preventDefault();
-			}
-
-			$.post(cwv3_params.admin_url, {action: cwv3_params.action, nonce: cwv3_params.nonce, id: cwv3_params.id, method: 'enter'}, function(){
-				if(cwv3_params.enter === "#"){
-					$.colorbox.close();
-				}else{
-					window.location = cwv3_params.enter;
-				}
-			});
-		});	
-			
-		exit.click(function(e){
-			if( typeof(e) !== "undefined" ){
-				e.preventDefault();
-			}
-			$.post(cwv3_params.admin_url, {action: cwv3_params.action, nonce: cwv3_params.nonce, id: cwv3_params.id, method: 'exit'}, function(){
-				window.location = cwv3_params.exit;
-			});
-		});
-	}
-	
-	
-}); */
