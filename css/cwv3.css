@@ -1,27 +1,42 @@
-/* Undocumented cBox colors */
-#cboxLoadingOverlay, #cboxContent, #cboxLoadedContent {
-  background-color: #FFF !important;
+.cwv3.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99998;
 }
 
 /* Main CWV3 Dialog */
 .cwv3_dialog {
-  border: 3px solid #ccc;
-  background: #FFF;
-}
-.cwv3_dialog.js .auth {
-  display: none;
-}
-.cwv3_dialog.js .denied {
-  display: none;
+  border: 3px solid #cccccc;
+  background: white;
+  width: 50%;
+  height: 50%;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  -webkit-box-shadow: 2px 11px 48px black;
+  -moz-box-shadow: 2px 11px 48px black;
+  box-shadow: 2px 11px 48px black;
+  overflow: hidden;
+  z-index: 99999;
 }
 .cwv3_dialog div {
   padding: 0.25em;
 }
+.cwv3_dialog .cwv3.auth, .cwv3_dialog .cwv3.denied {
+  height: 100%;
+}
 .cwv3_dialog .cwv3_title {
-  color: #FFF;
+  color: white;
   font-weight: bold;
   text-align: center;
-  background: #f00;
+  background: red;
+}
+.cwv3_dialog .cwv3_content {
+  height: 84%;
+  overflow-y: scroll;
 }
 .cwv3_dialog .cwv3_btns {
   overflow: hidden;
@@ -30,7 +45,7 @@
   display: block;
   width: 100%;
   text-align: center;
-  color: #FFF;
+  color: white;
   font-weight: bold;
   text-decoration: none;
 }
@@ -39,12 +54,12 @@
   width: 40%;
 }
 .cwv3_dialog .cwv3_btns .cwv3_exit a {
-  background-color: #F00;
+  background-color: red;
 }
 .cwv3_dialog .cwv3_btns .cwv3_enter {
   float: left;
   width: 40%;
 }
 .cwv3_dialog .cwv3_btns .cwv3_enter a {
-  background-color: #0C3;
+  background-color: #00cc33;
 }

@@ -11,8 +11,6 @@ window.cwv3 = ( function( window, document, $ ){
 		app.$enter  = app.$dialog.find( '.cwv3_enter' );
 		app.cookie_name = ( '' !== cwv3_params.cookie_name ) ? 'cwv3_cookie_' + cwv3_params.cookie_name : false;
 		app.redirect_url = ( '' === cwv3_params.redirect_url || '#' === cwv3_params.redirect_url ) ? 'http://google.com' : cwv3_params.redirect_url;
-
-		$.colorbox.resize();
 	};
 
 	app.init = function(){
@@ -56,7 +54,7 @@ window.cwv3 = ( function( window, document, $ ){
 				window.location.replace( app.redirect_url );
 			}
 		} else if( undefined === cookie_data ){
-			// app.$denial.remove(); // Remove the denied box instead.
+			app.$denial.remove(); // Remove the denied box instead.
 		}
 	};
 
