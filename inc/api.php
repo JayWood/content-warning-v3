@@ -63,8 +63,8 @@ function cwv3_get_js_dialog(){
 	ob_start();
 	?>
 	<!-- CWV3 JS Dialog -->
-	<div class="cwv3 dialog-overlay">&nbsp;</div>
-	<div id="cwv3_dialog" class="cwv3_dialog js">
+	<div class="cwv3 dialog-overlay" style="display:none;">&nbsp;</div>
+	<div id="cwv3_dialog" class="cwv3_dialog js" style="display:none;">
 		<div class="cwv3 auth">
 			<div class="cwv3_title"><?php echo esc_attr( $cwv3_title ); ?></div>
 			<div class="cwv3_content"><?php echo wp_kses_post( $cwv3_message ); ?></div>
