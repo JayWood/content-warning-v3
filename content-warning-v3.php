@@ -11,7 +11,7 @@ require_once dirname( __FILE__ ) . '/inc/api.php';
 
 if ( is_admin() ){
 	require_once dirname( __FILE__ ) . '/inc/options.inc.php';
-	if( ! class_exists( 'JW_SIMPLE_OPTIONS' ) ){
+	if ( ! class_exists( 'JW_SIMPLE_OPTIONS' ) ){
 		require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
 	}
 	require_once dirname( __FILE__ ) . '/class/admin.class.php';
