@@ -11,8 +11,8 @@
 .cwv3_dialog {
   border: 3px solid #cccccc;
   background: white;
-  width: 50%;
-  height: 50%;
+  max-width: 60%;
+  max-height: 90%;
   position: fixed;
   top: 25%;
   left: 25%;
