@@ -50,6 +50,11 @@ class CWV3 {
 	public function get_cookie_name(){
 		global $post;
 
+		// Stop gating admins or feeds
+		if ( current_user_can( 'manage_options' ) || is_feed() ) {
+			return false;
+		}
+
 		$sitewide    = get_option( 'cwv3_sitewide' );
 		$homepage    = get_option( 'cwv3_homepage' );
 		$misc        = get_option( 'cwv3_misc' );
