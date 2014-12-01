@@ -28,7 +28,7 @@ class CWV3 {
 			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
 			'cookie_path'    => SITECOOKIEPATH,
 			'cookie_name'    => $this->get_cookie_name(),
-			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ),
+			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ), // Max at one year if it's over 365 days.
 			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
 			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
 			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
@@ -59,11 +59,6 @@ class CWV3 {
 	 */
 	public function get_cookie_name(){
 		global $post;
-
-		// Stop gating admins or feeds
-		if ( current_user_can( 'manage_options' ) || is_feed() ) {
-			return false;
-		}
 
 		$sitewide    = get_option( 'cwv3_sitewide' );
 		$homepage    = get_option( 'cwv3_homepage' );
