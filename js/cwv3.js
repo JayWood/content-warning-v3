@@ -1,4 +1,5 @@
-/* global cwv3_params*/
+/* global cwv3_params */
+// opacity cookie_path cookie_name cookie_time denial_enabled denial_method redirect_url   
 
 
 window.cwv3 = ( function( window, document, $ ){
@@ -7,6 +8,7 @@ window.cwv3 = ( function( window, document, $ ){
 
 	app.cache = function(){
 		app.$dialog 	 = $('.cwv3_dialog');
+		app.$content     = app.$dialog.find( '.cwv3_content' );
 		app.$auth   	 = app.$dialog.find( '.cwv3.auth' );
 		app.$denial 	 = app.$dialog.find( '.cwv3.denied' );
 		app.$exit   	 = app.$dialog.find( '.cwv3_exit' );
@@ -15,6 +17,10 @@ window.cwv3 = ( function( window, document, $ ){
 		app.cookie_name  = ( '' !== cwv3_params.cookie_name ) ? 'cwv3_cookie_' + cwv3_params.cookie_name : false;
 		app.redirect_url = ( '' === cwv3_params.redirect_url || '#' === cwv3_params.redirect_url ) ? 'http://google.com' : cwv3_params.redirect_url;
 		app.cookie_data  = $.cookie( app.cookie_name );
+		app.diag         = {
+			max_percent_width  : 50,
+			max_percent_height : 50,
+		};
 	};
 
 	app.init = function(){
@@ -24,11 +30,31 @@ window.cwv3 = ( function( window, document, $ ){
 		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
 		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
 
+		$( window ).resize( app.center_dialog );
+
 
 		if( app.cookie_name ){
 			// We need to set a cookie, so show the dialog.
 			app.dialog_switch();
-		}		
+		}
+	};
+
+	app.center_dialog = function(){
+		var diag ={
+				x: app.$dialog.width(),
+				y: app.$dialog.height(),
+			},
+			vp = {
+				x: window.innerWidth,
+				y: window.innerHeight,
+			};
+
+		var diag_pos = {
+			left: ( vp.x - diag.x ) * 0.5,
+			top : ( vp.y - diag.y ) * 0.5,
+		};
+
+		app.$dialog.animate( diag_pos, 250 );
 	};
 
 	app.enter_handler = function( evt ){
@@ -43,7 +69,6 @@ window.cwv3 = ( function( window, document, $ ){
 		}
 	};
 
-// opacity cookie_path cookie_name cookie_time denial_enabled denial_method redirect_url   
 	app.exit_handler = function( evt ){
 		evt.preventDefault();
 		if( 'denied' !== app.cookie_data ){
@@ -88,7 +113,9 @@ window.cwv3 = ( function( window, document, $ ){
 
 	app.show_popup = function(){
 		app.$overlay.fadeIn( 200, function(){
-			app.$dialog.fadeIn( 100 );
+			app.$dialog.fadeIn( 100, function(){
+				app.center_dialog();
+			} );
 		});
 	};
 
