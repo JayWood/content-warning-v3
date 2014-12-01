@@ -87,6 +87,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Split methods and hooks from main class file, will prevent overhead.
 * Moved to use of cookie.js
 * Created API file for methods.
+* [stacyk](https://github.com/stacyk) - Made buttons visible on popup at all times.
 
 = 3.5.5 =
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
