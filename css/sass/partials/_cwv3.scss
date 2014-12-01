@@ -40,10 +40,17 @@
   .cwv3_content{
     height: 84%;
     overflow-y: scroll;
+    padding: .75em;
   }
 
   .cwv3_btns{
+    background: $button-background;
+    bottom: 0;
     overflow: hidden;
+    padding: .45em .75em;
+    position: absolute;
+    width: 100%;
+
     a{
       display: block;
       width: 100%;
@@ -51,6 +58,7 @@
       color: $button-txt-color;
       font-weight: bold;
       text-decoration: none;
+      padding: .35em;
     }
 
     .cwv3_exit{
