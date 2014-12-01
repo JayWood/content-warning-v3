@@ -117,7 +117,7 @@ class CWV3 {
 				// We have categories to check, so let us do so.
 				$current_categories = get_the_category( $post_id );
 				if ( $this->in_cat( $category_array, $current_categories ) ){
-					// @TODO Continue here
+					return true; // Just return true if it's in the category.
 				}
 			}
 		}
