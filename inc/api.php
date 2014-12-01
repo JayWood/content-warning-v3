@@ -69,6 +69,11 @@ function cwv3_get_js_dialog(){
 	$exit_url            = get_option( 'cwv3_exit_link', '#' );
 	$enter_url           = get_option( 'cwv3_enter_link', '#' );
 
+	// Was going to use apply_filters the_content but didn't want other
+	// extra filters here, so we run them 1 by 1 instead
+	$cwv3_message = do_shortcode( wpautop( wp_kses_post( $cwv3_message ) ) );
+	$cwv3_denial_message = do_shortcode( wpautop( wp_kses_post( $cwv3_denial_message ) ) );
+
 	ob_start();
 	?>
 	<!-- CWV3 JS Dialog -->
@@ -76,7 +81,7 @@ function cwv3_get_js_dialog(){
 	<div id="cwv3_dialog" class="cwv3_dialog js" style="display:none;">
 		<div class="cwv3 auth">
 			<div class="cwv3_title"><?php echo esc_attr( $cwv3_title ); ?></div>
-			<div class="cwv3_content"><?php echo wp_kses_post( $cwv3_message ); ?></div>
+			<div class="cwv3_content"><?php echo $cwv3_message ?></div>
 			<div class="cwv3_btns">
 				<div class="cwv3_enter">
 					<a href="<?php echo esc_url( $enter_url ); ?>"><?php echo esc_attr( $enter_text ); ?></a>
@@ -88,7 +93,7 @@ function cwv3_get_js_dialog(){
 		</div>
 		<div class="cwv3 denied">
 			<div class="cwv3_title"><?php echo esc_attr( $cwv3_denial_title ); ?></div>
-			<div class="cwv3_content"><?php echo wp_kses_post( $cwv3_denial_message ); ?></div>
+			<div class="cwv3_content"><?php echo $cwv3_denial_message; ?></div>
 			<div class="cwv3_btns">
 				<div class="cwv3_exit">
 					<a href="<?php echo esc_url( $exit_url ); ?>"><?php echo esc_attr( $exit_text ); ?></a>
