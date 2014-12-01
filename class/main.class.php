@@ -81,15 +81,13 @@ class CWV3 {
 		if ( is_attachment() && isset( $post->post_parent ) ) {
 			// Special consideration needs to be taken to check if the post parent is in-fact
 			// gated in any way, if so, return its ID here.
-			$is_gated = $this->is_gated( $post->post_parent );
-			if ( true === $is_gated ){
+			if ( $this->is_gated( $post->post_parent ) ){
 				return $post->post_parent;
 			}
 		}
 
 		if ( is_single() && isset( $post->ID ) ){
-			$is_gated = $this->is_gated( $post->ID );
-			if ( true == $is_gated ){
+			if ( $this->is_gated( $post->ID ) ){
 				return $post->ID;
 			}
 		}
