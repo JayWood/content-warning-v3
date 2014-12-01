@@ -67,6 +67,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * New filters & actions for developers
 * Switched CSS priority, to allow custom css to override bg image and opacity
 * Converted sass file to nested sass and uses classes instead of IDs
+* [stacyk](https://github.com/stacyk) - Made buttons visible on popup at all times.
 
 ### 3.5.5
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
