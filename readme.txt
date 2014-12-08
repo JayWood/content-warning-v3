@@ -62,7 +62,7 @@ This plugin is tested and proven to work with WordPress 4.0
 
 All support questions should be directed to the github issues section, just [open a ticket](https://github.com/JayWood/content-warning-v3/issues).
 
-** How to get support **
+= How to get support =
 * Provide a detailed explination of what the issue is, `it's broken` tickets will be closed.
 * Detail what you have done to try and fix the problem.
 * Provide a detailed list of options that are set.
