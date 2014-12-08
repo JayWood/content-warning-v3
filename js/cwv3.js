@@ -21,6 +21,7 @@ window.cwv3 = ( function( window, document, $ ){
 			max_percent_width  : 50,
 			max_percent_height : 50,
 		};
+		app.timeout = '';
 	};
 
 	app.init = function(){
@@ -29,9 +30,12 @@ window.cwv3 = ( function( window, document, $ ){
 		// Register handlers
 		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
 		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
-
-		$( window ).resize( app.center_dialog );
-
+	
+		// Don't resize EVERY time, set it to an interval of half a second
+		$( window ).resize( function(){
+			clearTimeout( app.timeout );
+			app.timeout = setTimeout( app.center_dialog, 500 );
+		});
 
 		if( app.cookie_name ){
 			// We need to set a cookie, so show the dialog.
