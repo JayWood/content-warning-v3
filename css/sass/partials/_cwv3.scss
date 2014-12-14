@@ -35,12 +35,15 @@
     font-weight: bold;
     text-align: center;
     background: $title-background;
+    margin-bottom: 0.25em;
   }
 
   .cwv3_content{
     height: 80%;
     max-height: 700px;
     padding: .75em;
+    overflow: auto;
+    margin-bottom: 0.25em;
   }
 
   .cwv3_btns{
@@ -48,8 +51,8 @@
     bottom: 0;
     overflow: hidden;
     padding: .45em .75em;
-    position: absolute;
-    width: 100%;
+    // position: absolute;
+    // width: 100%;
 
     a{
       display: block;
@@ -58,12 +61,16 @@
       color: $button-txt-color;
       font-weight: bold;
       text-decoration: none;
-      padding: .35em;
+      padding: .35em 0;
+    }
+
+    div{
+      width: 30%;
+      display: inline-block;
     }
 
     .cwv3_exit{
       float: right;
-      width: 40%;
       a{
         background-color: $exit-button-color;
       }
@@ -71,7 +78,6 @@
 
     .cwv3_enter{
       float: left;
-      width: 40%;
       a{
         background-color: $enter-button-color;
       }

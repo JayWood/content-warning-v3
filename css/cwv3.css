@@ -9,16 +9,16 @@
 
 /* Main CWV3 Dialog */
 .cwv3_dialog {
-  border: 3px solid #CCCCCC;
-  background: #FFFFFF;
+  border: 3px solid #cccccc;
+  background: white;
   max-width: 60%;
   max-height: 90%;
   position: fixed;
   top: 25%;
   left: 25%;
-  -webkit-box-shadow: 2px 11px 48px #000;
-  -moz-box-shadow: 2px 11px 48px #000;
-  box-shadow: 2px 11px 48px #000;
+  -webkit-box-shadow: 2px 11px 48px black;
+  -moz-box-shadow: 2px 11px 48px black;
+  box-shadow: 2px 11px 48px black;
   overflow: hidden;
   z-index: 99999;
 }
@@ -29,46 +29,47 @@
   height: 100%;
 }
 .cwv3_dialog .cwv3_title {
-  color: #FFFFFF;
+  color: white;
   font-weight: bold;
   text-align: center;
-  background: #FF0000;
+  background: red;
+  margin-bottom: 0.25em;
 }
 .cwv3_dialog .cwv3_content {
   height: 80%;
   max-height: 700px;
   padding: .75em;
+  overflow: auto;
+  margin-bottom: 0.25em;
 }
 .cwv3_dialog .cwv3_btns {
-  background: rgba(50, 50, 50, 0.7);
+  background: rgba(50, 50, 50, 0.5);
   bottom: 0;
   overflow: hidden;
   padding: .45em .75em;
-  position: absolute;
-  width: 100%;
 }
 .cwv3_dialog .cwv3_btns a {
   display: block;
   width: 100%;
   text-align: center;
-  color: #FFFFFF;
+  color: white;
   font-weight: bold;
   text-decoration: none;
-  padding: .35em;
+  padding: .35em 0;
+}
+.cwv3_dialog .cwv3_btns div {
+  width: 30%;
+  display: inline-block;
 }
 .cwv3_dialog .cwv3_btns .cwv3_exit {
   float: right;
-  width: 40%;
 }
 .cwv3_dialog .cwv3_btns .cwv3_exit a {
-  background-color: #FF0000;
+  background-color: red;
 }
 .cwv3_dialog .cwv3_btns .cwv3_enter {
   float: left;
-  width: 40%;
 }
 .cwv3_dialog .cwv3_btns .cwv3_enter a {
-  background-color: #00CC33;
+  background-color: #00cc33;
 }
-
-/*# sourceMappingURL=cwv3.css.map */
