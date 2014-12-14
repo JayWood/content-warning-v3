@@ -57,6 +57,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.6.1
+* Cookie HOTFIX
+
 ### 3.6.0
 * Split methods and hooks from main class file, will prevent overhead, also separates admin from front-end.
 * Moved to use of cookie.js

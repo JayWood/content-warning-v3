@@ -86,7 +86,7 @@ class CWV3 {
 			}
 		}
 
-		if ( is_single() && isset( $post->ID ) ){
+		if ( is_singular() && isset( $post->ID ) ){
 			if ( $this->is_gated( $post->ID ) ){
 				return $post->ID;
 			}
