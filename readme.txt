@@ -9,10 +9,8 @@ Stable tag: 3.6.0
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
 
-> Major bugfix release.  Verified working with 3.9.1
-
 = Support Requests =
-All support requests should be on the new Github Repo.
+All support requests should be on the [Github Repository](https://github.com/JayWood/content-warning-v3).
 
 = Want to Contribute? =
 Make a [Pull Request](https://github.com/JayWood/content-warning-v3) to the Github's project development branch.
@@ -21,7 +19,6 @@ This plugin provides a neat little warning and denial box to warn your users of 
 
 = v3 Is Here =
 * Complete core rewrite, I threw everything out the window and wrote this from scratch.
-* Use Colorbox for (hopefully) a responsive layout and neat transitions.
 * Some new options as requested FREQUENTLY
 * You just need to check this out, you really do...
 
@@ -84,10 +81,18 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 == Changelog ==
 
 = 3.6.0 =
-* Split methods and hooks from main class file, will prevent overhead.
+* Split methods and hooks from main class file, will prevent overhead, also separates admin from front-end.
 * Moved to use of cookie.js
 * Created API file for methods.
+* New filters & actions for developers
+* Began development of API file, currently only support JS outputs.
+* **NEW** Filters for content outputs, see `inc/api.php` more to come.
+* Switched CSS priority, to allow custom css to override bg image and opacity
+* Converted sass file to nested sass and uses classes instead of IDs
 * [stacyk](https://github.com/stacyk) - Made buttons visible on popup at all times.
+* [stacyk](https://github.com/stacyk) - CSS Fixes for new popup.
+* New Popup coding, dropped colorbox in favor of my own popup code. ( Less bloat )
+* BIG THANKS to Stacy for helping me with some initial CSS issues.
 
 = 3.5.5 =
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning

@@ -1,6 +1,4 @@
 # Content Warning v3
-[![Repo Status](http://plugish.com/svg_images/passing.svg)](https://wordpress.org/plugins/content-warning-v2/)
-[![Download Count](http://plugish.com/svg_images/cwv3_downloads.svg)](https://wordpress.org/plugins/content-warning-v2/)
 [![License](http://plugish.com/svg_images/license.svg)](https://wordpress.org/plugins/content-warning-v2/)
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
@@ -8,7 +6,6 @@ A plugin that provides a warning box with a ton more options completely re-writt
 [Report an issue](https://github.com/JayWood/content-warning-v3/issues) | [Make a pull request](https://github.com/JayWood/content-warning-v3/pulls)
 
 * Complete core rewrite, I threw everything out the window and wrote this from scratch.
-* Use Colorbox for (hopefully) a responsive layout and neat transitions.
 * Some new options as requested FREQUENTLY
 * You just need to check this out, you really do...
 
@@ -51,11 +48,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## TODO
 
-- [ ] Localization [#10](https://github.com/JayWood/content-warning-v3/issues/10)
-- [ ] Make use of jquery.cookie [#11](https://github.com/JayWood/content-warning-v3/issues/11)
+- [x] Localization [#10](https://github.com/JayWood/content-warning-v3/issues/10)
+- [x] Make use of jquery.cookie [#11](https://github.com/JayWood/content-warning-v3/issues/11)
 - [ ] Include API / Template Tags [#12](https://github.com/JayWood/content-warning-v3/issues/12)
 	- [ ] Document API / Template Tags [#13](https://github.com/JayWood/content-warning-v3/issues/13)
-- [ ] Custom popup, remove colorbox dependency [#14](https://github.com/JayWood/content-warning-v3/issues/14)
+- [x] Custom popup, remove colorbox dependency [#14](https://github.com/JayWood/content-warning-v3/issues/14)
 
 
 ## Changelog
@@ -65,9 +62,14 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Moved to use of cookie.js
 * Created API file for methods.
 * New filters & actions for developers
+* Began development of API file, currently only support JS outputs.
+* **NEW** Filters for content outputs, see `inc/api.php` more to come.
 * Switched CSS priority, to allow custom css to override bg image and opacity
 * Converted sass file to nested sass and uses classes instead of IDs
 * [stacyk](https://github.com/stacyk) - Made buttons visible on popup at all times.
+* [stacyk](https://github.com/stacyk) - CSS Fixes for new popup.
+* New Popup coding, dropped colorbox in favor of my own popup code. ( Less bloat )
+* BIG THANKS to Stacy for helping me with some initial CSS issues.
 
 ### 3.5.5
 * [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
