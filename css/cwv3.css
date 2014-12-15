@@ -38,7 +38,7 @@
 .cwv3_dialog .cwv3_content {
   height: 80%;
   max-height: 700px;
-  padding: .75em;
+  padding: 0 .75em;
   overflow: auto;
   margin-bottom: 0.25em;
 }

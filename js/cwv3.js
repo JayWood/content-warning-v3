@@ -13,6 +13,8 @@ window.cwv3 = ( function( window, document, $ ){
 		app.$denial 	 = app.$dialog.find( '.cwv3.denied' );
 		app.$exit   	 = app.$dialog.find( '.cwv3_exit' );
 		app.$enter  	 = app.$dialog.find( '.cwv3_enter' );
+		app.$buttons     = app.$dialog.find( '.cwv3_btns' );
+		app.$title       = app.$dialog.find( '.cwv3_title' );
 		app.$overlay     = $( '.cwv3.dialog-overlay' );
 		app.cookie_name  = ( '' !== cwv3_params.cookie_name ) ? 'cwv3_cookie_' + cwv3_params.cookie_name : false;
 		app.redirect_url = ( '' === cwv3_params.redirect_url || '#' === cwv3_params.redirect_url ) ? 'http://google.com' : cwv3_params.redirect_url;
@@ -44,6 +46,8 @@ window.cwv3 = ( function( window, document, $ ){
 	};
 
 	app.center_dialog = function(){
+		app.$content.css( {'height' : ''} );
+		
 		var diag ={
 				x: app.$dialog.width(),
 				y: app.$dialog.height(),
@@ -53,12 +57,19 @@ window.cwv3 = ( function( window, document, $ ){
 				y: window.innerHeight,
 			};
 
-		var diag_pos = {
-			left: ( vp.x - diag.x ) * 0.5,
-			top : ( vp.y - diag.y ) * 0.5,
-		};
+		// Remove the 'height' property from the content
 
-		app.$dialog.animate( diag_pos, 250 );
+		var diag_pos = {
+				left: ( vp.x - diag.x ) * 0.5,
+				top : ( vp.y - diag.y ) * 0.5,
+			},
+			content_height = ( app.$dialog.height() - 10 ) - app.$buttons.outerHeight( true ) - app.$title.outerHeight( true );
+
+		app.$content.animate( { height: content_height }, 250, 'swing', function(){
+			app.$dialog.animate( diag_pos, 250, 'swing', app.cache );
+		} );
+
+		// app.cache();
 	};
 
 	app.enter_handler = function( evt ){
