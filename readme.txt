@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
@@ -21,6 +21,7 @@ This plugin provides a neat little warning and denial box to warn your users of 
 * Complete core rewrite, I threw everything out the window and wrote this from scratch.
 * Some new options as requested FREQUENTLY
 * You just need to check this out, you really do...
+* Page Caching now supported
 
 [youtube http://www.youtube.com/watch?v=0_ZNojpYuwk]
 
@@ -79,6 +80,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.6.2 =
+* Dialog re-sizing fixes.
 
 = 3.6.1 =
 * Cookie HOTFIX

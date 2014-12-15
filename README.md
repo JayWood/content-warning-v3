@@ -8,6 +8,7 @@ A plugin that provides a warning box with a ton more options completely re-writt
 * Complete core rewrite, I threw everything out the window and wrote this from scratch.
 * Some new options as requested FREQUENTLY
 * You just need to check this out, you really do...
+* Page Caching now supported
 
 [Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk) | [Download from Official Wordpress.org](http://wordpress.org/plugins/content-warning-v2)
 
@@ -56,6 +57,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 
 ## Changelog
+
+### 3.6.2
+* Dialog re-sizing fixes.
 
 ### 3.6.1
 * Cookie HOTFIX
