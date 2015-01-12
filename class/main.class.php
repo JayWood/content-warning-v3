@@ -2,51 +2,6 @@
 
 class CWV3 {
 
-	public function hooks(){
-		add_action( 'init', array( $this, 'register_frontend_data' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_dependancies' ) );
-
-		add_action( 'wp_footer', array( $this, 'render_dialog' ) );
-		add_action( 'wp_head', array( $this, 'override_css' ) );
-	}
-
-	public function override_css() {
-		cwv3_the_css();
-	}
-
-	public function load_dependancies() {
-		global $post;
-
-		if ( current_user_can( 'manage_options' ) ) { return; }
-
-		wp_enqueue_style( 'cwv3_css' );
-		wp_enqueue_script( 'cwv3_js' );
-
-		$cookie_death = get_option( 'cwv3_death', 1 );
-
-		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
-			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
-			'cookie_path'    => SITECOOKIEPATH,
-			'cookie_name'    => $this->get_cookie_name(),
-			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ), // Max at one year if it's over 365 days.
-			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
-			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
-			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
-
-		) );
-	}
-
-	public function register_frontend_data() {
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-		// Jquery Cookie
-		wp_register_script( 'jquery_cookie', plugins_url( "js/jquery_cookie{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.1', true );
-
-		// Main data
-		wp_register_script( 'cwv3_js', plugins_url( "js/cwv3{$min}.js", dirname( __FILE__ ) ), array( 'jquery_cookie' ), '3.6.0', true );
-		wp_register_style( 'cwv3_css', plugins_url( "css/cwv3{$min}.css", dirname( __FILE__ ) ), '', '1.0' );
-	}
-
 	/**
 	 * Get Cookie Name
 	 *
@@ -96,7 +51,8 @@ class CWV3 {
 	}
 
 	/**
-	 * Check Post
+	 * Is Gated
+	 * 
 	 * Checks a post ID to see if it's supposed to be
 	 * gated in any way, either by metabox, or category from the
 	 * regular category taxonomy.
@@ -110,29 +66,47 @@ class CWV3 {
 
 		if ( ! empty( $meta ) ) {
 			return true;
-		} else {
-			// The post itself was not gated, check categories.
-			$category_array = get_option( 'cwv3_cat_list', array() );
-			if ( ! empty( $category_array ) ){
-				// We have categories to check, so let us do so.
-				$current_categories = get_the_category( $post_id );
-				if ( $this->in_cat( $category_array, $current_categories ) ){
-					return true; // Just return true if it's in the category.
-				}
-			}
 		}
 
 		return false;
 	}
 
-	public function in_cat( $catIDs, $catArray ) {
-		if ( ! is_array( $catIDs ) ) {
-			$catIDs = array(); // Empty
+	/**
+	 * Is Cat Gated
+	 *
+	 * Determines if a post is within a gated category, if so, will
+	 * return the category id for use in cookie names like so '_cat_###'
+	 * @param  int  			$post_id 	Post ID
+	 * @return boolean|string 				False on failure, cookie string otherwise
+	 */
+	public function is_cat_gated( $post_id ){
+		$cat_settings = get_option( 'cwv3_cat_list', array() );
+		if ( ! empty( $cat_settings ) ){
+			$post_categories = get_the_category( $post_id );
+			return $this->in_cat( $cat_settings, $post_categories );
+		}
+		return false;
+	}
+
+	/**
+	 * In Cat
+	 *
+	 * Checks to see if the current post is within the set
+	 * categories in the options panel, if so, returns the ID of the
+	 * category that it resides in.
+	 *
+	 * @param array 		$cat_settings 			Array of categories from settings page
+	 * @param array 		$post_categories 		Array of categories from get_the_category()
+	 * @return boolean|int 							False on failure, category ID on success
+	 */
+	public function in_cat( $cat_settings, $post_categories ) {
+		if ( ! is_array( $cat_settings ) ) {
+			$cat_settings = array(); // Empty
 		}
 
-		foreach ( $catArray as $cat ) {
-			if ( in_array( $cat->term_id, $catIDs ) ) {
-				return true;
+		foreach ( $post_categories as $cat ) {
+			if ( in_array( $cat->term_id, $post_categories ) ) {
+				return $cat->term_id;
 			} else {
 				continue;
 			}
@@ -140,6 +114,78 @@ class CWV3 {
 		return false;
 	}
 
+	/**
+	 * Hooks
+	 *
+	 * All wordpress hooks that are needed to make this plugin functional.
+	 * 
+	 * @return null
+	 */
+	public function hooks(){
+		add_action( 'init', array( $this, 'register_frontend_data' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_dependancies' ) );
+
+		add_action( 'wp_footer', array( $this, 'render_dialog' ) );
+		add_action( 'wp_head', array( $this, 'override_css' ) );
+	}
+
+	/**
+	 * Load Dependancies
+	 * Pretty self-explanitory, loads all the data that needs to be loaded beforehand.
+	 * @return null
+	 */
+	public function load_dependancies() {
+		global $post;
+
+		if ( current_user_can( 'manage_options' ) ) { return; }
+
+		wp_enqueue_style( 'cwv3_css' );
+		wp_enqueue_script( 'cwv3_js' );
+
+		$cookie_death = get_option( 'cwv3_death', 1 );
+
+		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
+			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
+			'cookie_path'    => SITECOOKIEPATH,
+			'cookie_name'    => $this->get_cookie_name(),
+			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ), // Max at one year if it's over 365 days.
+			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
+			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
+			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
+
+		) );
+	}
+
+	/**
+	 * Override CSS
+	 * Placeholder method that uses the new API in inc/api.php
+	 * @see cwv3_the_css()
+	 */
+	public function override_css() {
+		cwv3_the_css();
+	}
+
+	/**
+	 * Register Frontend Data
+	 * @return null
+	 */
+	public function register_frontend_data() {
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		// Jquery Cookie
+		wp_register_script( 'jquery_cookie', plugins_url( "js/jquery_cookie{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.1', true );
+
+		// Main data
+		wp_register_script( 'cwv3_js', plugins_url( "js/cwv3{$min}.js", dirname( __FILE__ ) ), array( 'jquery_cookie' ), '3.6.0', true );
+		wp_register_style( 'cwv3_css', plugins_url( "css/cwv3{$min}.css", dirname( __FILE__ ) ), '', '1.0' );
+	}
+
+	/**
+	 * Render Dialog
+	 *
+	 * Redirect method to use the API.php that was created
+	 * @see cwv3_js_dialog()
+	 */
 	public function render_dialog() {
 		cwv3_js_dialog();
 	}
