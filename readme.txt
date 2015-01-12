@@ -81,6 +81,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
+= 3.6.3 =
+* Category fix, fixes [#18](https://github.com/JayWood/content-warning-v3/issues/18)
+* Alphabetize method names, because why not!?
+* Few docblock changes
+
 = 3.6.2 =
 * Dialog re-sizing fixes.
 
