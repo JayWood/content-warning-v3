@@ -31,18 +31,24 @@ class CWV3 {
 			return 'misc';
 		}
 
-		// Don't need people looking at attachments that belong to a
-		// protected post.
 		if ( is_attachment() && isset( $post->post_parent ) ) {
 			// Special consideration needs to be taken to check if the post parent is in-fact
-			// gated in any way, if so, return its ID here.
-			if ( $this->is_gated( $post->post_parent ) ){
+			// gated in any way.
+			$cat_gated = $this->is_cat_gated( $post->post_parent );
+			if ( ! empty( $cat_gated ) ){
+				// Return the category cookie name like _cat_###
+				return '_cat_' . $cat_gated;
+			} else if ( $this->is_gated( $post->post_parent ) ){
 				return $post->post_parent;
 			}
 		}
 
 		if ( is_singular() && isset( $post->ID ) ){
-			if ( $this->is_gated( $post->ID ) ){
+			$cat_gated = $this->is_cat_gated( $post->ID );
+			if ( ! empty( $cat_gated ) ){
+				// Return the category cookie name like _cat_###
+				return '_cat_' . $cat_gated;
+			} else if ( $this->is_gated( $post->ID ) ){
 				return $post->ID;
 			}
 		}
@@ -104,9 +110,9 @@ class CWV3 {
 			$cat_settings = array(); // Empty
 		}
 
-		foreach ( $post_categories as $cat ) {
-			if ( in_array( $cat->term_id, $post_categories ) ) {
-				return $cat->term_id;
+		foreach ( $post_categories as $post_category ) {
+			if ( in_array( $post_category->term_id, $cat_settings ) ) {
+				return $post_category->term_id;
 			} else {
 				continue;
 			}
@@ -143,8 +149,7 @@ class CWV3 {
 		wp_enqueue_script( 'cwv3_js' );
 
 		$cookie_death = get_option( 'cwv3_death', 1 );
-
-		wp_localize_script( 'cwv3_js', 'cwv3_params', array(
+		$localized_data = array(
 			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
 			'cookie_path'    => SITECOOKIEPATH,
 			'cookie_name'    => $this->get_cookie_name(),
@@ -152,8 +157,9 @@ class CWV3 {
 			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
 			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
 			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
+		);
 
-		) );
+		wp_localize_script( 'cwv3_js', 'cwv3_params', $localized_data );
 	}
 
 	/**
