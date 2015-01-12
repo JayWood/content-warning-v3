@@ -48,7 +48,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
 
 ## TODO
-
+- [ ] Update Admin post column to properly reflect if the post is protected or not when in a category.
 - [x] Localization [#10](https://github.com/JayWood/content-warning-v3/issues/10)
 - [x] Make use of jquery.cookie [#11](https://github.com/JayWood/content-warning-v3/issues/11)
 - [ ] Include API / Template Tags [#12](https://github.com/JayWood/content-warning-v3/issues/12)
