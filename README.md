@@ -1,7 +1,7 @@
 # Content Warning v3
 ![Rating](https://img.shields.io/wordpress/plugin/r/content-warning-v2.svg)
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
-![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v2.svg)
+![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 
