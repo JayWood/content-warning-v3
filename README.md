@@ -1,5 +1,8 @@
 # Content Warning v3
 ![Rating](https://img.shields.io/wordpress/plugin/r/content-warning-v2.svg)
+![Plugin Version](https://img.shields.io/wordpress/plugin/v/content-warning-v2.svg)
+![Tested Version](https://img.shields.io/wordpress/v/content-warning-v2.svg)
+![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/content-warning-v2.svg)
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 ![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)
 
