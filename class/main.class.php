@@ -148,7 +148,6 @@ class CWV3 {
 	 * @return null
 	 */
 	public function load_dependancies() {
-		global $post;
 
 		if ( current_user_can( 'manage_options' ) ) {
 			return;
