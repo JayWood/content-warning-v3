@@ -9,25 +9,25 @@ class CWV3 {
 	 * will handle the rest of it.
 	 *
 	 * If this function returns false, the javascript will not show a popup.
-	 * 
+	 *
 	 * @return string|int String if special page like homepage, or post_id otherwise.
 	 */
-	public function get_cookie_name(){
+	public function get_cookie_name() {
 		global $post;
 
-		$sitewide    = get_option( 'cwv3_sitewide' );
-		$homepage    = get_option( 'cwv3_homepage' );
-		$misc        = get_option( 'cwv3_misc' );
+		$sitewide = get_option( 'cwv3_sitewide' );
+		$homepage = get_option( 'cwv3_homepage' );
+		$misc     = get_option( 'cwv3_misc' );
 
-		if ( 'enabled' == ! empty( $sitewide ) ){
+		if ( 'enabled' == ! empty( $sitewide ) ) {
 			return 'sitewide';
 		}
 
-		if ( 'enabled' == ! empty( $homepage ) && is_front_page() ){
+		if ( 'enabled' == ! empty( $homepage ) && is_front_page() ) {
 			return 'homepage';
 		}
 
-		if ( 'enabled' == ! empty( $misc ) && ( is_search() || is_archive() ) ){
+		if ( 'enabled' == ! empty( $misc ) && ( is_search() || is_archive() ) ) {
 			return 'misc';
 		}
 
@@ -35,20 +35,20 @@ class CWV3 {
 			// Special consideration needs to be taken to check if the post parent is in-fact
 			// gated in any way.
 			$cat_gated = $this->is_cat_gated( $post->post_parent );
-			if ( ! empty( $cat_gated ) ){
+			if ( ! empty( $cat_gated ) ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
-			} else if ( $this->is_gated( $post->post_parent ) ){
+			} else if ( $this->is_gated( $post->post_parent ) ) {
 				return $post->post_parent;
 			}
 		}
 
-		if ( is_singular() && isset( $post->ID ) ){
+		if ( is_singular() && isset( $post->ID ) ) {
 			$cat_gated = $this->is_cat_gated( $post->ID );
-			if ( ! empty( $cat_gated ) ){
+			if ( ! empty( $cat_gated ) ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
-			} else if ( $this->is_gated( $post->ID ) ){
+			} else if ( $this->is_gated( $post->ID ) ) {
 				return $post->ID;
 			}
 		}
@@ -58,15 +58,16 @@ class CWV3 {
 
 	/**
 	 * Is Gated
-	 * 
+	 *
 	 * Checks a post ID to see if it's supposed to be
 	 * gated in any way, either by metabox, or category from the
 	 * regular category taxonomy.
-	 * 	
-	 * @param  int 	$post_id Post ID
+	 *
+	 * @param  int $post_id Post ID
+	 *
 	 * @return bool          TRUE | FALSE
 	 */
-	public function is_gated( $post_id ){
+	public function is_gated( $post_id ) {
 
 		$meta = get_post_meta( $post_id, 'cwv3_auth', true );
 
@@ -82,15 +83,19 @@ class CWV3 {
 	 *
 	 * Determines if a post is within a gated category, if so, will
 	 * return the category id for use in cookie names like so '_cat_###'
-	 * @param  int  			$post_id 	Post ID
-	 * @return boolean|string 				False on failure, cookie string otherwise
+	 *
+	 * @param  int $post_id Post ID
+	 *
+	 * @return boolean|string                False on failure, cookie string otherwise
 	 */
-	public function is_cat_gated( $post_id ){
+	public function is_cat_gated( $post_id ) {
 		$cat_settings = get_option( 'cwv3_cat_list', array() );
-		if ( ! empty( $cat_settings ) ){
+		if ( ! empty( $cat_settings ) ) {
 			$post_categories = get_the_category( $post_id );
+
 			return $this->in_cat( $cat_settings, $post_categories );
 		}
+
 		return false;
 	}
 
@@ -101,9 +106,10 @@ class CWV3 {
 	 * categories in the options panel, if so, returns the ID of the
 	 * category that it resides in.
 	 *
-	 * @param array 		$cat_settings 			Array of categories from settings page
-	 * @param array 		$post_categories 		Array of categories from get_the_category()
-	 * @return boolean|int 							False on failure, category ID on success
+	 * @param array $cat_settings Array of categories from settings page
+	 * @param array $post_categories Array of categories from get_the_category()
+	 *
+	 * @return boolean|int                            False on failure, category ID on success
 	 */
 	public function in_cat( $cat_settings, $post_categories ) {
 		if ( ! is_array( $cat_settings ) ) {
@@ -117,6 +123,7 @@ class CWV3 {
 				continue;
 			}
 		}
+
 		return false;
 	}
 
@@ -124,10 +131,10 @@ class CWV3 {
 	 * Hooks
 	 *
 	 * All wordpress hooks that are needed to make this plugin functional.
-	 * 
+	 *
 	 * @return null
 	 */
-	public function hooks(){
+	public function hooks() {
 		add_action( 'init', array( $this, 'register_frontend_data' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dependancies' ) );
 
@@ -143,17 +150,20 @@ class CWV3 {
 	public function load_dependancies() {
 		global $post;
 
-		if ( current_user_can( 'manage_options' ) ) { return; }
+		if ( current_user_can( 'manage_options' ) ) {
+			return;
+		}
 
 		wp_enqueue_style( 'cwv3_css' );
 		wp_enqueue_script( 'cwv3_js' );
 
-		$cookie_death = get_option( 'cwv3_death', 1 );
+		$cookie_death   = get_option( 'cwv3_death', 1 );
 		$localized_data = array(
 			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
 			'cookie_path'    => SITECOOKIEPATH,
 			'cookie_name'    => $this->get_cookie_name(),
-			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ), // Max at one year if it's over 365 days.
+			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ),
+			// Max at one year if it's over 365 days.
 			'denial_enabled' => get_option( 'cwv3_denial', 'enabled' ),
 			'denial_method'  => get_option( 'cwv3_method', 'redirect' ),
 			'redirect_url'   => esc_js( get_option( 'cwv3_exit_link', '#' ) ),
