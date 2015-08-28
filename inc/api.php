@@ -7,7 +7,7 @@
 /**
  * Display custom CSS
  */
-function cwv3_the_css(){
+function cwv3_the_css() {
 	echo cwv3_get_css();
 }
 
@@ -16,7 +16,7 @@ function cwv3_the_css(){
  * Uses filters so you can do what you want here programtically.
  * @return string HTML/CSS
  */
-function cwv3_get_css(){
+function cwv3_get_css() {
 	$image      = get_option( 'cwv3_bg_image', '' );
 	$color      = get_option( 'cwv3_bg_color', '' );
 	$custom_css = get_option( 'cwv3_css', '' );
@@ -31,7 +31,7 @@ function cwv3_get_css(){
 	<style type="text/css">
 	.cwv3.dialog-overlay{
 		<?php echo $bg_image_css . $bg_color_css; ?>
-		<?php if ( ! empty( $opacity ) ): ?>
+		<?php if ( ! empty( $opacity ) ) : ?>
 		opacity: <?php echo floatval( $opacity ); ?>;
 		-moz-opacity: <?php echo floatval( $opacity ); ?>;
 		-webkit-opacity: <?php echo floatval( $opacity ); ?>;
@@ -39,7 +39,7 @@ function cwv3_get_css(){
 
 	}
 	<?php
-	if ( ! empty( $custom_css ) ){
+	if ( ! empty( $custom_css ) ) {
 		echo apply_filters( 'cwv3_custom_css', $custom_css );
 	}
 	do_action( 'cwv3_after_css' );
@@ -51,11 +51,11 @@ function cwv3_get_css(){
 	return apply_filters( 'cwv3_css', ob_get_clean() );
 }
 
-function cwv3_js_dialog(){
+function cwv3_js_dialog() {
 	echo cwv3_get_js_dialog();
 }
 
-function cwv3_get_js_dialog(){
+function cwv3_get_js_dialog() {
 
 	$exit_text           = get_option( 'cwv3_exit_txt', __( 'Exit', 'cwv3' ) );
 	$enter_text          = get_option( 'cwv3_enter_txt', __( 'Enter', 'cwv3' ) );
