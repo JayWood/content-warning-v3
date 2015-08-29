@@ -35,7 +35,7 @@ class CWV3 {
 			// Special consideration needs to be taken to check if the post parent is in-fact
 			// gated in any way.
 			$cat_gated = $this->is_cat_gated( $post->post_parent );
-			if ( ! empty( $cat_gated ) ) {
+			if ( $cat_gated ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
 			} else if ( $this->is_gated( $post->post_parent ) ) {
