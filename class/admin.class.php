@@ -29,7 +29,6 @@ class CWV3Admin {
 		switch ( $col ) {
 			case 'cwv2':
 				if ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) || 'enabled' == $sw[0] ) {
-//					echo '<span style="color:#0F0; font-weight:bold;" class="cw_protected">Yes</span>';
 					echo '<span class="dashicons dashicons-lock"></span>';
 				} else {
 					echo '<span class="dashicons dashicons-unlock"></span>';
