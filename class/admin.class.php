@@ -136,10 +136,9 @@ class CWV3Admin {
 		$disabled   = isset( $site_wide[0] ) && 'enabled' == $site_wide[0] ? true : false;
 		?>
 
-        <label for="cwv3_auth"><?php _e( 'Use authorization for this content', 'cwv3' ); ?>:</label>
-        <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><br />
+        <label for="cwv3_auth"><input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><?php _e( 'Use authorization for this content', 'cwv3' ); ?></label>
         <?php if ( $disabled ) : ?>
-	                <p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'cwv3' ); ?></p>
+			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'cwv3' ); ?></p>
         <?php endif; ?>
         
         <?php
