@@ -4,7 +4,7 @@ class CWV3Admin {
 
 	function hooks() {
 		// Post Meta Box for this.
-		add_action( 'add_meta_boxes', array( $this, 'cw_meta' ) );
+		add_action( 'add_meta_boxes', array( $this, 'setup_metabox' ) );
 		add_action( 'save_post', array( $this, 'cwv3_meta_save' ) );
 
 		add_action( 'admin_head', array( $this, 'render_lazy_mans_css' ) );
@@ -45,28 +45,42 @@ class CWV3Admin {
 
 	}
 
-	public function cw_meta() {
-		$scr = array( 'post', 'page' );
-		foreach ( $scr as $screen ) {
-			add_meta_box( 'cwv3_meta_section',
-				__( 'CWV3 Security', 'cwv3' ),
-				array( $this, 'render_metabox' ),
-				$screen,
-				'side',
-				'high'
-			);
+	/**
+	 * Add metabox to post types
+	 * @return void
+	 */
+	public function setup_metabox() {
+		$post_type = $this->get_cwv3_post_types();
+		if ( is_array( $post_type ) ) {
+			foreach ( $post_type as $screen ) {
+				add_meta_box( 'cwv3_meta_section',
+					__( 'CWV3 Security', 'cwv3' ),
+					array( $this, 'render_metabox' ),
+					$screen,
+					'side',
+					'high'
+				);
+			}
 		}
 	}
 
-	public function cwv3_meta_save( $post_id ) {
+	/**
+	 * Gets the post types that can be used with CWv2
+	 * @return array
+	 */
+	public function get_cwv3_post_types() {
+		$types = apply_filters( 'cwv3_post_types', array( 'post', 'page' ) );
+		$types = empty( $types ) ? array() : $types;
+		return ! is_array( $types ) ? array( $types ) : $types;
+	}
 
+	public function cwv3_meta_save( $post_id ) {
+		$post_types = $this->get_cwv3_post_types();
 		// check isset before access (edit by @jgraup)
-		if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
-			if ( ! current_user_can( 'edit_page', $post_id ) ) {
+		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $post_types ) ) {
+			if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {
 				return;
 			} else {
-				if ( ! current_user_can( 'edit_post', $post_id ) ) { return; }
-
 				if ( ! isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) ) { return; }
 			}
 		}
