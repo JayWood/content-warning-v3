@@ -40,12 +40,7 @@ function cwv3_get_css() {
 		<?php endif; ?>
 
 	}
-	<?php
-	if ( ! empty( $custom_css ) ) {
-		echo apply_filters( 'cwv3_custom_css', $custom_css );
-	}
-	do_action( 'cwv3_after_css' );
-	?>
+	<?php do_action( 'cwv3_after_css' ); ?>
 	</style>
 	<!-- END CWV3-CSS -->
 	<?php
