@@ -131,14 +131,14 @@ class CWV3Admin {
 	 */
 	public function render_metabox( $post ) {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'cwv3_meta' );
-		$curval   = get_post_meta( $post->ID, 'cwv3_auth', true );
-		$sw       = get_option( 'cwv3_sitewide' );
-		$disabled = 'enabled' == $sw[0] ? true : false;
+		$meta_value = get_post_meta( $post->ID, 'cwv3_auth', true );
+		$site_wide  = get_option( 'cwv3_sitewide' );
+		$disabled   = 'enabled' == $site_wide[0] ? true : false;
 		?>
 
         <label for="cwv3_auth"><?php _e( 'Use authorization for this content', 'cwv3' ); ?>:</label>
-        <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $curval, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><br />
-        <?php if ( 'enabled' == $sw[0] ) : ?>
+        <input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><br />
+        <?php if ( 'enabled' == $site_wide[0] ) : ?>
 	                <p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'cwv3' ); ?></p>
         <?php endif; ?>
         
