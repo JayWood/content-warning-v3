@@ -15,11 +15,11 @@ class CWV3 {
 	public function get_cookie_name() {
 		global $post;
 
-		$sitewide = get_option( 'cwv3_sitewide' );
-		$homepage = get_option( 'cwv3_homepage' );
-		$misc     = get_option( 'cwv3_misc' );
+		$site_wide = get_option( 'cwv3_sitewide' );
+		$homepage  = get_option( 'cwv3_homepage' );
+		$misc      = get_option( 'cwv3_misc' );
 
-		if ( 'enabled' == ! empty( $sitewide ) ) {
+		if ( 'enabled' == ! empty( $site_wide ) ) {
 			return 'sitewide';
 		}
 
