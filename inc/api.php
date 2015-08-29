@@ -6,6 +6,7 @@
 
 /**
  * Display custom CSS
+ * @since 3.6.3
  */
 function cwv3_the_css() {
 	echo cwv3_get_css();
@@ -14,6 +15,7 @@ function cwv3_the_css() {
 /**
  * Get custom css
  * Uses filters so you can do what you want here programtically.
+ * @since 3.6.3
  * @return string HTML/CSS
  */
 function cwv3_get_css() {
@@ -51,10 +53,21 @@ function cwv3_get_css() {
 	return apply_filters( 'cwv3_css', ob_get_clean() );
 }
 
+/**
+ * Echos out the dialog
+ *
+ * @since 3.6.3
+ */
 function cwv3_js_dialog() {
 	echo cwv3_get_js_dialog();
 }
 
+/**
+ * Builds dialog HTML
+ *
+ * @since 3.6.3
+ * @return mixed|void
+ */
 function cwv3_get_js_dialog() {
 
 	$exit_text           = get_option( 'cwv3_exit_txt', __( 'Exit', 'cwv3' ) );
