@@ -39,7 +39,9 @@ class CWV3Admin {
 
 	public function post_cols( $cols ) {
 
-		return array_slice( $cols, 0, 1, true ) + array( 'cwv2' => 'CW' ) + array_slice( $cols, 1, count( $array ) - 1, true );
+		return array_slice( $cols, 0, 1, true ) +
+		       array( 'cwv2' => 'CW' ) +
+		       array_slice( $cols, 1, count( $cols ) - 1, true );
 
 	}
 
