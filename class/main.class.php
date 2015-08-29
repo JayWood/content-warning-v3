@@ -45,7 +45,7 @@ class CWV3 {
 
 		if ( is_singular() && isset( $post->ID ) ) {
 			$cat_gated = $this->is_cat_gated( $post->ID );
-			if ( ! empty( $cat_gated ) ) {
+			if ( $cat_gated ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
 			} else if ( $this->is_gated( $post->ID ) ) {
