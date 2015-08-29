@@ -87,8 +87,8 @@ class CWV3Admin {
 
 		// check isset before access (edit by @jgraup)
 		if ( isset( $_POST['cwv3_auth'] ) ) {
-			$mydata = sanitize_text_field( $_POST['cwv3_auth'] );
-			update_post_meta( $post_id, 'cwv3_auth', $mydata );
+			$cwv3_checkbox = sanitize_text_field( $_POST['cwv3_auth'] );
+			update_post_meta( $post_id, 'cwv3_auth', $cwv3_checkbox );
 		}
 	}
 
