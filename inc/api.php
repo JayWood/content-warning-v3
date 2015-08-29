@@ -112,5 +112,15 @@ function cwv3_get_js_dialog() {
 	<!-- END CWV3 JS Dialog -->
 	<?php
 	$dialog_output = ob_get_clean();
-	return apply_filters( 'cwv3_js_dialog_output', $dialog_output );
+	$params = array(
+		'title'          => $cwv3_title,
+		'message'        => $cwv3_message,
+		'enter_url'      => $enter_url,
+		'exit_url'       => $exit_url,
+		'enter_text'     => $enter_text,
+		'exit_text'      => $exit_text,
+		'denial_title'   => $cwv3_denial_title,
+		'denial_message' => $cwv3_denial_message,
+	);
+	return apply_filters( 'cwv3_js_dialog_output', $dialog_output, $params );
 }
