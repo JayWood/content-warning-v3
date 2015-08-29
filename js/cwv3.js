@@ -113,7 +113,7 @@ window.cwv3 = ( function( window, document, $ ){
 	};
 
 	app.dialog_switch = function(){
-		if( 'denied' === app.cookie_data ){
+		if( 'denied' === app.cookie_data && '' !== cwv3_params.denial_enabled ){
 			app.$auth.remove(); // Remove the main dialog
 			if( 'redirect' === cwv3_params.denial_method ){
 				window.location.replace( app.redirect_url );
