@@ -112,18 +112,16 @@ class CWV3Admin {
 		$post_types = $this->get_cwv3_post_types();
 		// check isset before access (edit by @jgraup)
 		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $post_types ) ) {
-			if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {
-				return;
-			} else {
-				if ( ! isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) ) { return; }
+			if ( ! isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) ) { return; }
+			if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {	return;	}
+
+			// check isset before access (edit by @jgraup)
+			if ( isset( $_POST['cwv3_auth'] ) ) {
+				$cwv3_checkbox = sanitize_text_field( $_POST['cwv3_auth'] );
+				update_post_meta( $post_id, 'cwv3_auth', $cwv3_checkbox );
 			}
 		}
 
-		// check isset before access (edit by @jgraup)
-		if ( isset( $_POST['cwv3_auth'] ) ) {
-			$cwv3_checkbox = sanitize_text_field( $_POST['cwv3_auth'] );
-			update_post_meta( $post_id, 'cwv3_auth', $cwv3_checkbox );
-		}
 	}
 
 	/**
