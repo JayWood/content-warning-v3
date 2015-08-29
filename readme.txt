@@ -3,7 +3,7 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 4.0
+Tested up to: 4.3
 Stable tag: 3.6.4
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
@@ -15,13 +15,22 @@ All support requests should be on the [Github Repository](https://github.com/Jay
 = Want to Contribute? =
 Make a [Pull Request](https://github.com/JayWood/content-warning-v3) to the Github's project development branch.
 
-This plugin provides a neat little warning and denial box to warn your users of possibly offensive content. 
+A WordPress Plugin to allow site owners to display an acceptance dialog to their users and have that follow them throughout the site.  This plugin allows you to do redirect users if they decline,
+and show popups only on single posts, pages, or categories.  ie. if a user accepts on `Post A`, but no `Post B`, you can force them to accept on a per-post/page/category basis.  You can also set
+the popup to site-wide, meaning the first time they accept, they will not see it again.
 
-= v3 Is Here =
-* Complete core rewrite, I threw everything out the window and wrote this from scratch.
-* Some new options as requested FREQUENTLY
-* You just need to check this out, you really do...
-* Page Caching now supported
+This plugin allows you to do the following:
+
+* Gate Individual Posts
+* Gate Individual Pages
+* Gate Individual Categories
+* Specify cookie time ( in days ) - or just for the browser session
+* Block or redirect users who previously denied your terms.
+* Customize enter & exit links
+* Customize the message, enter, and exit text
+* Customize the CSS in the settings page
+* Customize the background color via a simple color selector, along with it's opacity
+* Blanket protect misc. pages like search and archives
 
 [youtube http://www.youtube.com/watch?v=0_ZNojpYuwk]
 

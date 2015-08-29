@@ -6,15 +6,31 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 ![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)
 
-A plugin that provides a warning box with a ton more options completely re-written from the ground up.
+**Current Version:** 3.6.4
+**Tested Up To:** 4.3  
+**Author:** [Jay Wood](http://github.com/JayWood)   
+**Author URI:** http://plugish.com   
+**License:** GPLv2+   
+
+A WordPress Plugin to allow site owners to display an acceptance dialog to their users and have that follow them throughout the site.  This plugin allows you to do redirect users if they decline,
+and show popups only on single posts, pages, or categories.  ie. if a user accepts on `Post A`, but no `Post B`, you can force them to accept on a per-post/page/category basis.  You can also set
+the popup to site-wide, meaning the first time they accept, they will not see it again.
+
+This plugin allows you to do the following:
+
+* Gate Individual Posts
+* Gate Individual Pages
+* Gate Individual Categories
+* Specify cookie time ( in days ) - or just for the browser session
+* Block or redirect users who previously denied your terms.
+* Customize enter & exit links
+* Customize the message, enter, and exit text
+* Customize the CSS in the settings page
+* Customize the background color via a simple color selector, along with it's opacity
+* Blanket protect misc. pages like search and archives
+
 
 [Report an issue](https://github.com/JayWood/content-warning-v3/issues) | [Make a pull request](https://github.com/JayWood/content-warning-v3/pulls)
-
-* Complete core rewrite, I threw everything out the window and wrote this from scratch.
-* Some new options as requested FREQUENTLY
-* You just need to check this out, you really do...
-* Page Caching now supported
-
 [Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk) | [Download from Official Wordpress.org](http://wordpress.org/plugins/content-warning-v2)
 
 **NOTE:**
@@ -65,6 +81,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ### 3.6.4
 * Fixed denial redirects. [Issue #28](https://github.com/JayWood/content-warning-v3/issues/28)
+* Fixed multiple undefined index errors on admin
+* Changed yes/no on post columns to locked dash-icon, less clutter
+* Clean up meta saving logic
+* Added @since tags for future development
+* Better PHP documentation
+* Add /lang directory for I18n
+* Update Tested Up To version
 * Passified all PHPcs complaints
 
 ### 3.6.3
