@@ -84,6 +84,15 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * If your browser does not have cookies enabled, the plugin will not store your response.
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
 
+= Plugin installed & activated, but not showing up =
+
+* Verify your theme contains a `wp_header()` and `wp_footer()` tag, without it, this plugin will **NOT** function.
+
+= Dialog mis-aligned, partially working? =
+
+* Could be that your theme's css has broken the dialog
+* Another plugin may be breaking the javascript, I suggest you [open an issue](https://github.com/JayWood/content-warning-v3/issues) and provide a screen shot of your debug console.
+
 == Screenshots ==
 
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
