@@ -7,7 +7,7 @@ class CWV3 {
 	 *
 	 * If the cookie is to be shown, this function will return the ID, and the javascript
 	 * will handle the rest of it. If this function returns false, the javascript will not show a popup.
-	 *
+	 * @TODO: Lookinto these weird statements 'x' == ! empty( $y )... wtf?
 	 * @since 3.6.3
 	 * @return string|int String if special page like homepage, or post_id otherwise.
 	 */
