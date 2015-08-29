@@ -4,7 +4,7 @@
 ![Tested Version](https://img.shields.io/wordpress/v/content-warning-v2.svg)
 ![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/content-warning-v2.svg)
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
-![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)
+[![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
 **Current Version:** 3.6.4
 **Tested Up To:** 4.3  
