@@ -94,8 +94,8 @@ class CWV3Admin {
 
 	public function render_metabox( $post ) {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'cwv3_meta' );
-		$curval = get_post_meta( $post->ID, 'cwv3_auth', true );
-		$sw = get_option( 'cwv3_sitewide' );
+		$curval   = get_post_meta( $post->ID, 'cwv3_auth', true );
+		$sw       = get_option( 'cwv3_sitewide' );
 		$disabled = 'enabled' == $sw[0] ? true : false;
 		?>
 
