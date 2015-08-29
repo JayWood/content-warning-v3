@@ -66,7 +66,6 @@ class CWV3Admin {
 		return array_slice( $cols, 0, 1, true ) +
 		       array( 'cwv2' => 'CW' ) +
 		       array_slice( $cols, 1, count( $cols ) - 1, true );
-
 	}
 
 	/**
