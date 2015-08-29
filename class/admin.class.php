@@ -2,6 +2,10 @@
 
 class CWV3Admin {
 
+	/**
+	 * Hooks for the administrator panel
+	 * @since 3.6.3
+	 */
 	function hooks() {
 		// Post Meta Box for this.
 		add_action( 'add_meta_boxes', array( $this, 'setup_metabox' ) );
@@ -9,34 +13,56 @@ class CWV3Admin {
 
 		add_action( 'admin_head', array( $this, 'render_lazy_mans_css' ) );
 
-		// Post column filters
-		add_filter( 'manage_page_posts_columns', array( $this, 'post_cols' ) );
-		add_filter( 'manage_post_posts_columns', array( $this, 'post_cols' ) );
+		$post_types = $this->get_cwv3_post_types();
+		if ( ! empty( $post_types ) && is_array( $post_types ) ) {
+			foreach ( $post_types as $post_type ) {
+				add_filter( "manage_{$post_type}_posts_columns", array( $this, 'post_cols' ) );
+			}
+		}
 
 		// Post column info
 		add_action( 'manage_posts_custom_column', array( $this, 'set_col_data' ) );
 		add_action( 'manage_pages_custom_column', array( $this, 'set_col_data' ) );
 	}
 
+	/**
+	 * Centers custom column content
+	 * @since 3.6.3
+	 * @return null
+	 */
 	public function render_lazy_mans_css() {
 		echo '<style type="text/css">th#cwv2{width: 32px; text-align:center;} td.column-cwv2{text-align:center;}</style>';
 	}
 
+	/**
+	 * Sets column data for the CWv3 column
+	 *
+	 * @since 3.6.3
+	 * @param $col
+	 */
 	public function set_col_data( $col ) {
 		global $post;
 
 		$sw = get_option( 'cwv3_sitewide' );
+		$is_enabled = ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) ) ? true : false;;
 		switch ( $col ) {
 			case 'cwv2':
-				if ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) || 'enabled' == $sw[0] ) {
+				if ( $is_enabled || ( isset( $sw[0] ) && 'enabled' == $sw[0] ) ) {
 					echo '<span class="dashicons dashicons-lock"></span>';
 				}
 				break;
 		}
 	}
 
+	/**
+	 * Adds columns to the post list table
+	 *
+	 * @since 3.6.3
+	 * @param $cols
+	 *
+	 * @return array
+	 */
 	public function post_cols( $cols ) {
-
 		return array_slice( $cols, 0, 1, true ) +
 		       array( 'cwv2' => 'CW' ) +
 		       array_slice( $cols, 1, count( $cols ) - 1, true );
@@ -45,6 +71,8 @@ class CWV3Admin {
 
 	/**
 	 * Add metabox to post types
+	 *
+	 * @since 3.6.3
 	 * @return void
 	 */
 	public function setup_metabox() {
@@ -64,6 +92,7 @@ class CWV3Admin {
 
 	/**
 	 * Gets the post types that can be used with CWv2
+	 * @since 3.6.4
 	 * @return array
 	 */
 	public function get_cwv3_post_types() {
@@ -72,6 +101,13 @@ class CWV3Admin {
 		return ! is_array( $types ) ? array( $types ) : $types;
 	}
 
+	/**
+	 * Saves meta data
+	 *
+	 * @since 3.6.3
+	 * @param int $post_id
+	 * @return null
+	 */
 	public function cwv3_meta_save( $post_id ) {
 		$post_types = $this->get_cwv3_post_types();
 		// check isset before access (edit by @jgraup)
@@ -90,6 +126,11 @@ class CWV3Admin {
 		}
 	}
 
+	/**
+	 * Render the meta box for CWv3
+	 * @since 3.6.3
+	 * @param $post
+	 */
 	public function render_metabox( $post ) {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'cwv3_meta' );
 		$curval   = get_post_meta( $post->ID, 'cwv3_auth', true );
