@@ -101,6 +101,14 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 = 3.6.4 =
 * Fixed denial redirects. [Issue #28](https://github.com/JayWood/content-warning-v3/issues/28)
+* Fixed multiple undefined index errors on admin
+* Changed yes/no on post columns to locked dash-icon, less clutter
+* Clean up meta saving logic
+* Added @since tags for future development
+* Better PHP documentation
+* Add /lang directory for I18n
+* Update Tested Up To version
+* [Development Documentation](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation)
 * Passified all PHPcs complaints
 
 = 3.6.3 =

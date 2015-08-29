@@ -88,6 +88,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Better PHP documentation
 * Add /lang directory for I18n
 * Update Tested Up To version
+* [Development Documentation](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation)
 * Passified all PHPcs complaints
 
 ### 3.6.3
