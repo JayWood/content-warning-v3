@@ -13,7 +13,7 @@ A plugin that provides a warning box with a ton more options completely re-writt
 All support requests should be on the [Github Repository](https://github.com/JayWood/content-warning-v3).
 
 = Want to Contribute? =
-Make a [Pull Request](https://github.com/JayWood/content-warning-v3) to the Github's project development branch.
+Make a [Pull Request](https://github.com/JayWood/content-warning-v3) to the Github's project development branch.  Don't forget to read the [Development Documentation](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation) for nifty hooks that may help.
 
 A WordPress Plugin to allow site owners to display an acceptance dialog to their users and have that follow them throughout the site.  This plugin allows you to do redirect users if they decline,
 and show popups only on single posts, pages, or categories.  ie. if a user accepts on `Post A`, but no `Post B`, you can force them to accept on a per-post/page/category basis.  You can also set
