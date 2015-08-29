@@ -128,52 +128,6 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * New Popup coding, dropped colorbox in favor of my own popup code. ( Less bloat )
 * BIG THANKS to Stacy for helping me with some initial CSS issues.
 
-= 3.5.5 =
-* [jgraup](https://github.com/jgraup) - Fixed Menu Positioning
-* BUGFIX - Fixed Enter/Exit URLs not being respected.
-* Sniffed and updated core code to match WordPress rules and coding standards
-* Removed a couple methods in favor of built-in WordPress methods.
-* Modified dialog output code and escaped its output accordingly.
-
-= 3.5.4 =
-* [jgraup](https://github.com/jgraup) - Fixed indexing errors [issue #6](https://github.com/JayWood/content-warning-v3/issues/6)
-* Output custom css, for some reason I forgot [fixes issue #3](https://github.com/JayWood/content-warning-v3/issues/3)
-* Stopped using javascript:; for buttons, in some browsers that just didn't work well [fixes issue #2 and #1](https://github.com/JayWood/content-warning-v3/issues/2)
-* Versioning update to WP 4.0, and tested.
-
-= 3.5.3 =
-* **HOTFIX** Cookie logic
-
-= 3.5.2 =
-* More PHP Cleanup to WP Standards
-* Updated Colorbox to v1.5.10 [Github Changelog](https://github.com/jackmoore/colorbox#changelog)
-* Fixed Colorbox popup to show like it is supposed to, broke it in 3.5.1, sorry!
-* Updated JW Simple Options framework to latest.
-* Updated stable tag to latest WP Version
-* Updated tested tag to latest WP Version
-* More little things I can't remember.
-
-
-= 3.5.1 =
-* PHP Cleanup
-* Setup GRUNT for sass, jshint, and a few others
-* Fixed Short tags, users should no long have issues with activating the plugin.
-* Other fixes I can't remember.
-
-= 3.48 =
-* Fixed IE Bug by removing debug function in javascript.
-
-= 3.47 =
-* Fixed check_data function, thanks to [Tuxlog](http://wordpress.org/support/profile/tuxlog "Tux's Profile")
-
-= 3.46 =
-* Complete rewrite from the ground up.
-* New UI
-* New dialog handler
-* New Category Options
-* New Misc. Page options (archive/search)
-* Tons of new features.
-
 == Upgrade Notice ==
 = 2.0 =
 Adds a ton more features from v1 by rajeevan.  Along with a few security fixes.
