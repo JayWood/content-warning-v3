@@ -63,6 +63,10 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.6.4
+* Fixed denial redirects. [Issue #28](https://github.com/JayWood/content-warning-v3/issues/28)
+* Passified all PHPcs complaints
+
 ### 3.6.3
 * Category fix, fixes [#18](https://github.com/JayWood/content-warning-v3/issues/18)
 * Alphabetize method names, because why not!?

@@ -2,7 +2,7 @@
 
 class CWV3Admin {
 
-	function hooks(){
+	function hooks() {
 		// Post Meta Box for this.
 		add_action( 'add_meta_boxes', array( $this, 'cw_meta' ) );
 		add_action( 'save_post', array( $this, 'cwv3_meta_save' ) );
@@ -27,13 +27,13 @@ class CWV3Admin {
 
 		$sw = get_option( 'cwv3_sitewide' );
 		switch ( $col ) {
-		case 'cwv2':
-			if ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) || 'enabled' == $sw[0] ) {
-				echo '<span style="color:#0F0; font-weight:bold;" class="cw_protected">Yes</span>';
-			}else {
-				echo '<span style="color:#F00; font-weight:bold;" class="cw_vulnerable">No</span>';
-			}
-			break;
+			case 'cwv2':
+				if ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) || 'enabled' == $sw[0] ) {
+					echo '<span style="color:#0F0; font-weight:bold;" class="cw_protected">Yes</span>';
+				} else {
+					echo '<span style="color:#F00; font-weight:bold;" class="cw_vulnerable">No</span>';
+				}
+				break;
 		}
 	}
 
@@ -59,8 +59,8 @@ class CWV3Admin {
 	public function cwv3_meta_save( $post_id ) {
 
 		// check isset before access (edit by @jgraup)
-		if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ){
-			if ( ! current_user_can( 'edit_page', $post_id ) ){
+		if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return;
 			} else {
 				if ( ! current_user_can( 'edit_post', $post_id ) ) { return; }
@@ -70,7 +70,7 @@ class CWV3Admin {
 		}
 
 		// check isset before access (edit by @jgraup)
-		if ( isset( $_POST['cwv3_auth'] ) ){
+		if ( isset( $_POST['cwv3_auth'] ) ) {
 			$mydata = sanitize_text_field( $_POST['cwv3_auth'] );
 			update_post_meta( $post_id, 'cwv3_auth', $mydata );
 		}
@@ -80,7 +80,7 @@ class CWV3Admin {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'cwv3_meta' );
 		$curval = get_post_meta( $post->ID, 'cwv3_auth', true );
 		$sw = get_option( 'cwv3_sitewide' );
-		$disabled = $sw[0] == 'enabled' ? true : false;
+		$disabled = 'enabled' == $sw[0] ? true : false;
 		?>
 
         <label for="cwv3_auth"><?php _e( 'Use authorization for this content', 'cwv3' ); ?>:</label>
