@@ -6,10 +6,9 @@ class CWV3 {
 	 * Get Cookie Name
 	 *
 	 * If the cookie is to be shown, this function will return the ID, and the javascript
-	 * will handle the rest of it.
+	 * will handle the rest of it. If this function returns false, the javascript will not show a popup.
 	 *
-	 * If this function returns false, the javascript will not show a popup.
-	 *
+	 * @since 3.6.3
 	 * @return string|int String if special page like homepage, or post_id otherwise.
 	 */
 	public function get_cookie_name() {
@@ -63,6 +62,7 @@ class CWV3 {
 	 * gated in any way, either by metabox, or category from the
 	 * regular category taxonomy.
 	 *
+	 * @since 3.6.3
 	 * @param  int $post_id Post ID
 	 *
 	 * @return bool          TRUE | FALSE
@@ -84,9 +84,10 @@ class CWV3 {
 	 * Determines if a post is within a gated category, if so, will
 	 * return the category id for use in cookie names like so '_cat_###'
 	 *
+	 * @since 3.6.3
 	 * @param  int $post_id Post ID
 	 *
-	 * @return boolean|string                False on failure, cookie string otherwise
+	 * @return boolean|string   False on failure, cookie string otherwise
 	 */
 	public function is_cat_gated( $post_id ) {
 		$cat_settings = get_option( 'cwv3_cat_list', array() );
@@ -106,6 +107,7 @@ class CWV3 {
 	 * categories in the options panel, if so, returns the ID of the
 	 * category that it resides in.
 	 *
+	 * @since 3.6.3
 	 * @param array $cat_settings Array of categories from settings page
 	 * @param array $post_categories Array of categories from get_the_category()
 	 *
@@ -130,8 +132,9 @@ class CWV3 {
 	/**
 	 * Hooks
 	 *
-	 * All wordpress hooks that are needed to make this plugin functional.
+	 * All WordPress hooks that are needed to make this plugin functional.
 	 *
+	 * @since 3.6.3
 	 * @return null
 	 */
 	public function hooks() {
@@ -144,7 +147,9 @@ class CWV3 {
 
 	/**
 	 * Load Dependancies
-	 * Pretty self-explanitory, loads all the data that needs to be loaded beforehand.
+	 *
+	 * @since 3.6.3
+	 * Pretty self-explanatory, loads all the data that needs to be loaded beforehand.
 	 * @return null
 	 */
 	public function load_dependancies() {
@@ -174,6 +179,8 @@ class CWV3 {
 	/**
 	 * Override CSS
 	 * Placeholder method that uses the new API in inc/api.php
+	 *
+	 * @since 3.6.3
 	 * @see cwv3_the_css()
 	 */
 	public function override_css() {
@@ -182,6 +189,8 @@ class CWV3 {
 
 	/**
 	 * Register Frontend Data
+	 *
+	 * @since 3.6.3
 	 * @return null
 	 */
 	public function register_frontend_data() {
@@ -199,6 +208,8 @@ class CWV3 {
 	 * Render Dialog
 	 *
 	 * Redirect method to use the API.php that was created
+	 *
+	 * @since 3.6.3
 	 * @see cwv3_js_dialog()
 	 */
 	public function render_dialog() {
