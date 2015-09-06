@@ -18,6 +18,11 @@ class CWV3 {
 		$homepage  = get_option( 'cwv3_homepage' );
 		$misc      = get_option( 'cwv3_misc' );
 
+		$should_gate = apply_filters( 'cwv3_should_gate', true, $post );
+		if ( false === $should_gate ) {
+			return false;
+		}
+
 		if ( 'enabled' == ! empty( $site_wide ) ) {
 			return 'sitewide';
 		}
