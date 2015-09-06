@@ -101,7 +101,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 = 3.6.5 =
 * Zero day ( 0 ) cookies should use sessions instead of NOT setting the cookie. [Issue #29](https://github.com/JayWood/content-warning-v3/issues/29)
-* New filter for display condition - [See Wiki](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation#hide-the-dialog-on-certain-pages-regardless-of-cookies) - [Issue #29](https://github.com/JayWood/content-warning-v3/issues/26)
+* New filter for display condition - [See Wiki](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation#hide-the-dialog-on-certain-pages-regardless-of-cookies) - [Issue #26](https://github.com/JayWood/content-warning-v3/issues/26)
 
 = 3.6.4 =
 * Fixed denial redirects. [Issue #28](https://github.com/JayWood/content-warning-v3/issues/28)
