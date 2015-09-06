@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
-**Current Version:** 3.6.4   
+**Current Version:** 3.6.5   
 **Tested Up To:** 4.3  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
@@ -78,6 +78,10 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 
 ## Changelog
+
+### 3.6.5
+* Zero day ( 0 ) cookies should use sessions instead of NOT setting the cookie. [Issue #29](https://github.com/JayWood/content-warning-v3/issues/29)
+* New filter for display condition - [See Wiki](https://github.com/JayWood/content-warning-v3/wiki/Dev-Documentation#hide-the-dialog-on-certain-pages-regardless-of-cookies) - [Issue #29](https://github.com/JayWood/content-warning-v3/issues/26)
 
 ### 3.6.4
 * Fixed denial redirects. [Issue #28](https://github.com/JayWood/content-warning-v3/issues/28)
