@@ -100,10 +100,23 @@ window.cwv3 = ( function( window, document, $ ){
 	app.set_cookie = function( method ){
 		// Set the cookie
 		method = method === 'exit' ? 'denied' : true;
-		$.cookie( app.cookie_name, method, { 
+		var cookie_data = {
 			expires : parseInt( cwv3_params.cookie_time ),
 			path    : cwv3_params.cookie_path,
-		});
+		};
+
+		// Should work with sessions
+		if ( 0 === cookie_data.expires ) {
+			cookie_data.expires = null;
+		}
+
+		$.cookie( app.cookie_name, method, cookie_data );
+	};
+
+	app.log = function() {
+		if ( window.console ) {
+			window.console.log( Array.prototype.slice.call( arguments ) );
+		}
 	};
 
 	app.close_handler = function(){
@@ -113,9 +126,9 @@ window.cwv3 = ( function( window, document, $ ){
 	};
 
 	app.dialog_switch = function(){
-		if( 'denied' === app.cookie_data && '' !== cwv3_params.denial_enabled ){
+		if( 'denied' === app.cookie_data ){
 			app.$auth.remove(); // Remove the main dialog
-			if( 'redirect' === cwv3_params.denial_method ){
+			if( 'redirect' === cwv3_params.denial_method && '' !== cwv3_params.denial_enabled  ){
 				window.location.replace( app.redirect_url );
 			} else {
 				app.show_popup();
