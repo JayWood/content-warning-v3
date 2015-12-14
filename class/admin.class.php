@@ -118,6 +118,8 @@ class CWV3Admin {
 			if ( isset( $_POST['cwv3_auth'] ) ) {
 				$cwv3_checkbox = sanitize_text_field( $_POST['cwv3_auth'] );
 				update_post_meta( $post_id, 'cwv3_auth', $cwv3_checkbox );
+			} else {
+				delete_post_meta( $post_id, 'cwv3_auth' );
 			}
 		}
 
