@@ -126,6 +126,17 @@ window.cwv3 = ( function( window, document, $ ){
 	};
 
 	app.dialog_switch = function(){
+
+		if ( 'denied' === app.cookie_data && ! cwv3_params.denial_enabled ) {
+			var cookie_data = {
+				expires : parseInt( cwv3_params.cookie_time ),
+				path    : cwv3_params.cookie_path,
+			};
+
+			window.console.log( $.removeCookie( app.cookie_name, cookie_data ) );
+			app.cookie_data = undefined;
+		}
+
 		if( 'denied' === app.cookie_data ){
 			app.$auth.remove(); // Remove the main dialog
 			if( 'redirect' === cwv3_params.denial_method && '' !== cwv3_params.denial_enabled  ){

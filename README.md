@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
 **Current Version:** 3.6.7   
-**Tested Up To:** 4.3  
+**Tested Up To:** 4.4  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
 **License:** GPLv2+   
@@ -79,7 +79,14 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
-### 3.6.
+### 3.6.7
+* Fixed conditional being too strict [#34](https://github.com/JayWood/content-warning-v3/issues/34)
+* Fixed plugin homepage link [#31](https://github.com/JayWood/content-warning-v3/issues/31)
+* Removed uninstall hook for now - Options API needs to be updated
+* Fixed denial toggle to actually remove denial text if it was once on, but now off.
+
+
+### 3.6.6
 * Fixed CSS issues for background images and css overrides6
 
 ### 3.6.5

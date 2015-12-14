@@ -3,7 +3,7 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 4.3
+Tested up to: 4.4
 Stable tag: 3.6.7
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
@@ -98,6 +98,12 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.6.7 =
+* Fixed conditional being too strict [#34](https://github.com/JayWood/content-warning-v3/issues/34)
+* Fixed plugin homepage link [#31](https://github.com/JayWood/content-warning-v3/issues/31)
+* Removed uninstall hook for now - Options API needs to be updated
+* Fixed denial toggle to actually remove denial text if it was once on, but now off.
 
 = 3.6.6 =
 * Fixed CSS issues for background images and css overrides
