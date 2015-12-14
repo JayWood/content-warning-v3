@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
-**Current Version:** 3.6.6   
+**Current Version:** 3.6.7   
 **Tested Up To:** 4.3  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
@@ -79,8 +79,8 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
-### 3.6.6
-* Fixed CSS issues for background images and css overrides
+### 3.6.
+* Fixed CSS issues for background images and css overrides6
 
 ### 3.6.5
 * Zero day ( 0 ) cookies should use sessions instead of NOT setting the cookie. [Issue #29](https://github.com/JayWood/content-warning-v3/issues/29)
