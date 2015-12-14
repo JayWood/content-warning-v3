@@ -18,7 +18,7 @@ if ( is_admin() ) {
 	require_once dirname( __FILE__ ) . '/class/admin.class.php';
 
 	$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
-	register_uninstall_hook( __FILE__, array( $cwv3_options, 'uninstall' ) );
+//	register_uninstall_hook( __FILE__, array( $cwv3_options, 'uninstall' ) );
 } else {
 	require_once dirname( __FILE__ ) . '/class/main.class.php';
 }
