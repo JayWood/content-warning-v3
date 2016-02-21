@@ -99,7 +99,7 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 == Changelog ==
 
-== 3.6.8 ==
+= 3.6.8 =
 * Use background-image css property instead of just background - thanks to [95CivicSi](https://github.com/95CivicSi)
 
 = 3.6.7 =
