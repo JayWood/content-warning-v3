@@ -144,7 +144,7 @@ window.cwv3 = ( function( window, document, $ ){
 			} else {
 				app.show_popup();
 			}
-		} else if( undefined === app.cookie_data ){
+		} else if( undefined === app.cookie_data || null === app.cookie_data){
 			app.$denial.remove(); // Remove the denied box instead.
 			app.show_popup();
 		}
