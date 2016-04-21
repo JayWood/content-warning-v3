@@ -1,0 +1,215 @@
+# Copyright (C) 2016 Content Warning v2
+# This file is distributed under the same license as the Content Warning v2 package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Content Warning v2 3.6.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/content-warning-"
+"v2\n"
+"POT-Creation-Date: 2016-04-21 02:41:27+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: class/admin.class.php:82
+msgid "CWV3 Security"
+msgstr ""
+
+#: class/admin.class.php:140
+msgid "Use authorization for this content"
+msgstr ""
+
+#: class/admin.class.php:142
+msgid "Cannot be changed while site wide option is enabled."
+msgstr ""
+
+#: inc/api.php:69
+msgid "Exit"
+msgstr ""
+
+#: inc/api.php:70
+msgid "Enter"
+msgstr ""
+
+#: inc/api.php:72
+msgid "Access Denied"
+msgstr ""
+
+#: inc/api.php:73 inc/options.inc.php:123
+msgid ""
+"You have been denied access to this content.  If you feel this is in error, "
+"please contact a site administrator."
+msgstr ""
+
+#: inc/api.php:75
+msgid "Warning: Explicit Content"
+msgstr ""
+
+#: inc/api.php:76
+msgid ""
+"The content you are about to view may be considered offensive and/or "
+"inappropriate.  Furthermore, this content may be considered adult content, "
+"if you are not of legal age or are easily offended, you are required to "
+"click the exit button."
+msgstr ""
+
+#: inc/options.inc.php:19
+msgid "Sitewide"
+msgstr ""
+
+#: inc/options.inc.php:21
+msgid ""
+"Takes priority over category, page, and post, home, and misc. pages/posts."
+msgstr ""
+
+#: inc/options.inc.php:28
+msgid "Home Page"
+msgstr ""
+
+#: inc/options.inc.php:30
+msgid ""
+"Toggle the home page dialog, useful if you have not set a static page for "
+"your front-page in Settings -> Reading."
+msgstr ""
+
+#: inc/options.inc.php:38
+msgid "Misc. Pages"
+msgstr ""
+
+#: inc/options.inc.php:40
+msgid "Enable this to protect search, archive, and other such pages."
+msgstr ""
+
+#: inc/options.inc.php:50
+msgid "Cookie Life"
+msgstr ""
+
+#: inc/options.inc.php:51
+msgid "Time in days for the cookie to expire"
+msgstr ""
+
+#: inc/options.inc.php:57 inc/options.inc.php:114
+msgid "Dialog Title"
+msgstr ""
+
+#: inc/options.inc.php:63
+msgid "Dialog Message"
+msgstr ""
+
+#: inc/options.inc.php:65
+msgid "A message shown to your visitor."
+msgstr ""
+
+#: inc/options.inc.php:73
+msgid "Exit Text"
+msgstr ""
+
+#: inc/options.inc.php:75
+msgid "The text for the exit button."
+msgstr ""
+
+#: inc/options.inc.php:79
+msgid "Exit Link"
+msgstr ""
+
+#: inc/options.inc.php:81
+msgid ""
+"The full URL a user should be directed to upon clicking the exit button."
+msgstr ""
+
+#: inc/options.inc.php:85
+msgid "Enter Text"
+msgstr ""
+
+#: inc/options.inc.php:87
+msgid "The text for the enter button."
+msgstr ""
+
+#: inc/options.inc.php:91
+msgid "Enter Link"
+msgstr ""
+
+#: inc/options.inc.php:93
+msgid ""
+"The full URL a user should be directed to upon clicking the enter button.  "
+"Leave blank to just close the dialog."
+msgstr ""
+
+#: inc/options.inc.php:98
+msgid "Toggle Denial Option"
+msgstr ""
+
+#: inc/options.inc.php:104
+msgid "Denial Handling Method"
+msgstr ""
+
+#: inc/options.inc.php:120
+msgid "Denial Message"
+msgstr ""
+
+#: inc/options.inc.php:132
+msgid "Background Image"
+msgstr ""
+
+#: inc/options.inc.php:133
+msgid ""
+"If not empty, the dialog will use this instead of the background opacity and "
+"color."
+msgstr ""
+
+#: inc/options.inc.php:137
+msgid "Background Opacity"
+msgstr ""
+
+#: inc/options.inc.php:138
+msgid "Input a float value from 0-1, the latter being completely opaque."
+msgstr ""
+
+#: inc/options.inc.php:144
+msgid "Background Color"
+msgstr ""
+
+#: inc/options.inc.php:145
+msgid "The Overlay color."
+msgstr ""
+
+#: inc/options.inc.php:150
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/options.inc.php:151
+msgid "For a completely custom look, just drop your css here."
+msgstr ""
+
+#: inc/options.inc.php:156
+msgid "Category restrictions"
+msgstr ""
+
+#: inc/options.inc.php:157
+msgid "Select categories that you would like to restrict with the dialog."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Content Warning v2"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://plugish.com/plugins/content-warning-v2"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A WordPress Plugin to allow site owners to display an acceptance dialog.  "
+"Used mainly for NSFW websites, this plugin provides a dialog popup to warn "
+"viewers of it's possible content."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jerry Wood Jr."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://plugish.com"
+msgstr ""
