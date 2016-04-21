@@ -6,8 +6,8 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
-**Current Version:** 3.6.8   
-**Tested Up To:** 4.4  
+**Current Version:** 3.6.9   
+**Tested Up To:** 4.5  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
 **License:** GPLv2+   
@@ -67,15 +67,6 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 * If your browser does not have cookies enabled, the plugin will not store your response.
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
-
-## TODO
-- [ ] Update Admin post column to properly reflect if the post is protected or not when in a category.
-- [x] Localization [#10](https://github.com/JayWood/content-warning-v3/issues/10)
-- [x] Make use of jquery.cookie [#11](https://github.com/JayWood/content-warning-v3/issues/11)
-- [ ] Include API / Template Tags [#12](https://github.com/JayWood/content-warning-v3/issues/12)
-	- [ ] Document API / Template Tags [#13](https://github.com/JayWood/content-warning-v3/issues/13)
-- [x] Custom popup, remove colorbox dependency [#14](https://github.com/JayWood/content-warning-v3/issues/14)
-
 
 ## Changelog
 
