@@ -7,6 +7,7 @@ Author: 		Jerry Wood Jr.
 Version:		3.6.9
 Author URI:		http://plugish.com
 Text Domain:    cwv3
+Domain Path:    /lang
 */
 require_once dirname( __FILE__ ) . '/inc/api.php';
 
