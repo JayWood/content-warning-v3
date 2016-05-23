@@ -44,6 +44,11 @@
     padding: 0 .75em;
     overflow: auto;
     margin-bottom: 0.25em;
+    color: $dialog-text-color;
+
+    p{
+      color: $dialog-text-color;
+    }
   }
 
   .cwv3_btns{

@@ -28,4 +28,3 @@ add_action( 'plugins_loaded', 'jw_cwv3_load_text_domain' );
 function jw_cwv3_load_text_domain() {
 	load_plugin_textdomain( 'cwv3', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 }
-

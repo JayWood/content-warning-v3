@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
 **Current Version:** 3.6.9   
-**Tested Up To:** 4.5  
+**Tested Up To:** 4.5.2  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
 **License:** GPLv2+   
@@ -69,6 +69,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
 
 ## Changelog
+
+### 3.6.9
+* Small cleanup
 
 ### 3.6.8
 * Use background-image css property instead of just background - thanks to [95CivicSi](https://github.com/95CivicSi)
