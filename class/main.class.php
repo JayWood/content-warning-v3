@@ -170,7 +170,7 @@ class CWV3 {
 		$de           = get_option( 'cwv3_denial', 'enabled' );
 		$localized_data = array(
 			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
-			'cookie_path'    => SITECOOKIEPATH,
+			'cookie_path'    => COOKIEPATH,
 			'cookie_name'    => $this->get_cookie_name(),
 			'cookie_time'    => intval( $cookie_death ) > 365 ? 365 : intval( $cookie_death ),
 			// Max at one year if it's over 365 days.
