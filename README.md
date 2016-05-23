@@ -72,6 +72,8 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ### 3.6.9
 * Small cleanup
+* Force text color to be black - fixes [#43](https://github.com/JayWood/content-warning-v3/issues/43)
+* Use `COOKIEPATH` instead of `SITECOOKIEPATH` constants, compatability fix for sub-folder installs - fixes [#42](https://github.com/JayWood/content-warning-v3/issues/42)
 
 ### 3.6.8
 * Use background-image css property instead of just background - thanks to [95CivicSi](https://github.com/95CivicSi)

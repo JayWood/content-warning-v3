@@ -3,10 +3,10 @@
 $cat_list       = get_categories();
 $final_cat_list = array();
 foreach ( $cat_list as $cw_cat ) {
-	$termID   = $cw_cat->term_id;
-	$termName = $cw_cat->name;
+	$term_id   = $cw_cat->term_id;
+	$term_name = $cw_cat->name;
 
-	$final_cat_list[ $termID ] = $termName;
+	$final_cat_list[ $term_id ] = $term_name;
 }
 $cwv3_op_data = array(
 	'plugin_title' => 'Content Warning v3',
