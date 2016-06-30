@@ -6,25 +6,53 @@ Description: 	A WordPress Plugin to allow site owners to display an acceptance d
 Author: 		Jerry Wood Jr.
 Version:		3.7
 Author URI:		http://plugish.com
-Text Domain:    cwv3
+Text Domain:    content-warning-v2
 Domain Path:    /lang
 */
-require_once dirname( __FILE__ ) . '/inc/api.php';
+//require_once dirname( __FILE__ ) . '/inc/api.php';
+//
+//if ( is_admin() ) {
+//	require_once dirname( __FILE__ ) . '/inc/options.inc.php';
+//	if ( ! class_exists( 'JW_SIMPLE_OPTIONS' ) ) {
+//		require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
+//	}
+//	require_once dirname( __FILE__ ) . '/class/admin.class.php';
+//
+//	$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
+////	register_uninstall_hook( __FILE__, array( $cwv3_options, 'uninstall' ) );
+//} else {
+//	require_once dirname( __FILE__ ) . '/class/main.class.php';
+//}
+//
+//add_action( 'plugins_loaded', 'jw_cwv3_load_text_domain' );
+//function jw_cwv3_load_text_domain() {
+//	load_plugin_textdomain( 'content-warning-v2', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+//}
 
-if ( is_admin() ) {
-	require_once dirname( __FILE__ ) . '/inc/options.inc.php';
-	if ( ! class_exists( 'JW_SIMPLE_OPTIONS' ) ) {
-		require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
+
+
+class ContentWarning_v2 {
+
+	/**
+	 * Instance of ContentWarning_v2
+	 * @var ContentWarning_v2
+	 */
+	public static $instance = null;
+
+	public static function init() {
+		if ( null == self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
 	}
-	require_once dirname( __FILE__ ) . '/class/admin.class.php';
 
-	$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
-//	register_uninstall_hook( __FILE__, array( $cwv3_options, 'uninstall' ) );
-} else {
-	require_once dirname( __FILE__ ) . '/class/main.class.php';
+	public function hooks() {
+		// All hooks here.
+	}
 }
 
-add_action( 'plugins_loaded', 'jw_cwv3_load_text_domain' );
-function jw_cwv3_load_text_domain() {
-	load_plugin_textdomain( 'cwv3', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+function content_warning_v2() {
+	return ContentWarning_v2::init();
 }
+add_action( 'plugins_loaded', array( content_warning_v2(), 'hooks' ) );

@@ -66,14 +66,14 @@ function cwv3_js_dialog() {
  */
 function cwv3_get_js_dialog() {
 
-	$exit_text           = get_option( 'cwv3_exit_txt', __( 'Exit', 'cwv3' ) );
-	$enter_text          = get_option( 'cwv3_enter_txt', __( 'Enter', 'cwv3' ) );
+	$exit_text           = get_option( 'cwv3_exit_txt', __( 'Exit', 'content-warning-v2' ) );
+	$enter_text          = get_option( 'cwv3_enter_txt', __( 'Enter', 'content-warning-v2' ) );
 
-	$cwv3_denial_title   = get_option( 'cwv3_den_title', __( 'Access Denied', 'cwv3' ) );
-	$cwv3_denial_message = get_option( 'cwv3_den_msg', __( 'You have been denied access to this content.  If you feel this is in error, please contact a site administrator.', 'cwv3' ) );
+	$cwv3_denial_title   = get_option( 'cwv3_den_title', __( 'Access Denied', 'content-warning-v2' ) );
+	$cwv3_denial_message = get_option( 'cwv3_den_msg', __( 'You have been denied access to this content.  If you feel this is in error, please contact a site administrator.', 'content-warning-v2' ) );
 
-	$cwv3_title          = get_option( 'cwv3_d_title', __( 'Warning: Explicit Content', 'cwv3' ) );
-	$cwv3_message        = get_option( 'cwv3_d_msg', __( 'The content you are about to view may be considered offensive and/or inappropriate.  Furthermore, this content may be considered adult content, if you are not of legal age or are easily offended, you are required to click the exit button.', 'cwv3' ) );
+	$cwv3_title          = get_option( 'cwv3_d_title', __( 'Warning: Explicit Content', 'content-warning-v2' ) );
+	$cwv3_message        = get_option( 'cwv3_d_msg', __( 'The content you are about to view may be considered offensive and/or inappropriate.  Furthermore, this content may be considered adult content, if you are not of legal age or are easily offended, you are required to click the exit button.', 'content-warning-v2' ) );
 
 	$exit_url            = get_option( 'cwv3_exit_link', '#' );
 	$enter_url           = get_option( 'cwv3_enter_link', '#' );

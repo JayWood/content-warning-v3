@@ -79,7 +79,7 @@ class CWV3Admin {
 		if ( is_array( $post_type ) ) {
 			foreach ( $post_type as $screen ) {
 				add_meta_box( 'cwv3_meta_section',
-					__( 'CWV3 Security', 'cwv3' ),
+					__( 'CWV3 Security', 'content-warning-v2' ),
 					array( $this, 'render_metabox' ),
 					$screen,
 					'side',
@@ -137,9 +137,9 @@ class CWV3Admin {
 		$disabled   = isset( $site_wide[0] ) && 'enabled' == $site_wide[0] ? true : false;
 		?>
 
-        <label for="cwv3_auth"><input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><?php _e( 'Use authorization for this content', 'cwv3' ); ?></label>
+        <label for="cwv3_auth"><input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><?php _e( 'Use authorization for this content', 'content-warning-v2' ); ?></label>
         <?php if ( $disabled ) : ?>
-			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'cwv3' ); ?></p>
+			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'content-warning-v2' ); ?></p>
         <?php endif;
 	}
 }
