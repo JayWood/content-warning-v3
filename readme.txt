@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
 Tested up to: 4.5.2
-Stable tag: 3.6.9
+Stable tag: 3.7
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
@@ -34,7 +34,7 @@ This plugin allows you to do the following:
 
 [youtube http://www.youtube.com/watch?v=0_ZNojpYuwk]
 
-*NOTE:* 
+*NOTE:*
 
 > If the exit link is left empty, users will be redirected to google.
 
@@ -57,7 +57,7 @@ This plugin allows you to do the following:
 1. Go to CWv3 menu and configure
 1. Save, and you're all good.
 
-= Old Method = 
+= Old Method =
 1. Upload `content-warning-v2` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -75,7 +75,7 @@ All support questions should be directed to the github issues section, just [ope
 * Provide a detailed list of options that are set.
 * Give a link to your site or the affected page.
 
-= The plugin is broken, fix it. = 
+= The plugin is broken, fix it. =
 
 Please do not contact me with questions like this.  If you cannot be descriptive with your problem I cannot help you.
 
