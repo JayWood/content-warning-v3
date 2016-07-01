@@ -58,16 +58,6 @@ class CWV2_Admin {
 	}
 
 	/**
-	 * Gets the settings config
-	 *
-	 * @author JayWood
-	 * @return array
-	 */
-	public function get_settings_config() {
-		return array();
-	}
-
-	/**
 	 * Adds the options menu.
 	 *
 	 * @author JayWood
@@ -93,6 +83,16 @@ class CWV2_Admin {
 	 * @author JayWood
 	 */
 	public function render_settings_page() {
+		?><div class="wrap">
+		<h2><?php _e( 'Content Warning v2 Settings', 'minecraft-suite' ); ?></h2>
+		<form method="post" action="options.php">
+			<?php
+			settings_fields( $this->option_prefix . 'options_group' );
+			do_settings_sections( $this->options_page );
+			submit_button();
+			?>
+		</form>
+		</div><?php
 	}
 
 	/**
@@ -239,5 +239,21 @@ class CWV2_Admin {
 		<?php if ( $disabled ) : ?>
 			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'content-warning-v2' ); ?></p>
 		<?php endif;
+	}
+
+	/**
+	 * Gets the settings config
+	 *
+	 * @author JayWood
+	 * @return array
+	 */
+	public function get_settings_config() {
+		return array(
+
+			array(
+
+			),
+
+		);
 	}
 }
