@@ -256,8 +256,8 @@ class CWV2_Admin {
 				'fields' => array(
 					array(
 						'id'      => 'sitewide',
-						'name'    => 'Sitewide',
-						'desc'    => 'Takes priority over category, page, and post, home, and misc. pages/posts.',
+						'name'    => __( 'Sitewide', 'content-warning-v2' ),
+						'desc'    => __( 'Takes priority over category, page, and post, home, and misc. pages/posts.', 'content-warning-v2' ),
 						'type'    => 'check',
 						'options' =>
 							array(
@@ -266,8 +266,8 @@ class CWV2_Admin {
 					),
 					array(
 						'id'      => 'homepage',
-						'name'    => 'Home Page',
-						'desc'    => 'Toggle the home page dialog, useful if you have not set a static page for your front-page in Settings -> Reading.',
+						'name'    => __( 'Home Page', 'content-warning-v2' ),
+						'desc'    => __( 'Toggle the home page dialog, useful if you have not set a static page for your front-page in Settings -> Reading.', 'content-warning-v2' ),
 						'type'    => 'check',
 						'options' =>
 							array(
@@ -276,8 +276,8 @@ class CWV2_Admin {
 					),
 					array(
 						'id'      => 'misc',
-						'name'    => 'Misc. Pages',
-						'desc'    => 'Enable this to protect search, archive, and other such pages.',
+						'name'    => __( 'Misc. Pages', 'content-warning-v2' ),
+						'desc'    => __( 'Enable this to protect search, archive, and other such pages.', 'content-warning-v2' ),
 						'type'    => 'check',
 						'options' =>
 							array(
@@ -286,50 +286,50 @@ class CWV2_Admin {
 					),
 					array(
 						'id'   => 'death',
-						'name' => 'Cookie Life',
-						'desc' => 'Time in days for the cookie to expire',
+						'name' => __( 'Cookie Life', 'content-warning-v2' ),
+						'desc' => __( 'Time in days for the cookie to expire', 'content-warning-v2' ),
 						'type' => 'number',
 					),
 					array(
 						'id'   => 'd_title',
-						'name' => 'Dialog Title',
-						'desc' => '',
+						'name' => __( 'Dialog Title', 'content-warning-v2' ),
+						'desc' => __( '', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'   => 'd_msg',
-						'name' => 'Dialog Message',
-						'desc' => 'A message shown to your visitor.',
+						'name' => __( 'Dialog Message', 'content-warning-v2' ),
+						'desc' => __( 'A message shown to your visitor.', 'content-warning-v2' ),
 						'type' => 'editor',
 					),
 					array(
 						'id'   => 'exit_txt',
-						'name' => 'Exit Text',
-						'desc' => 'The text for the exit button.',
+						'name' => __( 'Exit Text', 'content-warning-v2' ),
+						'desc' => __( 'The text for the exit button.', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'   => 'exit_link',
-						'name' => 'Exit Link',
-						'desc' => 'The full URL a user should be directed to upon clicking the exit button.',
+						'name' => __( 'Exit Link', 'content-warning-v2' ),
+						'desc' => __( 'The full URL a user should be directed to upon clicking the exit button.', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'   => 'enter_txt',
-						'name' => 'Enter Text',
-						'desc' => 'The text for the enter button.',
+						'name' => __( 'Enter Text', 'content-warning-v2' ),
+						'desc' => __( 'The text for the enter button.', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'   => 'enter_link',
-						'name' => 'Enter Link',
-						'desc' => 'The full URL a user should be directed to upon clicking the enter button.  Leave blank to just close the dialog.',
+						'name' => __( 'Enter Link', 'content-warning-v2' ),
+						'desc' => __( 'The full URL a user should be directed to upon clicking the enter button.  Leave blank to just close the dialog.', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'      => 'denial',
-						'name'    => 'Toggle Denial Option',
-						'desc'    => '',
+						'name'    => __( 'Toggle Denial Option', 'content-warning-v2' ),
+						'desc'    => __( '', 'content-warning-v2' ),
 						'type'    => 'check',
 						'options' =>
 							array(
@@ -338,43 +338,43 @@ class CWV2_Admin {
 					),
 					array(
 						'id'      => 'method',
-						'name'    => 'Denial Handling Method',
-						'desc'    => '',
+						'name'    => __( 'Denial Handling Method', 'content-warning-v2' ),
+						'desc'    => __( '', 'content-warning-v2' ),
 						'type'    => 'radio',
 						'options' =>
 							array(
-								'redirect' => 'Redirect the user.',
-								'show'     => 'Show the denial dialog.',
+								'redirect' => __( 'Redirect the user.', 'content-warning-v2' ),
+								'show'     => __( 'Show the denial dialog.', 'content-warning-v2' ),
 							),
 					),
 					array(
 						'id'   => 'den_title',
-						'name' => 'Dialog Title',
-						'desc' => '',
+						'name' => __( 'Dialog Title', 'content-warning-v2' ),
+						'desc' => __( '', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'   => 'den_msg',
-						'name' => 'Denial Message',
-						'desc' => '',
+						'name' => __( 'Denial Message', 'content-warning-v2' ),
+						'desc' => __( '', 'content-warning-v2' ),
 						'type' => 'editor',
 					),
 					array(
 						'id'   => 'bg_image',
-						'name' => 'Background Image',
-						'desc' => 'If not empty, the dialog will use this instead of the background opacity and color.',
+						'name' => __( 'Background Image', 'content-warning-v2' ),
+						'desc' => __( 'If not empty, the dialog will use this instead of the background opacity and color.', 'content-warning-v2' ),
 						'type' => 'media',
 					),
 					array(
 						'id'   => 'bg_opacity',
-						'name' => 'Background Opacity',
-						'desc' => 'Input a float value from 0-1, the latter being completely opaque.',
+						'name' => __( 'Background Opacity', 'content-warning-v2' ),
+						'desc' => __( 'Input a float value from 0-1, the latter being completely opaque.', 'content-warning-v2' ),
 						'type' => 'number',
 					),
 					array(
 						'id'      => 'bg_color',
-						'name'    => 'Background Color',
-						'desc'    => 'The Overlay color.',
+						'name'    => __( 'Background Color', 'content-warning-v2' ),
+						'desc'    => __( 'The Overlay color.', 'content-warning-v2' ),
 						'type'    => 'color',
 						'options' =>
 							array(
@@ -383,16 +383,17 @@ class CWV2_Admin {
 					),
 					array(
 						'id'   => 'css',
-						'name' => 'Custom CSS',
-						'desc' => 'For a completely custom look, just drop your css here.',
+						'name' => __( 'Custom CSS', 'content-warning-v2' ),
+						'desc' => __( 'For a completely custom look, just drop your css here.', 'content-warning-v2' ),
 						'type' => 'textbox',
 					),
 					array(
 						'id'      => 'cat_list',
-						'name'    => 'Category restrictions',
-						'desc'    => 'Select categories that you would like to restrict with the dialog.',
+						'name'    => __( 'Category restrictions', 'content-warning-v2' ),
+						'desc'    => __( 'Select categories that you would like to restrict with the dialog.', 'content-warning-v2' ),
 						'type'    => 'check',
-						'options' => array(),
+						'options' =>
+							array(),
 					),
 				),
 			),
