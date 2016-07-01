@@ -21,6 +21,9 @@ class CWV2_Admin {
 
 	/**
 	 * Hooks for the administrator panel
+	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 */
 	function hooks() {
@@ -44,6 +47,9 @@ class CWV2_Admin {
 
 	/**
 	 * Centers custom column content
+	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 * @return null
 	 */
@@ -54,9 +60,11 @@ class CWV2_Admin {
 	/**
 	 * Sets column data for the CWv3 column
 	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 *
-	 * @param $col
+	 * @param string $col
 	 */
 	public function set_col_data( $col ) {
 		global $post;
@@ -75,9 +83,11 @@ class CWV2_Admin {
 	/**
 	 * Adds columns to the post list table
 	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 *
-	 * @param $cols
+	 * @param array $cols
 	 *
 	 * @return array
 	 */
@@ -89,6 +99,8 @@ class CWV2_Admin {
 
 	/**
 	 * Add metabox to post types
+	 *
+	 * @author JayWood
 	 *
 	 * @since 3.6.3
 	 * @return void
@@ -110,6 +122,9 @@ class CWV2_Admin {
 
 	/**
 	 * Gets the post types that can be used with CWv2
+	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.4
 	 * @return array
 	 */
@@ -122,6 +137,8 @@ class CWV2_Admin {
 
 	/**
 	 * Saves meta data
+	 *
+	 * @author JayWood
 	 *
 	 * @since 3.6.3
 	 *
@@ -153,9 +170,12 @@ class CWV2_Admin {
 
 	/**
 	 * Render the meta box for CWv3
+	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 *
-	 * @param $post
+	 * @param WP_Post $post
 	 */
 	public function render_metabox( $post ) {
 		wp_nonce_field( plugin_basename( __FILE__ ), 'cwv3_meta' );
@@ -170,5 +190,4 @@ class CWV2_Admin {
 			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'content-warning-v2' ); ?></p>
 		<?php endif;
 	}
-
 }
