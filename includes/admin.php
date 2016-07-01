@@ -252,7 +252,7 @@ class CWV2_Admin {
 			array(
 				'id'     => 'general-settings',
 				'name'   => __( 'General Settings', 'content-warning-v2' ),
-				'group'  => 'default',
+				'group'  => 'def_group',
 				'fields' => array(
 					array(
 						'id'      => 'sitewide',
@@ -290,6 +290,13 @@ class CWV2_Admin {
 						'desc' => __( 'Time in days for the cookie to expire', 'content-warning-v2' ),
 						'type' => 'number',
 					),
+				),
+			),
+			array(
+				'id' => 'entry-settings',
+				'name' => __( 'Dialog Settings', 'content-warning-v2' ),
+				'group' => 'def_group',
+				'fields' => array(
 					array(
 						'id'   => 'd_title',
 						'name' => __( 'Dialog Title', 'content-warning-v2' ),
