@@ -45,6 +45,7 @@ function cwv2_autoload_classes( $class_name ) {
 
 	return true;
 }
+
 spl_autoload_register( 'cwv2_autoload_classes' );
 
 class ContentWarning_v2 {
@@ -94,7 +95,9 @@ class ContentWarning_v2 {
 	 *
 	 * If the cookie is to be shown, this function will return the ID, and the javascript
 	 * will handle the rest of it. If this function returns false, the javascript will not show a popup.
-	 * @TODO: Lookinto these weird statements 'x' == ! empty( $y )... wtf?
+	 *
+	 * @author JayWood
+	 *
 	 * @since 3.6.3
 	 * @return string|int String if special page like homepage, or post_id otherwise.
 	 */
@@ -154,7 +157,9 @@ class ContentWarning_v2 {
 	 * gated in any way, either by metabox, or category from the
 	 * regular category taxonomy.
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
+	 *
 	 * @param  int $post_id Post ID
 	 *
 	 * @return bool          TRUE | FALSE
@@ -176,7 +181,9 @@ class ContentWarning_v2 {
 	 * Determines if a post is within a gated category, if so, will
 	 * return the category id for use in cookie names like so '_cat_###'
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
+	 *
 	 * @param  int $post_id Post ID
 	 *
 	 * @return boolean|string   False on failure, cookie string otherwise
@@ -199,11 +206,13 @@ class ContentWarning_v2 {
 	 * categories in the options panel, if so, returns the ID of the
 	 * category that it resides in.
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
-	 * @param array $cat_settings Array of categories from settings page
+	 *
+	 * @param array $cat_settings    Array of categories from settings page
 	 * @param array $post_categories Array of categories from get_the_category()
 	 *
-	 * @return boolean|int                            False on failure, category ID on success
+	 * @return boolean|int False on failure, category ID on success
 	 */
 	public function in_cat( $cat_settings, $post_categories ) {
 		if ( ! is_array( $cat_settings ) ) {
@@ -226,6 +235,7 @@ class ContentWarning_v2 {
 	 *
 	 * Pretty self-explanatory, loads all the data that needs to be loaded beforehand.
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
 	 * @return null
 	 */
@@ -238,8 +248,8 @@ class ContentWarning_v2 {
 		wp_enqueue_style( 'cwv3_css' );
 		wp_enqueue_script( 'cwv3_js' );
 
-		$cookie_death = get_option( 'cwv3_death', 1 );
-		$de           = get_option( 'cwv3_denial', 'enabled' );
+		$cookie_death   = get_option( 'cwv3_death', 1 );
+		$de             = get_option( 'cwv3_denial', 'enabled' );
 		$localized_data = array(
 			'opacity'        => get_option( 'cwv3_bg_opacity', 0.85 ),
 			'cookie_path'    => COOKIEPATH,
@@ -258,8 +268,9 @@ class ContentWarning_v2 {
 	 * Override CSS
 	 * Placeholder method that uses the new API in inc/api.php
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
-	 * @see cwv3_the_css()
+	 * @see   cwv3_the_css()
 	 */
 	public function override_css() {
 		cwv3_the_css();
@@ -268,6 +279,7 @@ class ContentWarning_v2 {
 	/**
 	 * Register Frontend Data
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
 	 * @return null
 	 */
@@ -287,8 +299,9 @@ class ContentWarning_v2 {
 	 *
 	 * Redirect method to use the API.php that was created
 	 *
+	 * @author JayWood
 	 * @since 3.6.3
-	 * @see cwv3_js_dialog()
+	 * @see   cwv3_js_dialog()
 	 */
 	public function render_dialog() {
 		cwv3_js_dialog();
@@ -300,8 +313,8 @@ class ContentWarning_v2 {
 	 * @author JayWood
 	 */
 	private function plugin_classes() {
-		$this->admin = new CWV2_Admin( $this );
 		$this->settings = new CWV2_Settings( $this );
+		$this->admin    = new CWV2_Admin( $this );
 	}
 
 	/**
@@ -326,4 +339,5 @@ class ContentWarning_v2 {
 function content_warning_v2() {
 	return ContentWarning_v2::init();
 }
+
 add_action( 'plugins_loaded', array( content_warning_v2(), 'hooks' ) );
