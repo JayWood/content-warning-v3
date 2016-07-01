@@ -55,12 +55,13 @@ class CWV2_Admin {
 	 * Sets column data for the CWv3 column
 	 *
 	 * @since 3.6.3
+	 *
 	 * @param $col
 	 */
 	public function set_col_data( $col ) {
 		global $post;
 
-		$sw = get_option( 'cwv3_sitewide' );
+		$sw         = get_option( 'cwv3_sitewide' );
 		$is_enabled = ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) ) ? true : false;;
 		switch ( $col ) {
 			case 'cwv2':
@@ -75,6 +76,7 @@ class CWV2_Admin {
 	 * Adds columns to the post list table
 	 *
 	 * @since 3.6.3
+	 *
 	 * @param $cols
 	 *
 	 * @return array
@@ -114,6 +116,7 @@ class CWV2_Admin {
 	public function get_cwv3_post_types() {
 		$types = apply_filters( 'cwv3_post_types', array( 'post', 'page' ) );
 		$types = empty( $types ) ? array() : $types;
+
 		return ! is_array( $types ) ? array( $types ) : $types;
 	}
 
@@ -121,15 +124,21 @@ class CWV2_Admin {
 	 * Saves meta data
 	 *
 	 * @since 3.6.3
+	 *
 	 * @param int $post_id
+	 *
 	 * @return null
 	 */
 	public function cwv3_meta_save( $post_id ) {
 		$post_types = $this->get_cwv3_post_types();
 		// check isset before access (edit by @jgraup)
 		if ( isset( $_POST['post_type'] ) && in_array( $_POST['post_type'], $post_types ) ) {
-			if ( ! isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) ) { return; }
-			if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {	return;	}
+			if ( ! isset( $_POST['cwv3_meta'] ) || ! wp_verify_nonce( $_POST['cwv3_meta'], plugin_basename( __FILE__ ) ) ) {
+				return;
+			}
+			if ( ! current_user_can( 'edit_page', $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {
+				return;
+			}
 
 			// check isset before access (edit by @jgraup)
 			if ( isset( $_POST['cwv3_auth'] ) ) {
@@ -145,6 +154,7 @@ class CWV2_Admin {
 	/**
 	 * Render the meta box for CWv3
 	 * @since 3.6.3
+	 *
 	 * @param $post
 	 */
 	public function render_metabox( $post ) {
@@ -154,7 +164,8 @@ class CWV2_Admin {
 		$disabled   = isset( $site_wide[0] ) && 'enabled' == $site_wide[0] ? true : false;
 		?>
 
-		<label for="cwv3_auth"><input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><?php _e( 'Use authorization for this content', 'content-warning-v2' ); ?></label>
+		<label for="cwv3_auth"><input type="checkbox" id="cwv3_auth" name="cwv3_auth" <?php checked( 'yes', $meta_value, true ); ?> value="yes" <?php disabled( $disabled ); ?>/><?php _e( 'Use authorization for this content', 'content-warning-v2' ); ?>
+		</label>
 		<?php if ( $disabled ) : ?>
 			<p class="description"><?php _e( 'Cannot be changed while site wide option is enabled.', 'content-warning-v2' ); ?></p>
 		<?php endif;
