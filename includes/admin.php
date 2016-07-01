@@ -249,11 +249,153 @@ class CWV2_Admin {
 	 */
 	public function get_settings_config() {
 		return array(
-
 			array(
-
+				'id'     => 'general-settings',
+				'name'   => __( 'General Settings', 'content-warning-v2' ),
+				'group'  => 'default',
+				'fields' => array(
+					array(
+						'id'      => 'sitewide',
+						'name'    => 'Sitewide',
+						'desc'    => 'Takes priority over category, page, and post, home, and misc. pages/posts.',
+						'type'    => 'check',
+						'options' =>
+							array(
+								'enabled' => 'Enable',
+							),
+					),
+					array(
+						'id'      => 'homepage',
+						'name'    => 'Home Page',
+						'desc'    => 'Toggle the home page dialog, useful if you have not set a static page for your front-page in Settings -> Reading.',
+						'type'    => 'check',
+						'options' =>
+							array(
+								'enabled' => 'Enable',
+							),
+					),
+					array(
+						'id'      => 'misc',
+						'name'    => 'Misc. Pages',
+						'desc'    => 'Enable this to protect search, archive, and other such pages.',
+						'type'    => 'check',
+						'options' =>
+							array(
+								'enabled' => 'Enable',
+							),
+					),
+					array(
+						'id'   => 'death',
+						'name' => 'Cookie Life',
+						'desc' => 'Time in days for the cookie to expire',
+						'type' => 'number',
+					),
+					array(
+						'id'   => 'd_title',
+						'name' => 'Dialog Title',
+						'desc' => '',
+						'type' => 'text',
+					),
+					array(
+						'id'   => 'd_msg',
+						'name' => 'Dialog Message',
+						'desc' => 'A message shown to your visitor.',
+						'type' => 'editor',
+					),
+					array(
+						'id'   => 'exit_txt',
+						'name' => 'Exit Text',
+						'desc' => 'The text for the exit button.',
+						'type' => 'text',
+					),
+					array(
+						'id'   => 'exit_link',
+						'name' => 'Exit Link',
+						'desc' => 'The full URL a user should be directed to upon clicking the exit button.',
+						'type' => 'text',
+					),
+					array(
+						'id'   => 'enter_txt',
+						'name' => 'Enter Text',
+						'desc' => 'The text for the enter button.',
+						'type' => 'text',
+					),
+					array(
+						'id'   => 'enter_link',
+						'name' => 'Enter Link',
+						'desc' => 'The full URL a user should be directed to upon clicking the enter button.  Leave blank to just close the dialog.',
+						'type' => 'text',
+					),
+					array(
+						'id'      => 'denial',
+						'name'    => 'Toggle Denial Option',
+						'desc'    => '',
+						'type'    => 'check',
+						'options' =>
+							array(
+								'enabled' => 'Enable denial handling.',
+							),
+					),
+					array(
+						'id'      => 'method',
+						'name'    => 'Denial Handling Method',
+						'desc'    => '',
+						'type'    => 'radio',
+						'options' =>
+							array(
+								'redirect' => 'Redirect the user.',
+								'show'     => 'Show the denial dialog.',
+							),
+					),
+					array(
+						'id'   => 'den_title',
+						'name' => 'Dialog Title',
+						'desc' => '',
+						'type' => 'text',
+					),
+					array(
+						'id'   => 'den_msg',
+						'name' => 'Denial Message',
+						'desc' => '',
+						'type' => 'editor',
+					),
+					array(
+						'id'   => 'bg_image',
+						'name' => 'Background Image',
+						'desc' => 'If not empty, the dialog will use this instead of the background opacity and color.',
+						'type' => 'media',
+					),
+					array(
+						'id'   => 'bg_opacity',
+						'name' => 'Background Opacity',
+						'desc' => 'Input a float value from 0-1, the latter being completely opaque.',
+						'type' => 'number',
+					),
+					array(
+						'id'      => 'bg_color',
+						'name'    => 'Background Color',
+						'desc'    => 'The Overlay color.',
+						'type'    => 'color',
+						'options' =>
+							array(
+								'color' => '#000000',
+							),
+					),
+					array(
+						'id'   => 'css',
+						'name' => 'Custom CSS',
+						'desc' => 'For a completely custom look, just drop your css here.',
+						'type' => 'textbox',
+					),
+					array(
+						'id'      => 'cat_list',
+						'name'    => 'Category restrictions',
+						'desc'    => 'Select categories that you would like to restrict with the dialog.',
+						'type'    => 'check',
+						'options' => array(),
+					),
+				),
 			),
-
 		);
 	}
 }
