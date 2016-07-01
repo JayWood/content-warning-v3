@@ -8,6 +8,16 @@ class CWV2_Admin {
 	public $plugin;
 
 	/**
+	 * @var String
+	 */
+	public $options_page;
+
+	/**
+	 * @var String
+	 */
+	public $option_prefix = 'cwv3_';
+
+	/**
 	 * CWV2_Admin constructor.
 	 *
 	 * @param ContentWarning_v2 $plugin
@@ -43,6 +53,46 @@ class CWV2_Admin {
 		// Post column info
 		add_action( 'manage_posts_custom_column', array( $this, 'set_col_data' ) );
 		add_action( 'manage_pages_custom_column', array( $this, 'set_col_data' ) );
+
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
+	}
+
+	/**
+	 * Gets the settings config
+	 *
+	 * @author JayWood
+	 * @return array
+	 */
+	public function get_settings_config() {
+		return array();
+	}
+
+	/**
+	 * Adds the options menu.
+	 *
+	 * @author JayWood
+	 * @since 3.7
+	 */
+	public function admin_menu() {
+		$this->options_page = add_options_page( __( 'Content Warning Options', 'content-warning-v2' ), __( 'CWV2 Options', 'content-warning-v2' ), 'manage_options', array( $this, 'render_settings' ) );
+
+		// Setup sections etc...
+		foreach ( $this->get_settings_config() as $section ) {
+			add_settings_section( $section['id'], $section['name'], array( $this->plugin->settings, $section['group'] ), $this->options_page );
+			if ( isset( $section['fields'] ) ) {
+				foreach ( $section['fields'] as $option_data ) {
+					add_settings_field( $this->option_prefix . $option_data['id'], $option_data['name'], array( $this->plugin->settings, $option_data['type'] ), $this->options_page, $section['id'], array( 'id' => $this->option_prefix . $option_data['id'], 'name' => $this->option_prefix . $option_data['id'], 'desc' => $option_data['desc'] ) );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Renders the settings page.
+	 *
+	 * @author JayWood
+	 */
+	public function render_settings_page() {
 	}
 
 	/**
