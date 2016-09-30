@@ -86,12 +86,12 @@ class ContentWarning_v2 {
 
 		add_action( 'wp_footer', array( $this, 'render_dialog' ) );
 		add_action( 'wp_head', array( $this, 'override_css' ) );
+
 		if ( ! is_admin() ) {
 
 		}
 		$this->plugin_classes();
 	}
-
 
 	/**
 	 * Get Cookie Name

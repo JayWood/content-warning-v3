@@ -37,6 +37,9 @@ class CWV2_Admin {
 	 * @since 3.6.3
 	 */
 	function hooks() {
+
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+
 		// Post Meta Box for this.
 		add_action( 'add_meta_boxes', array( $this, 'setup_metabox' ) );
 		add_action( 'save_post', array( $this, 'cwv3_meta_save' ) );
@@ -57,6 +60,19 @@ class CWV2_Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+	}
+
+	/**
+	 * Back compat update
+	 *
+	 * @deprecated Will deprecate a few versions out.
+	 * @author JayWood
+	 */
+	public function admin_init() {
+		$color = get_option( 'cwv3_bg_color', '' );
+		if ( isset( $color['color'] ) ) {
+			update_option( 'cwv3_bg_color', $color['color'] );
+		}
 	}
 
 	/**
