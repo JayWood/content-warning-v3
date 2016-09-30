@@ -99,7 +99,7 @@ class CWV2_Settings {
 
 		$option_value = get_option( $field_id, $field_id, $default );
 
-		?><input type="text" name="<?php echo $field_id; ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo $field_id; ?>" /><?php
+		?><input type="text" name="<?php echo $field_id; ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo $field_id; ?>" class="regular-text" /><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php
@@ -136,7 +136,32 @@ class CWV2_Settings {
 	}
 
 	public function media( $args = array() ) {
+		$args = $this->get_default_args( $args );
 
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$options     = $args['options'];
+		$default     = $args['default'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		if ( ! empty( $option_value ) ) {
+			$option_value = esc_url( $option_value );
+		}
+
+		$label = isset( $options['label'] ) ? $options['label'] : __( 'Upload', 'content-warning-v2' );
+
+		?><fieldset>
+			<input type="text" name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" value="<?php echo $option_value; ?>" class="regular-text">
+			<input type="button" class="button button-secondary" value="<?php echo $label; ?>">
+		</fieldset><?php
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 
 	public function color( $args = array() ) {
