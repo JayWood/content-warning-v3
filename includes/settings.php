@@ -178,6 +178,31 @@ class CWV2_Settings {
 
 	public function textbox( $args = array() ) {
 
+		$args = $this->get_default_args( $args );
+
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? '' : $args['default'];
+		$options     = empty( $args['options'] ) ? array() : $args['options'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		$attributes = '';
+
+		if ( ! empty( $options ) ) {
+			foreach ( $options as $k => $v ) {
+				$attributes .= $k . '="' . $v . '"';
+			}
+		}
+
+		?><textarea name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" class="regular-text" <?php echo $attributes; ?>><?php echo esc_attr( $option_value ); ?></textarea><?php
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 
 	public function editor( $args = array() ) {
