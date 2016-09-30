@@ -59,6 +59,13 @@ class CWV2_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 	}
 
+	/**
+	 * Enqueues up the adminisrator scripts/styles
+	 *
+	 * @param string $hook
+	 *
+	 * @author JayWood
+	 */
 	public function enqueue_admin_script( $hook ) {
 		if ( $this->options_page !== $hook ) {
 			return;
