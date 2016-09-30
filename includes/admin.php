@@ -71,6 +71,10 @@ class CWV2_Admin {
 			return;
 		}
 
+		if ( function_exists( 'wp_enqueue_media' ) ) {
+			wp_enqueue_media();
+		}
+
 		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'jquery' ), $this->plugin->version, true );
 	}
 
