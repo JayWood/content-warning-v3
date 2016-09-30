@@ -71,7 +71,7 @@ class CWV2_Admin {
 			return;
 		}
 
-		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( 'js/admin.js' ), array( 'jquery' ), $this->plugin->version, true );
+		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'jquery' ), $this->plugin->version, true );
 	}
 
 	/**
