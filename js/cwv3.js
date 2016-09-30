@@ -7,6 +7,7 @@ window.cwv3 = ( function( window, document, $ ){
 	var app = {};
 
 	app.cache = function(){
+		app.$body        = $( 'body' );
 		app.$dialog 	 = $('.cwv3_dialog');
 		app.$content     = app.$dialog.find( '.cwv3_content' );
 		app.$auth   	 = app.$dialog.find( '.cwv3.auth' );
@@ -30,8 +31,8 @@ window.cwv3 = ( function( window, document, $ ){
 		app.cache();
 
 		// Register handlers
-		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
-		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
+		app.$body.on( 'click', '.cwv3_enter', app.enter_handler );
+		app.$body.on( 'click', '.cwv3_exit', app.exit_handler );
 
 		// Don't resize EVERY time, set it to an interval of half a second
 		$( window ).resize( function(){
