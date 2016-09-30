@@ -1,11 +1,8 @@
 <?php
 
 class CWV2_Settings {
-	// Stuff
 
-	public function def_group() {
-
-	}
+	public function def_group() {}
 
 	/**
 	 * Just gets a default set of arguments to make sure they're always set.
@@ -73,13 +70,22 @@ class CWV2_Settings {
 		$field_id    = $args['id'];
 		$description = $args['desc'];
 		$default     = empty( $args['default'] ) ? array() : $args['default'];
+		$options     = empty( $args['options'] ) ? array() : $args['options'];
 		if ( empty( $field_id ) ) {
 			return;
 		}
 
 		$option_value = get_option( $field_id, $field_id, $default );
 
-		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo intval( $option_value ); ?>" id="<?php echo $field_id; ?>" /><?php
+		$attributes = '';
+
+		if ( ! empty( $options ) ) {
+			foreach ( $options as $k => $v ) {
+				$attributes .= $k . '="' . $v . '"';
+			}
+		}
+
+		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo intval( $option_value ); ?>" id="<?php echo $field_id; ?>" <?php echo $attributes; ?>/><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php

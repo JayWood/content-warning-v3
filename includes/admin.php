@@ -417,6 +417,11 @@ class CWV2_Admin {
 						'name' => __( 'Background Opacity', 'content-warning-v2' ),
 						'desc' => __( 'Input a float value from 0-1, the latter being completely opaque.', 'content-warning-v2' ),
 						'type' => 'number',
+						'options' => array(
+							'step' => 0.1,
+							'max'  => 1,
+							'min'  => 0,
+						),
 					),
 					array(
 						'id'      => 'bg_color',
