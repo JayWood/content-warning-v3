@@ -14,25 +14,52 @@ window.cwv2Admin = {};
 	app.cache = function() {
 		app.$c = {
 			window: $(window),
-			// fooSelector: $( '.foo' ),
+			imgUploadBtn: $( '.upload_image_button' ),
 		};
 	};
 
 	// Combine all events
 	app.bindEvents = function() {
-		// app.$c.window.on( 'load', app.doFoo );
+		app.$c.imgUploadBtn.on( 'click', app.handleImageUploader );
 	};
 
 	// Do we meet the requirements?
 	app.meetsRequirements = function() {
-		// Basically check
-		// return app.$c.fooSelector.length;
+		return app.$c.imgUploadBtn.length;
 	};
 
-	// Some function
-	// app.doFoo = function() {
-		// do stuff
-	// };
+	/**
+	 * Handles Media Uploads
+	 *
+	 * @returns {boolean}
+	 */
+	app.handleImageUploader = function() {
+		var btnObj = $( this );
+
+		window.uploadID = btnObj.data( 'target-id' );
+		if ( window.file_frame ) {
+			window.file_frame.open();
+			return true;
+		}
+
+		window.file_frame = wp.media.frames.file_frame = wp.media( {
+			title: btnObj.data( 'uploader-title' ),
+			button: {
+				text: btnObj.data( 'uploader-btn-txt' )
+			},
+			multiple: false,
+		} );
+
+		window.file_frame.on( 'select', function() {
+			var attachment = window.file_frame.state().get( 'selection' ).first().toJSON();
+			$( '#' + window.uploadID ).val( attachment.url );
+
+			window.console.log( attachment );
+
+		});
+
+		window.file_frame.open();
+	};
 
 	// Engage
 	$( app.init );
