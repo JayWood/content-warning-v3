@@ -290,6 +290,8 @@ class ContentWarning_v2 {
 	 */
 	public function register_frontend_data() {
 
+		load_plugin_textdomain( 'content-warning-v2', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+
 		// Jquery Cookie
 		wp_register_script( 'jquery_cookie', $this->url( "js/jquery_cookie{$this->min}.js" ), array( 'jquery' ), '1.4.1', true );
 
