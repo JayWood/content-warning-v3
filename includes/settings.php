@@ -125,7 +125,7 @@ class CWV2_Settings {
 			}
 		}
 
-		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo intval( $option_value ); ?>" id="<?php echo $field_id; ?>" <?php echo $attributes; ?>/><?php
+		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo $option_value; ?>" id="<?php echo $field_id; ?>" <?php echo $attributes; ?>/><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php

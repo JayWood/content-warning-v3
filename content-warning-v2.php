@@ -289,14 +289,13 @@ class ContentWarning_v2 {
 	 * @return null
 	 */
 	public function register_frontend_data() {
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Jquery Cookie
-		wp_register_script( 'jquery_cookie', plugins_url( "js/jquery_cookie{$min}.js", dirname( __FILE__ ) ), array( 'jquery' ), '1.4.1', true );
+		wp_register_script( 'jquery_cookie', $this->url( "js/jquery_cookie{$this->min}.js" ), array( 'jquery' ), '1.4.1', true );
 
 		// Main data
-		wp_register_script( 'cwv3_js', plugins_url( "js/cwv3{$min}.js", dirname( __FILE__ ) ), array( 'jquery_cookie' ), '3.6.0', true );
-		wp_register_style( 'cwv3_css', plugins_url( "css/cwv3{$min}.css", dirname( __FILE__ ) ), '', '1.0' );
+		wp_register_script( 'cwv3_js', $this->url( "js/cwv3{$this->min}.js" ), array( 'jquery_cookie' ), '3.6.0', true );
+		wp_register_style( 'cwv3_css', $this->url( "css/cwv3{$this->min}.css" ), '', '1.0' );
 	}
 
 	/**
