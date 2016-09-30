@@ -27,11 +27,13 @@ class CWV2_Settings {
 	}
 
 	private function checked_array( $haystack, $cur, $show = true ) {
-		if ( is_array( $haystack ) && in_array( $cur, $haystack ) ) {
-			$cur = $haystack = 1;
-		}
-		if ( is_array( $haystack ) ) { //if $haystack is still an array, take first value
-			$haystack = array_shift( $haystack );
+		if ( is_array( $haystack ) ) {
+			if ( in_array( $cur, $haystack ) ) {
+				$cur = $haystack = 1;
+			} else {
+				$cur = 0;
+				$haystack = 1;
+			}
 		}
 
 		return checked( $haystack, $cur, $show );
