@@ -279,7 +279,7 @@ class CWV2_Settings {
 	 *
 	 * @author JayWood
 	 */
-	public function select2( $args = array() ) {
+	public function select2_multi( $args = array() ) {
 		$args = $this->get_default_args( $args );
 
 		$field_id    = $args['id'];
@@ -293,15 +293,15 @@ class CWV2_Settings {
 		$option_value = get_option( $field_id, $field_id, $default );
 
 		?>
-		<select name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" class="cwv2_select2">
+		<select name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" class="cwv2_select2" multiple="multiple">
 			<?php foreach ( $options as $k => $v ) : ?>
 				<option value="<?php echo $k; ?>" <?php $this->selected_array( $option_value, $k ); ?>><?php echo $v; ?></option>
 			<?php endforeach; ?>
 		</select>
 		<?php
 
-
-
-
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 }

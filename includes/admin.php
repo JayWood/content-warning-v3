@@ -447,7 +447,7 @@ class CWV2_Admin {
 						'id'      => 'cat_list',
 						'name'    => __( 'Category restrictions', 'content-warning-v2' ),
 						'desc'    => __( 'Select categories that you would like to restrict with the dialog.', 'content-warning-v2' ),
-						'type'    => 'select2',
+						'type'    => 'select2_multi',
 						'options' => $this->get_cat_list()
 					),
 				),
