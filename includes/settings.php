@@ -208,4 +208,8 @@ class CWV2_Settings {
 	public function editor( $args = array() ) {
 
 	}
+
+	public function select( $args = array() ) {
+		
+	}
 }
