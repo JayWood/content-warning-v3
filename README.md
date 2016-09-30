@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
 **Current Version:** 3.7   
-**Tested Up To:** 4.5.2  
+**Tested Up To:** 4.6.1  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
 **License:** GPLv2+   
@@ -68,6 +68,11 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * If your browser does not have cookies enabled, the plugin will not store your response.
 * Also, if you're using google chrome, this is a bug that unfortunately I have been unable to squash.  Hitting F5 or refresh will fix it.
 
+## Upgrade Notice
+
+### 3.7
+* Upgrading to 3.7 will de-activate your plugin. This is because the name of the main plugin file was changed for localization purposes. Your settings are still saved you just have to re-activate the plugin.
+
 ## Changelog
 
 ### 3.7
@@ -90,7 +95,6 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Fixed plugin homepage link [#31](https://github.com/JayWood/content-warning-v3/issues/31)
 * Removed uninstall hook for now - Options API needs to be updated
 * Fixed denial toggle to actually remove denial text if it was once on, but now off.
-
 
 ### 3.6.6
 * Fixed CSS issues for background images and css overrides6

@@ -3,7 +3,7 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 4.5.2
+Tested up to: 4.6.1
 Stable tag: 3.7
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
@@ -37,6 +37,12 @@ This plugin allows you to do the following:
 *NOTE:*
 
 > If the exit link is left empty, users will be redirected to google.
+
+== Upgrade Notice ==
+
+= 3.7 =
+* Upgrading to 3.7 will de-activate your plugin. This is because the name of the main plugin file was changed for localization purposes. Your settings are still saved you just have to re-activate the plugin.
+
 
 == Installation ==
 
@@ -98,6 +104,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.7 =
+* Fixed an opacity bug where if user set opacity to 0, it was ignored. This should no longer happen.
+* Move to the settings API, drop JW Simple Options framework ( I was a newbie when I made it ). Fixes [#45](https://github.com/JayWood/content-warning-v3/issues/45)
+* Use Select2 for categories
+* Use a better check method for checkboxes and multi-select - fixes [#49](https://github.com/JayWood/content-warning-v3/issues/49)
+* Set opacity step to 0.1 - Fixes [#55](https://github.com/JayWood/content-warning-v3/issues/55)
 
 = 3.6.9 =
 * Small cleanup
