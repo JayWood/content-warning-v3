@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Content Warning v2 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Content Warning v2 3.6.8\n"
+"Project-Id-Version: Content Warning v2 3.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/content-warning-"
 "v2\n"
-"POT-Creation-Date: 2016-04-21 02:41:27+00:00\n"
+"POT-Creation-Date: 2016-09-30 20:24:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,41 +13,213 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: class/admin.class.php:82
+#: includes/admin.php:123
+msgid "Content Warning Options"
+msgstr ""
+
+#: includes/admin.php:123
+msgid "CWV2 Options"
+msgstr ""
+
+#: includes/admin.php:159
+msgid "Content Warning v2 Settings"
+msgstr ""
+
+#: includes/admin.php:235
 msgid "CWV3 Security"
 msgstr ""
 
-#: class/admin.class.php:140
+#: includes/admin.php:309
 msgid "Use authorization for this content"
 msgstr ""
 
-#: class/admin.class.php:142
+#: includes/admin.php:312
 msgid "Cannot be changed while site wide option is enabled."
 msgstr ""
 
-#: inc/api.php:69
+#: includes/admin.php:326
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin.php:331
+msgid "Sitewide"
+msgstr ""
+
+#: includes/admin.php:332
+msgid ""
+"Takes priority over category, page, and post, home, and misc. pages/posts."
+msgstr ""
+
+#: includes/admin.php:341
+msgid "Home Page"
+msgstr ""
+
+#: includes/admin.php:342
+msgid ""
+"Toggle the home page dialog, useful if you have not set a static page for "
+"your front-page in Settings -> Reading."
+msgstr ""
+
+#: includes/admin.php:351
+msgid "Misc. Pages"
+msgstr ""
+
+#: includes/admin.php:352
+msgid "Enable this to protect search, archive, and other such pages."
+msgstr ""
+
+#: includes/admin.php:361
+msgid "Cookie Life"
+msgstr ""
+
+#: includes/admin.php:362
+msgid "Time in days for the cookie to expire"
+msgstr ""
+
+#: includes/admin.php:369
+msgid "Dialog Settings"
+msgstr ""
+
+#: includes/admin.php:374 includes/admin.php:437
+msgid "Dialog Title"
+msgstr ""
+
+#: includes/admin.php:380
+msgid "Dialog Message"
+msgstr ""
+
+#: includes/admin.php:381
+msgid "A message shown to your visitor."
+msgstr ""
+
+#: includes/admin.php:392
+msgid "Exit Text"
+msgstr ""
+
+#: includes/admin.php:393
+msgid "The text for the exit button."
+msgstr ""
+
+#: includes/admin.php:398
+msgid "Exit Link"
+msgstr ""
+
+#: includes/admin.php:399
+msgid ""
+"The full URL a user should be directed to upon clicking the exit button."
+msgstr ""
+
+#: includes/admin.php:404
+msgid "Enter Text"
+msgstr ""
+
+#: includes/admin.php:405
+msgid "The text for the enter button."
+msgstr ""
+
+#: includes/admin.php:410
+msgid "Enter Link"
+msgstr ""
+
+#: includes/admin.php:411
+msgid ""
+"The full URL a user should be directed to upon clicking the enter button.  "
+"Leave blank to just close the dialog."
+msgstr ""
+
+#: includes/admin.php:416
+msgid "Toggle Denial Option"
+msgstr ""
+
+#: includes/admin.php:426
+msgid "Denial Handling Method"
+msgstr ""
+
+#: includes/admin.php:431
+msgid "Redirect the user."
+msgstr ""
+
+#: includes/admin.php:432
+msgid "Show the denial dialog."
+msgstr ""
+
+#: includes/admin.php:443
+msgid "Denial Message"
+msgstr ""
+
+#: includes/admin.php:452
+msgid "Background Image"
+msgstr ""
+
+#: includes/admin.php:453
+msgid ""
+"If not empty, the dialog will use this instead of the background opacity and "
+"color."
+msgstr ""
+
+#: includes/admin.php:456
+msgid "Content Warning Background Image"
+msgstr ""
+
+#: includes/admin.php:457
+msgid "Select Background Image"
+msgstr ""
+
+#: includes/admin.php:462
+msgid "Background Opacity"
+msgstr ""
+
+#: includes/admin.php:463
+msgid "Input a float value from 0-1, the latter being completely opaque."
+msgstr ""
+
+#: includes/admin.php:473
+msgid "Background Color"
+msgstr ""
+
+#: includes/admin.php:474
+msgid "The Overlay color."
+msgstr ""
+
+#: includes/admin.php:483
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/admin.php:484
+msgid "For a completely custom look, just drop your css here."
+msgstr ""
+
+#: includes/admin.php:493
+msgid "Category restrictions"
+msgstr ""
+
+#: includes/admin.php:494
+msgid "Select categories that you would like to restrict with the dialog."
+msgstr ""
+
+#: includes/api.php:69
 msgid "Exit"
 msgstr ""
 
-#: inc/api.php:70
+#: includes/api.php:70
 msgid "Enter"
 msgstr ""
 
-#: inc/api.php:72
+#: includes/api.php:72
 msgid "Access Denied"
 msgstr ""
 
-#: inc/api.php:73 inc/options.inc.php:123
+#: includes/api.php:73
 msgid ""
 "You have been denied access to this content.  If you feel this is in error, "
 "please contact a site administrator."
 msgstr ""
 
-#: inc/api.php:75
+#: includes/api.php:75
 msgid "Warning: Explicit Content"
 msgstr ""
 
-#: inc/api.php:76
+#: includes/api.php:76
 msgid ""
 "The content you are about to view may be considered offensive and/or "
 "inappropriate.  Furthermore, this content may be considered adult content, "
@@ -55,140 +227,8 @@ msgid ""
 "click the exit button."
 msgstr ""
 
-#: inc/options.inc.php:19
-msgid "Sitewide"
-msgstr ""
-
-#: inc/options.inc.php:21
-msgid ""
-"Takes priority over category, page, and post, home, and misc. pages/posts."
-msgstr ""
-
-#: inc/options.inc.php:28
-msgid "Home Page"
-msgstr ""
-
-#: inc/options.inc.php:30
-msgid ""
-"Toggle the home page dialog, useful if you have not set a static page for "
-"your front-page in Settings -> Reading."
-msgstr ""
-
-#: inc/options.inc.php:38
-msgid "Misc. Pages"
-msgstr ""
-
-#: inc/options.inc.php:40
-msgid "Enable this to protect search, archive, and other such pages."
-msgstr ""
-
-#: inc/options.inc.php:50
-msgid "Cookie Life"
-msgstr ""
-
-#: inc/options.inc.php:51
-msgid "Time in days for the cookie to expire"
-msgstr ""
-
-#: inc/options.inc.php:57 inc/options.inc.php:114
-msgid "Dialog Title"
-msgstr ""
-
-#: inc/options.inc.php:63
-msgid "Dialog Message"
-msgstr ""
-
-#: inc/options.inc.php:65
-msgid "A message shown to your visitor."
-msgstr ""
-
-#: inc/options.inc.php:73
-msgid "Exit Text"
-msgstr ""
-
-#: inc/options.inc.php:75
-msgid "The text for the exit button."
-msgstr ""
-
-#: inc/options.inc.php:79
-msgid "Exit Link"
-msgstr ""
-
-#: inc/options.inc.php:81
-msgid ""
-"The full URL a user should be directed to upon clicking the exit button."
-msgstr ""
-
-#: inc/options.inc.php:85
-msgid "Enter Text"
-msgstr ""
-
-#: inc/options.inc.php:87
-msgid "The text for the enter button."
-msgstr ""
-
-#: inc/options.inc.php:91
-msgid "Enter Link"
-msgstr ""
-
-#: inc/options.inc.php:93
-msgid ""
-"The full URL a user should be directed to upon clicking the enter button.  "
-"Leave blank to just close the dialog."
-msgstr ""
-
-#: inc/options.inc.php:98
-msgid "Toggle Denial Option"
-msgstr ""
-
-#: inc/options.inc.php:104
-msgid "Denial Handling Method"
-msgstr ""
-
-#: inc/options.inc.php:120
-msgid "Denial Message"
-msgstr ""
-
-#: inc/options.inc.php:132
-msgid "Background Image"
-msgstr ""
-
-#: inc/options.inc.php:133
-msgid ""
-"If not empty, the dialog will use this instead of the background opacity and "
-"color."
-msgstr ""
-
-#: inc/options.inc.php:137
-msgid "Background Opacity"
-msgstr ""
-
-#: inc/options.inc.php:138
-msgid "Input a float value from 0-1, the latter being completely opaque."
-msgstr ""
-
-#: inc/options.inc.php:144
-msgid "Background Color"
-msgstr ""
-
-#: inc/options.inc.php:145
-msgid "The Overlay color."
-msgstr ""
-
-#: inc/options.inc.php:150
-msgid "Custom CSS"
-msgstr ""
-
-#: inc/options.inc.php:151
-msgid "For a completely custom look, just drop your css here."
-msgstr ""
-
-#: inc/options.inc.php:156
-msgid "Category restrictions"
-msgstr ""
-
-#: inc/options.inc.php:157
-msgid "Select categories that you would like to restrict with the dialog."
+#: includes/settings.php:216
+msgid "Upload"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
