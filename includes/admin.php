@@ -73,6 +73,13 @@ class CWV2_Admin {
 		if ( isset( $color['color'] ) ) {
 			update_option( 'cwv3_bg_color', $color['color'] );
 		}
+
+		foreach ( $this->get_settings_config() as $section ) {
+			foreach ( $section['fields'] as $option_data ) {
+				// Register settings
+				register_setting( 'cwv2-options', $this->option_prefix . $option_data['id'] );
+			}
+		}
 	}
 
 	/**
@@ -120,9 +127,6 @@ class CWV2_Admin {
 			add_settings_section( $section['id'], $section['name'], array( $this->plugin->settings, $section['group'] ), $this->options_page );
 			if ( isset( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $option_data ) {
-
-					// Register settings
-					register_setting( 'cwv2-options', $option_data['id'] );
 
 					add_settings_field(
 						$this->option_prefix . $option_data['id'],
