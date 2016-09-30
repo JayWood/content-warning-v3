@@ -120,6 +120,10 @@ class CWV2_Admin {
 			add_settings_section( $section['id'], $section['name'], array( $this->plugin->settings, $section['group'] ), $this->options_page );
 			if ( isset( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $option_data ) {
+
+					// Register settings
+					register_setting( 'cwv2-options', $option_data['id'] );
+
 					add_settings_field(
 						$this->option_prefix . $option_data['id'],
 						$option_data['name'],
@@ -151,7 +155,7 @@ class CWV2_Admin {
 		<h2><?php _e( 'Content Warning v2 Settings', 'minecraft-suite' ); ?></h2>
 		<form method="post" action="options.php">
 			<?php
-			settings_fields( $this->option_prefix . 'options_group' );
+			settings_fields( 'cwv2-options' );
 			do_settings_sections( $this->options_page );
 			submit_button();
 			?>
