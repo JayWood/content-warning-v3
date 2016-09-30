@@ -32,13 +32,21 @@ class CWV2_Settings {
 		$field_id    = $args['id'];
 		$description = $args['desc'];
 		$options     = $args['options'];
-		if ( ! $options ) {
+		if ( ! $options || empty( $field_id ) ) {
 			return;
 		}
 
 		?><fieldset><?php
+		$offset = 0;
 		foreach ( $options as $id => $label ) {
+			$cur_id = $id . '-' . $offset;
+			$offset++;
 
+			?>
+			<label for="<?php echo $cur_id; ?>">
+				<input id="<?php echo $cur_id; ?>" type="checkbox" value="<?php echo $id; ?>" name="<?php echo $field_id; ?>[]" /><?php echo $label; ?>
+			</label>
+			<?php
 		}
 		?></fieldset><?php
 	}
