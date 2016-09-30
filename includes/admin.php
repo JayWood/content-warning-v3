@@ -81,9 +81,10 @@ class CWV2_Admin {
 						$this->options_page,
 						$section['id'],
 						array(
-							'id'   => $this->option_prefix . $option_data['id'],
-							'name' => $this->option_prefix . $option_data['id'],
-							'desc' => $option_data['desc']
+							'id'      => $this->option_prefix . $option_data['id'],
+							'name'    => $this->option_prefix . $option_data['id'],
+							'desc'    => $option_data['desc'],
+							'options' => isset( $option_data['options'] ) ? $option_data['options'] : false,
 						)
 					);
 				}
@@ -307,9 +308,9 @@ class CWV2_Admin {
 				),
 			),
 			array(
-				'id' => 'entry-settings',
-				'name' => __( 'Dialog Settings', 'content-warning-v2' ),
-				'group' => 'def_group',
+				'id'     => 'entry-settings',
+				'name'   => __( 'Dialog Settings', 'content-warning-v2' ),
+				'group'  => 'def_group',
 				'fields' => array(
 					array(
 						'id'   => 'd_title',
