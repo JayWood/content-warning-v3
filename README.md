@@ -70,6 +70,12 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.7
+* Move to the settings API, drop JW Simple Options framework ( I was a newbie when I made it ). Fixes [#45](https://github.com/JayWood/content-warning-v3/issues/45)
+* Use Select2 for categories
+* Use a better check method for checkboxes and multi-select - fixes [#49](https://github.com/JayWood/content-warning-v3/issues/49)
+* Set opacity step to 0.1 - Fixes [#55](https://github.com/JayWood/content-warning-v3/issues/55)
+
 ### 3.6.9
 * Small cleanup
 * Force text color to be black - fixes [#43](https://github.com/JayWood/content-warning-v3/issues/43)
