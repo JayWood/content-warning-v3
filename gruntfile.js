@@ -106,5 +106,6 @@ module.exports = function ( grunt ){
 
 	// Default task
 	grunt.registerTask('default', ['jshint', 'sass', 'uglify', 'cssmin']);
+	grunt.registerTask( 'scripts', ['jshint','uglify'] );
 	grunt.registerTask('sync', ['rsync']);
 };
