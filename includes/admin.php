@@ -438,6 +438,10 @@ class CWV2_Admin {
 						'name' => __( 'Custom CSS', 'content-warning-v2' ),
 						'desc' => __( 'For a completely custom look, just drop your css here.', 'content-warning-v2' ),
 						'type' => 'textbox',
+						'options' => array(
+							'rows' => 10,
+							'cols' => 100,
+						),
 					),
 					array(
 						'id'      => 'cat_list',
