@@ -10,25 +10,7 @@ Text Domain:    content-warning-v2
 Domain Path:    /lang
 */
 
-//require_once dirname( __FILE__ ) . '/inc/api.php';
-//
-//if ( is_admin() ) {
-//	require_once dirname( __FILE__ ) . '/inc/options.inc.php';
-//	if ( ! class_exists( 'JW_SIMPLE_OPTIONS' ) ) {
-//		require_once dirname( __FILE__ ) . '/lib/jw_simple_options/simple_options.php';
-//	}
-//	require_once dirname( __FILE__ ) . '/class/admin.class.php';
-//
-//	$cwv3_options = new JW_SIMPLE_OPTIONS( $cwv3_op_data );
-////	register_uninstall_hook( __FILE__, array( $cwv3_options, 'uninstall' ) );
-//} else {
-//	require_once dirname( __FILE__ ) . '/class/main.class.php';
-//}
-//
-//add_action( 'plugins_loaded', 'jw_cwv3_load_text_domain' );
-//function jw_cwv3_load_text_domain() {
-//	load_plugin_textdomain( 'content-warning-v2', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-//}
+require_once 'includes/api.php';
 
 function cwv2_autoload_classes( $class_name ) {
 	if ( 0 != strpos( $class_name, 'CWV2_' ) ) {
@@ -48,6 +30,13 @@ function cwv2_autoload_classes( $class_name ) {
 
 spl_autoload_register( 'cwv2_autoload_classes' );
 
+/**
+ * Class ContentWarning_v2
+ *
+ * @property string $version The current plugin version
+ *
+ * @author JayWood
+ */
 class ContentWarning_v2 {
 
 	/**
@@ -55,6 +44,8 @@ class ContentWarning_v2 {
 	 * @var ContentWarning_v2
 	 */
 	public static $instance = null;
+
+	const VERSION = '3.7';
 
 	/**
 	 * @var CWV2_Admin
@@ -85,7 +76,9 @@ class ContentWarning_v2 {
 
 		add_action( 'wp_footer', array( $this, 'render_dialog' ) );
 		add_action( 'wp_head', array( $this, 'override_css' ) );
+		if ( ! is_admin() ) {
 
+		}
 		$this->plugin_classes();
 	}
 
@@ -273,7 +266,9 @@ class ContentWarning_v2 {
 	 * @see   cwv3_the_css()
 	 */
 	public function override_css() {
-		cwv3_the_css();
+		if ( ! is_admin() ) {
+			cwv3_the_css();
+		}
 	}
 
 	/**
@@ -365,6 +360,14 @@ class ContentWarning_v2 {
 		}
 
 		return false;
+	}
+
+	public function __get( $field ) {
+		if ( $field == 'version' ) {
+			return self::VERSION;
+		}
+
+		return $this->$field;
 	}
 }
 
