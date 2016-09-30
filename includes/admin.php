@@ -75,7 +75,10 @@ class CWV2_Admin {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'jquery' ), $this->plugin->version, true );
+		wp_enqueue_style( 'select2', $this->plugin->url( "lib/select2-4.0.3/css/select2{$this->plugin->min}.css" ), false, '4.0.3' );
+		wp_enqueue_script( 'select2', $this->plugin->url( "lib/select2-4.0.3/js/select2{$this->plugin->min}.js" ), array( 'jquery' ), '4.0.3', true );
+
+		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'select2' ), $this->plugin->version, true );
 	}
 
 	/**

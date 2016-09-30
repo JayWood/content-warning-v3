@@ -15,17 +15,23 @@ window.cwv2Admin = {};
 		app.$c = {
 			window: $(window),
 			imgUploadBtn: $( '.upload_image_button' ),
+			select2Objects: $( '.cwv2_select2' ),
 		};
 	};
 
 	// Combine all events
 	app.bindEvents = function() {
 		app.$c.imgUploadBtn.on( 'click', app.handleImageUploader );
+		app.$c.window.on( 'load', app.windowLoad );
+	};
+
+	app.windowLoad = function() {
+		app.$c.select2Objects.select2();
 	};
 
 	// Do we meet the requirements?
 	app.meetsRequirements = function() {
-		return app.$c.imgUploadBtn.length;
+		return app.$c.imgUploadBtn.length && app.$c.select2Objects.length;
 	};
 
 	/**
