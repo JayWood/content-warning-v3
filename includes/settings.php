@@ -153,10 +153,12 @@ class CWV2_Settings {
 		}
 
 		$label = isset( $options['label'] ) ? $options['label'] : __( 'Upload', 'content-warning-v2' );
+		$uploader_title = isset( $options['uploader-title'] ) ? sprintf( 'data-uploader-title="%s"', $options['uploader-title'] ) : '';
+		$uploader_button = isset( $options['uploader-btn'] ) ? sprintf( 'data-uploader-btn-txt="%s"', $options['uploader-btn'] ) : '';
 
 		?><fieldset>
 			<input type="text" name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" value="<?php echo $option_value; ?>" class="regular-text" />
-			<input type="button" class="button button-secondary upload_image_button" value="<?php echo $label; ?>" data-target-id="<?php echo $field_id; ?>" />
+			<input type="button" class="button button-secondary upload_image_button" value="<?php echo $label; ?>" data-target-id="<?php echo $field_id; ?>" <?php echo $uploader_button; ?> <?php echo $uploader_title; ?> />
 		</fieldset><?php
 
 		if ( ! empty( $description ) ) {

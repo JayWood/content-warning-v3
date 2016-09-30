@@ -403,10 +403,14 @@ class CWV2_Admin {
 						'type' => 'editor',
 					),
 					array(
-						'id'   => 'bg_image',
-						'name' => __( 'Background Image', 'content-warning-v2' ),
-						'desc' => __( 'If not empty, the dialog will use this instead of the background opacity and color.', 'content-warning-v2' ),
-						'type' => 'media',
+						'id'      => 'bg_image',
+						'name'    => __( 'Background Image', 'content-warning-v2' ),
+						'desc'    => __( 'If not empty, the dialog will use this instead of the background opacity and color.', 'content-warning-v2' ),
+						'type'    => 'media',
+						'options' => array(
+							'uploader-title' => __( 'Content Warning Background Image', 'content-warning-v2' ),
+							'uploader-btn'   => __( 'Select Background Image', 'content-warning-v2' ),
+						),
 					),
 					array(
 						'id'   => 'bg_opacity',
