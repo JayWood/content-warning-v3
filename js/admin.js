@@ -16,6 +16,7 @@ window.cwv2Admin = {};
 			window: $(window),
 			imgUploadBtn: $( '.upload_image_button' ),
 			select2Objects: $( '.cwv2_select2' ),
+			colorSelectors: $( '.color_select' ),
 		};
 	};
 
@@ -27,6 +28,7 @@ window.cwv2Admin = {};
 
 	app.windowLoad = function() {
 		app.$c.select2Objects.select2();
+		app.$c.colorSelectors.spectrum();
 	};
 
 	// Do we meet the requirements?
