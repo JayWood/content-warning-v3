@@ -75,10 +75,19 @@ class CWV2_Admin {
 			wp_enqueue_media();
 		}
 
+		/**
+		 * Select 2
+		 */
 		wp_enqueue_style( 'select2', $this->plugin->url( "lib/select2-4.0.3/css/select2{$this->plugin->min}.css" ), false, '4.0.3' );
 		wp_enqueue_script( 'select2', $this->plugin->url( "lib/select2-4.0.3/js/select2{$this->plugin->min}.js" ), array( 'jquery' ), '4.0.3', true );
 
-		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'select2' ), $this->plugin->version, true );
+		/**
+		 * Spectrum Color Picker
+		 */
+		wp_enqueue_script( 'spectrum', $this->plugin->url( "lib/spectrum-1.0.9/spectrum.js" ), array( 'jquery' ), '1.0.9', true );
+		wp_enqueue_style( 'spectrum', $this->plugin->url( "lib/spectrum-1.0.9/spectrum.css" ), false, '1.0.9' );
+
+		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'select2', 'spectrum' ), $this->plugin->version, true );
 	}
 
 	/**
