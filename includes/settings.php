@@ -28,7 +28,7 @@ class CWV2_Settings {
 
 	private function checked_array( $haystack, $cur, $show = true ) {
 		if ( is_array( $haystack ) ) {
-			if ( in_array( $cur, $haystack ) ) {
+			if ( ! empty( $cur ) && in_array( $cur, $haystack ) ) {
 				$cur = $haystack = 1;
 			} else {
 				$cur = 0;
@@ -45,7 +45,7 @@ class CWV2_Settings {
 		$field_id    = $args['id'];
 		$description = $args['desc'];
 		$options     = $args['options'];
-		$default     = empty( $args['default'] );
+		$default     = empty( $args['default'] ) ? array() : $args['default'];
 		if ( ! $options || empty( $field_id ) ) {
 			return;
 		}
@@ -63,6 +63,9 @@ class CWV2_Settings {
 				<input id="<?php echo $cur_id; ?>" type="checkbox" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label>
 			<?php
+			if ( ! empty( $description ) ) {
+				?><p class="description"><?php echo $description; ?></p><?php
+			}
 
 		}
 		?></fieldset><?php
