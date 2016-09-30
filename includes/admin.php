@@ -55,6 +55,16 @@ class CWV2_Admin {
 		add_action( 'manage_pages_custom_column', array( $this, 'set_col_data' ) );
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+	}
+
+	public function enqueue_admin_script( $hook ) {
+		if ( $this->options_page !== $hook ) {
+			return;
+		}
+
+		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( 'assets/admin.js' ), array( 'jquery' ), $this->plugin->version, true );
 	}
 
 	/**
