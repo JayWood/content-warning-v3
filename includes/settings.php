@@ -233,7 +233,32 @@ class CWV2_Settings {
 	 * @author JayWood
 	 */
 	public function color( $args = array() ) {
+		$args = $this->get_default_args( $args );
 
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? '' : $args['default'];
+		$options     = empty( $args['options'] ) ? array() : $args['options'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+		error_log( print_r( $option_value, 1 ) );
+
+		$attributes = '';
+
+		if ( ! empty( $options ) ) {
+			foreach ( $options as $k => $v ) {
+				$attributes .= $k . '="' . $v . '"';
+			}
+		}
+
+		?><input type="text" name="<?php echo $field_id; ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo $field_id; ?>" class="regular-text color_select" <?php echo $attributes; ?>/><?php
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 
 	/**
