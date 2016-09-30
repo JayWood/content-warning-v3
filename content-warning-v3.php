@@ -48,6 +48,12 @@ class ContentWarning_v2 {
 	const VERSION = '3.7';
 
 	/**
+	 * Rather or not scripts should be minified
+	 * @var string
+	 */
+	public $min = '';
+
+	/**
 	 * @var CWV2_Admin
 	 */
 	public $admin;
@@ -56,6 +62,10 @@ class ContentWarning_v2 {
 	 * @var CWV2_Settings
 	 */
 	public $settings;
+
+	private function __construct() {
+		$this->min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+	}
 
 	public static function init() {
 		if ( null == self::$instance ) {
