@@ -23,6 +23,35 @@ class CWV2_Settings {
 
 	}
 
+	/**
+	 * @param array $haystack
+	 * @param mixed $cur
+	 * @param bool  $show
+	 *
+	 * @author JayWood
+	 * @return string
+	 */
+	private function selected_array( $haystack, $cur, $show = true ) {
+		if ( is_array( $haystack ) ) {
+			if ( ! empty( $cur ) && in_array( $cur, $haystack ) ) {
+				$cur = $haystack = 1;
+			} else {
+				$cur = 0;
+				$haystack = 1;
+			}
+		}
+
+		return selected( $haystack, $cur, $show );
+	}
+
+	/**
+	 * @param array $haystack
+	 * @param mixed $cur
+	 * @param bool  $show
+	 *
+	 * @author JayWood
+	 * @return string
+	 */
 	private function checked_array( $haystack, $cur, $show = true ) {
 		if ( is_array( $haystack ) ) {
 			if ( ! empty( $cur ) && in_array( $cur, $haystack ) ) {
@@ -36,6 +65,11 @@ class CWV2_Settings {
 		return checked( $haystack, $cur, $show );
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function check( $args = array() ) {
 		$args = $this->get_default_args( $args );
 
@@ -63,6 +97,12 @@ class CWV2_Settings {
 		?></fieldset><?php
 	}
 
+
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function number( $args = array() ) {
 
 		$args = $this->get_default_args( $args );
@@ -93,6 +133,11 @@ class CWV2_Settings {
 
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function text( $args = array() ) {
 		$args = $this->get_default_args( $args );
 
@@ -112,6 +157,11 @@ class CWV2_Settings {
 		}
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function radio( $args = array() ) {
 		$args = $this->get_default_args( $args );
 
@@ -141,6 +191,11 @@ class CWV2_Settings {
 		?></fieldset><?php
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function media( $args = array() ) {
 		$args = $this->get_default_args( $args );
 
@@ -172,10 +227,20 @@ class CWV2_Settings {
 		}
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function color( $args = array() ) {
 
 	}
 
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
 	public function textbox( $args = array() ) {
 
 		$args = $this->get_default_args( $args );
@@ -209,7 +274,34 @@ class CWV2_Settings {
 
 	}
 
-	public function select( $args = array() ) {
-		
+	/**
+	 * @param array $args
+	 *
+	 * @author JayWood
+	 */
+	public function select2( $args = array() ) {
+		$args = $this->get_default_args( $args );
+
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? '' : $args['default'];
+		$options     = empty( $args['options'] ) ? array() : $args['options'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		?>
+		<select name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" class="cwv2_select2">
+			<?php foreach ( $options as $k => $v ) : ?>
+				<option value="<?php echo $k; ?>" <?php $this->selected_array( $option_value, $k ); ?>><?php echo $v; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<?php
+
+
+
+
 	}
 }
