@@ -53,14 +53,10 @@ class CWV2_Settings {
 		$option_value = get_option( $field_id, $field_id, $default );
 
 		?><fieldset><?php
-		$offset = 0;
 		foreach ( $options as $op_value => $label ) {
-			$cur_id = $op_value . '-' . $offset;
-			$offset++;
-
 			?>
-			<label for="<?php echo $cur_id; ?>">
-				<input id="<?php echo $cur_id; ?>" type="checkbox" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
+			<label for="<?php echo $op_value; ?>">
+				<input id="<?php echo $op_value; ?>" type="checkbox" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label>
 			<?php
 		}
@@ -124,14 +120,11 @@ class CWV2_Settings {
 		$option_value = get_option( $field_id, $field_id, $default );
 
 		?><fieldset><?php
-		$offset = 0;
 		foreach ( $options as $op_value => $label ) {
-			$cur_id = $op_value . '-' . $offset;
-			$offset++;
 
 			?>
-			<label for="<?php echo $cur_id; ?>">
-				<input id="<?php echo $cur_id; ?>" type="radio" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>" <?php checked( $option_value, $op_value ); ?>/><?php echo $label; ?>
+			<label for="<?php echo $op_value; ?>">
+				<input id="<?php echo $op_value; ?>" type="radio" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>" <?php checked( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label><br />
 			<?php
 
