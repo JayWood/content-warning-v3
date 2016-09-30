@@ -447,12 +447,23 @@ class CWV2_Admin {
 						'id'      => 'cat_list',
 						'name'    => __( 'Category restrictions', 'content-warning-v2' ),
 						'desc'    => __( 'Select categories that you would like to restrict with the dialog.', 'content-warning-v2' ),
-						'type'    => 'check',
-						'options' =>
-							array(),
+						'type'    => 'select',
+						'options' => $this->get_cat_list()
 					),
 				),
 			),
 		);
+	}
+
+	private function get_cat_list() {
+		$cat_list       = get_categories();
+		$final_cat_list = array();
+		foreach ( $cat_list as $cw_cat ) {
+			$term_id   = $cw_cat->term_id;
+			$term_name = $cw_cat->name;
+
+			$final_cat_list[ $term_id ] = $term_name;
+		}
+		return $final_cat_list;
 	}
 }
