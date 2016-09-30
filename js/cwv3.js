@@ -1,5 +1,5 @@
 /* global cwv3_params */
-// opacity cookie_path cookie_name cookie_time denial_enabled denial_method redirect_url   
+// opacity cookie_path cookie_name cookie_time denial_enabled denial_method redirect_url
 
 
 window.cwv3 = ( function( window, document, $ ){
@@ -32,7 +32,7 @@ window.cwv3 = ( function( window, document, $ ){
 		// Register handlers
 		$( 'body' ).on( 'click', '.cwv3_enter', app.enter_handler );
 		$( 'body' ).on( 'click', '.cwv3_exit', app.exit_handler );
-	
+
 		// Don't resize EVERY time, set it to an interval of half a second
 		$( window ).resize( function(){
 			clearTimeout( app.timeout );
@@ -47,7 +47,7 @@ window.cwv3 = ( function( window, document, $ ){
 
 	app.center_dialog = function(){
 		app.$content.css( {'height' : ''} );
-		
+
 		var diag ={
 				x: app.$dialog.width(),
 				y: app.$dialog.height(),
@@ -122,7 +122,7 @@ window.cwv3 = ( function( window, document, $ ){
 	app.close_handler = function(){
 		app.$dialog.fadeOut( 100, function(){
 			app.$overlay.fadeOut( 100 );
-		});		
+		});
 	};
 
 	app.dialog_switch = function(){
@@ -133,7 +133,7 @@ window.cwv3 = ( function( window, document, $ ){
 				path    : cwv3_params.cookie_path,
 			};
 
-			window.console.log( $.removeCookie( app.cookie_name, cookie_data ) );
+			$.removeCookie( app.cookie_name, cookie_data );
 			app.cookie_data = undefined;
 		}
 
