@@ -156,7 +156,7 @@ class CWV2_Settings {
 
 		?><fieldset>
 			<input type="text" name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" value="<?php echo $option_value; ?>" class="regular-text" />
-			<input type="button" class="button button-secondary" value="<?php echo $label; ?>" data-target-id="<?php echo $field_id; ?>" />
+			<input type="button" class="button button-secondary upload_image_button" value="<?php echo $label; ?>" data-target-id="<?php echo $field_id; ?>" />
 		</fieldset><?php
 
 		if ( ! empty( $description ) ) {
