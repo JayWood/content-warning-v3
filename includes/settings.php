@@ -63,24 +63,83 @@ class CWV2_Settings {
 				<input id="<?php echo $cur_id; ?>" type="checkbox" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label>
 			<?php
-			if ( ! empty( $description ) ) {
-				?><p class="description"><?php echo $description; ?></p><?php
-			}
-
+		}
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
 		}
 		?></fieldset><?php
 	}
 
 	public function number( $args = array() ) {
 
+		$args = $this->get_default_args( $args );
+
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? array() : $args['default'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo intval( $option_value ); ?>" id="<?php echo $field_id; ?>" /><?php
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
+
 	}
 
 	public function text( $args = array() ) {
+		$args = $this->get_default_args( $args );
 
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? array() : $args['default'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		?><input type="text" name="<?php echo $field_id; ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo $field_id; ?>" /><?php
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 
 	public function radio( $args = array() ) {
+		$args = $this->get_default_args( $args );
 
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$options     = $args['options'];
+		$default     = $args['default'];
+		if ( ! $options || empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		?><fieldset><?php
+		$offset = 0;
+		foreach ( $options as $op_value => $label ) {
+			$cur_id = $op_value . '-' . $offset;
+			$offset++;
+
+			?>
+			<label for="<?php echo $cur_id; ?>">
+				<input id="<?php echo $cur_id; ?>" type="radio" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>" <?php checked( $option_value, $op_value ); ?>/><?php echo $label; ?>
+			</label><br />
+			<?php
+
+		}
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
+		?></fieldset><?php
 	}
 
 	public function media( $args = array() ) {
