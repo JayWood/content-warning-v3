@@ -71,7 +71,21 @@ class CWV2_Admin {
 			add_settings_section( $section['id'], $section['name'], array( $this->plugin->settings, $section['group'] ), $this->options_page );
 			if ( isset( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $option_data ) {
-					add_settings_field( $this->option_prefix . $option_data['id'], $option_data['name'], array( $this->plugin->settings, $option_data['type'] ), $this->options_page, $section['id'], array( 'id' => $this->option_prefix . $option_data['id'], 'name' => $this->option_prefix . $option_data['id'], 'desc' => $option_data['desc'] ) );
+					add_settings_field(
+						$this->option_prefix . $option_data['id'],
+						$option_data['name'],
+						array(
+							$this->plugin->settings,
+							$option_data['type']
+						),
+						$this->options_page,
+						$section['id'],
+						array(
+							'id'   => $this->option_prefix . $option_data['id'],
+							'name' => $this->option_prefix . $option_data['id'],
+							'desc' => $option_data['desc']
+						)
+					);
 				}
 			}
 		}
