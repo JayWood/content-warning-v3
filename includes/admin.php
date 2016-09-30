@@ -343,10 +343,16 @@ class CWV2_Admin {
 						'type' => 'text',
 					),
 					array(
-						'id'   => 'd_msg',
-						'name' => __( 'Dialog Message', 'content-warning-v2' ),
-						'desc' => __( 'A message shown to your visitor.', 'content-warning-v2' ),
-						'type' => 'editor',
+						'id'      => 'd_msg',
+						'name'    => __( 'Dialog Message', 'content-warning-v2' ),
+						'desc'    => __( 'A message shown to your visitor.', 'content-warning-v2' ),
+						'type'    => 'editor',
+						'options' => array(
+							'textarea_rows' => 10,
+						),
+						'options' => array(
+							'textarea_rows' => 10,
+						),
 					),
 					array(
 						'id'   => 'exit_txt',
@@ -400,10 +406,13 @@ class CWV2_Admin {
 						'type' => 'text',
 					),
 					array(
-						'id'   => 'den_msg',
-						'name' => __( 'Denial Message', 'content-warning-v2' ),
-						'desc' => __( '', 'content-warning-v2' ),
-						'type' => 'editor',
+						'id'      => 'den_msg',
+						'name'    => __( 'Denial Message', 'content-warning-v2' ),
+						'desc'    => __( '', 'content-warning-v2' ),
+						'type'    => 'editor',
+						'options' => array(
+							'textarea_rows' => 10,
+						),
 					),
 					array(
 						'id'      => 'bg_image',
@@ -416,10 +425,10 @@ class CWV2_Admin {
 						),
 					),
 					array(
-						'id'   => 'bg_opacity',
-						'name' => __( 'Background Opacity', 'content-warning-v2' ),
-						'desc' => __( 'Input a float value from 0-1, the latter being completely opaque.', 'content-warning-v2' ),
-						'type' => 'number',
+						'id'      => 'bg_opacity',
+						'name'    => __( 'Background Opacity', 'content-warning-v2' ),
+						'desc'    => __( 'Input a float value from 0-1, the latter being completely opaque.', 'content-warning-v2' ),
+						'type'    => 'number',
 						'options' => array(
 							'step' => 0.1,
 							'max'  => 1,
@@ -437,10 +446,10 @@ class CWV2_Admin {
 							),
 					),
 					array(
-						'id'   => 'css',
-						'name' => __( 'Custom CSS', 'content-warning-v2' ),
-						'desc' => __( 'For a completely custom look, just drop your css here.', 'content-warning-v2' ),
-						'type' => 'textbox',
+						'id'      => 'css',
+						'name'    => __( 'Custom CSS', 'content-warning-v2' ),
+						'desc'    => __( 'For a completely custom look, just drop your css here.', 'content-warning-v2' ),
+						'type'    => 'textbox',
 						'options' => array(
 							'rows' => 10,
 							'cols' => 100,

@@ -272,6 +272,23 @@ class CWV2_Settings {
 
 	public function editor( $args = array() ) {
 
+		$args = $this->get_default_args( $args );
+
+		$field_id    = $args['id'];
+		$description = $args['desc'];
+		$default     = empty( $args['default'] ) ? '' : $args['default'];
+		$options     = empty( $args['options'] ) ? array() : $args['options'];
+		if ( empty( $field_id ) ) {
+			return;
+		}
+
+		$option_value = get_option( $field_id, $field_id, $default );
+
+		wp_editor( $option_value, $field_id, $options );
+
+		if ( ! empty( $description ) ) {
+			?><p class="description"><?php echo $description; ?></p><?php
+		}
 	}
 
 	/**
