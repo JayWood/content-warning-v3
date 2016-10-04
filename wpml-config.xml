@@ -1,5 +1,5 @@
 <wpml-config>
-  <admin-texts>
+  <admin_texts>
     <key name="cwv3_exit_txt"/>
     <key name="cwv3_enter_txt"/>
     <key name="cwv3_den_title"/>
