@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
-**Current Version:** 3.7   
+**Current Version:** 3.7.1   
 **Tested Up To:** 4.6.1  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
@@ -74,6 +74,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Upgrading to 3.7 will de-activate your plugin. This is because the name of the main plugin file was changed for localization purposes. Your settings are still saved you just have to re-activate the plugin.
 
 ## Changelog
+
+### 3.7.1
+* Fixed category saving in options Fixes [#59](https://github.com/JayWood/content-warning-v3/issues/59)
 
 ### 3.7
 * Fixed an opacity bug where if user set opacity to 0, it was ignored. This should no longer happen.
