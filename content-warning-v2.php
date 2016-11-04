@@ -135,7 +135,7 @@ class ContentWarning_v2 {
 			if ( $cat_gated ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
-			} else if ( $this->is_gated( $post->post_parent ) ) {
+			} elseif ( $this->is_gated( $post->post_parent ) ) {
 				return $post->post_parent;
 			}
 		}
@@ -145,7 +145,7 @@ class ContentWarning_v2 {
 			if ( $cat_gated ) {
 				// Return the category cookie name like _cat_###
 				return '_cat_' . $cat_gated;
-			} else if ( $this->is_gated( $post->ID ) ) {
+			} elseif ( $this->is_gated( $post->ID ) ) {
 				return $post->ID;
 			}
 		}
