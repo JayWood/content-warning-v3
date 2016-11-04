@@ -244,8 +244,6 @@ class CWV2_Settings {
 		}
 
 		$option_value = get_option( $field_id, $field_id, $default );
-		error_log( print_r( $option_value, 1 ) );
-
 		$attributes = '';
 
 		if ( ! empty( $options ) ) {

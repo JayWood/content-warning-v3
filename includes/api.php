@@ -24,8 +24,6 @@ function cwv3_get_css() {
 	$custom_css = get_option( 'cwv3_css', '' );
 	$opacity    = get_option( 'cwv3_bg_opacity', '1' );
 
-	error_log( print_r( $opacity, 1 ) );
-
 	$bg_image_css = ! empty( $image ) ? 'background: url( '. esc_url( $image ) . ' ) no-repeat top center;' : '';
 	$bg_color_css = ! empty( $color ) ? 'background-color: ' . $color . ';' : '';
 
