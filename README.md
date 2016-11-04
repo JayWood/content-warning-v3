@@ -75,6 +75,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 
 ## Changelog
 
+### 3.7.2 
+* Removed some rogue logging methods.
+
 ### 3.7.1
 * Fixed category saving in options Fixes [#59](https://github.com/JayWood/content-warning-v3/issues/59)
 
