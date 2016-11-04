@@ -4,7 +4,7 @@ Plugin Name:	Content Warning v2
 Plugin URI:		http://plugish.com/plugins/content-warning-v2
 Description: 	A WordPress Plugin to allow site owners to display an acceptance dialog.  Used mainly for NSFW websites, this plugin provides a dialog popup to warn viewers of it's possible content.
 Author: 		Jerry Wood Jr.
-Version:		3.7
+Version:		3.7.1
 Author URI:		http://plugish.com
 Text Domain:    content-warning-v2
 Domain Path:    /lang
@@ -45,7 +45,7 @@ class ContentWarning_v2 {
 	 */
 	public static $instance = null;
 
-	const VERSION = '3.7';
+	const VERSION = '3.7.1';
 
 	/**
 	 * Rather or not scripts should be minified

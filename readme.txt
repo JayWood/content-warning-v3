@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
 Tested up to: 4.6.1
-Stable tag: 3.7
+Stable tag: 3.7.1
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
@@ -104,6 +104,9 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.7.1 =
+* Fixed category saving in options Fixes [#59](https://github.com/JayWood/content-warning-v3/issues/59)
 
 = 3.7 =
 * Fixed an opacity bug where if user set opacity to 0, it was ignored. This should no longer happen.
