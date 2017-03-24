@@ -3,7 +3,7 @@ Contributors: Phyrax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U5M6JBDKGF3EJ
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
-Tested up to: 4.6.1
+Tested up to: 4.7.3
 Stable tag: 3.7.2
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.

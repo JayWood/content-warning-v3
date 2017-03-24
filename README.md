@@ -7,7 +7,7 @@
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
 **Current Version:** 3.7.1   
-**Tested Up To:** 4.6.1  
+**Tested Up To:** 4.7.3  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
 **License:** GPLv2+   
