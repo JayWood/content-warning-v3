@@ -86,8 +86,8 @@ class CWV2_Settings {
 		?><fieldset><?php
 		foreach ( $options as $op_value => $label ) {
 			?>
-			<label for="<?php echo esc_attr( $op_value ); ?>">
-				<input id="<?php echo esc_attr( $op_value ); ?>" type="checkbox" value="<?php echo esc_attr( $op_value ); ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
+			<label for="<?php echo esc_attr( $field_id ); ?>">
+				<input id="<?php echo esc_attr( $field_id ); ?>" type="checkbox" value="<?php echo esc_attr( $op_value ); ?>" name="<?php echo esc_attr( $field_id ); ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label>
 			<?php
 		}
@@ -125,7 +125,7 @@ class CWV2_Settings {
 			}
 		}
 
-		?><input type="number" name="<?php echo esc_attr( $field_id ); ?>" value="<?php echo intval( $option_value ); ?>" id="<?php echo esc_attr( $field_id ); ?>" <?php echo $attributes; ?>/><?php
+		?><input type="number" name="<?php echo esc_attr( $field_id ); ?>" value="<?php echo $option_value; ?>" id="<?php echo esc_attr( $field_id ); ?>" <?php echo $attributes; ?>/><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php
@@ -243,7 +243,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 		$attributes = '';
 
 		if ( ! empty( $options ) ) {

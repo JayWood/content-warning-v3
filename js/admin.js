@@ -28,7 +28,11 @@ window.cwv2Admin = {};
 
 	app.windowLoad = function() {
 		app.$c.select2Objects.select2();
-		app.$c.colorSelectors.spectrum();
+		app.$c.colorSelectors.spectrum({
+			clickoutFiresChange: true,
+			showInput: true,
+			preferredFormat: 'hex6'
+		});
 	};
 
 	// Do we meet the requirements?
