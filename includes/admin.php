@@ -107,8 +107,8 @@ class CWV2_Admin {
 		/**
 		 * Spectrum Color Picker
 		 */
-		wp_enqueue_script( 'spectrum', $this->plugin->url( "lib/spectrum-1.0.9/spectrum.js" ), array( 'jquery' ), '1.0.9', true );
-		wp_enqueue_style( 'spectrum', $this->plugin->url( "lib/spectrum-1.0.9/spectrum.css" ), false, '1.0.9' );
+		wp_enqueue_script( 'spectrum', $this->plugin->url( 'lib/spectrum-1.0.9/spectrum.js;' ), array( 'jquery' ), '1.0.9', true );
+		wp_enqueue_style( 'spectrum', $this->plugin->url( 'lib/spectrum-1.0.9/spectrum.css' ), false, '1.0.9' );
 
 		wp_enqueue_script( 'cwv2-admin', $this->plugin->url( "js/admin{$this->plugin->min}.js" ), array( 'select2', 'spectrum' ), $this->plugin->version, true );
 	}
@@ -128,21 +128,27 @@ class CWV2_Admin {
 			if ( isset( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $option_data ) {
 
+					$data_set = array(
+						'id'      => $this->option_prefix . $option_data['id'],
+						'name'    => $this->option_prefix . $option_data['id'],
+						'desc'    => ! empty( $option_data['desc'] ) ? $option_data['desc'] : '',
+						'options' => isset( $option_data['options'] ) ? $option_data['options'] : false,
+					);
+
+					if ( ! empty( $option_data['default'] ) ) {
+						$data_set['default'] = $option_data['default'];
+					}
+
 					add_settings_field(
 						$this->option_prefix . $option_data['id'],
 						$option_data['name'],
 						array(
 							$this->plugin->settings,
-							$option_data['type']
+							$option_data['type'],
 						),
 						$this->options_page,
 						$section['id'],
-						array(
-							'id'      => $this->option_prefix . $option_data['id'],
-							'name'    => $this->option_prefix . $option_data['id'],
-							'desc'    => $option_data['desc'],
-							'options' => isset( $option_data['options'] ) ? $option_data['options'] : false,
-						)
+						$data_set
 					);
 				}
 			}
@@ -192,7 +198,7 @@ class CWV2_Admin {
 		global $post;
 
 		$sw         = get_option( 'cwv3_sitewide' );
-		$is_enabled = ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) ) ? true : false;;
+		$is_enabled = ( 'yes' == get_post_meta( $post->ID, 'cwv3_auth', true ) ) ? true : false;
 		switch ( $col ) {
 			case 'cwv2':
 				if ( $is_enabled || ( isset( $sw[0] ) && 'enabled' == $sw[0] ) ) {
@@ -333,7 +339,7 @@ class CWV2_Admin {
 						'type'    => 'check',
 						'options' =>
 							array(
-								'enabled' => 'Enable',
+								'enabled' => __( 'Enable', 'content-warning-v2' ),
 							),
 					),
 					array(
@@ -343,7 +349,7 @@ class CWV2_Admin {
 						'type'    => 'check',
 						'options' =>
 							array(
-								'enabled' => 'Enable',
+								'enabled' => __( 'Enable', 'content-warning-v2' ),
 							),
 					),
 					array(
@@ -353,7 +359,7 @@ class CWV2_Admin {
 						'type'    => 'check',
 						'options' =>
 							array(
-								'enabled' => 'Enable',
+								'enabled' => __( 'Enable', 'content-warning-v2' ),
 							),
 					),
 					array(
@@ -372,7 +378,6 @@ class CWV2_Admin {
 					array(
 						'id'   => 'd_title',
 						'name' => __( 'Dialog Title', 'content-warning-v2' ),
-						'desc' => __( '', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
@@ -380,9 +385,6 @@ class CWV2_Admin {
 						'name'    => __( 'Dialog Message', 'content-warning-v2' ),
 						'desc'    => __( 'A message shown to your visitor.', 'content-warning-v2' ),
 						'type'    => 'editor',
-						'options' => array(
-							'textarea_rows' => 10,
-						),
 						'options' => array(
 							'textarea_rows' => 10,
 						),
@@ -414,17 +416,15 @@ class CWV2_Admin {
 					array(
 						'id'      => 'denial',
 						'name'    => __( 'Toggle Denial Option', 'content-warning-v2' ),
-						'desc'    => __( '', 'content-warning-v2' ),
 						'type'    => 'check',
 						'options' =>
 							array(
-								'enabled' => 'Enable denial handling.',
+								'enabled' => __( 'Enable denial handling.', 'content-warning-v2' ),
 							),
 					),
 					array(
 						'id'      => 'method',
 						'name'    => __( 'Denial Handling Method', 'content-warning-v2' ),
-						'desc'    => __( '', 'content-warning-v2' ),
 						'type'    => 'radio',
 						'options' =>
 							array(
@@ -435,13 +435,11 @@ class CWV2_Admin {
 					array(
 						'id'   => 'den_title',
 						'name' => __( 'Dialog Title', 'content-warning-v2' ),
-						'desc' => __( '', 'content-warning-v2' ),
 						'type' => 'text',
 					),
 					array(
 						'id'      => 'den_msg',
 						'name'    => __( 'Denial Message', 'content-warning-v2' ),
-						'desc'    => __( '', 'content-warning-v2' ),
 						'type'    => 'editor',
 						'options' => array(
 							'textarea_rows' => 10,
@@ -491,9 +489,9 @@ class CWV2_Admin {
 					array(
 						'id'      => 'cat_list',
 						'name'    => __( 'Category restrictions', 'content-warning-v2' ),
-						'desc'    => __( 'Select categories that you would like to restrict with the dialog.', 'content-warning-v2' ),
+						'desc'    => __( 'Search for categories that you would like to restrict with the dialog.', 'content-warning-v2' ),
 						'type'    => 'select2_multi',
-						'options' => $this->get_cat_list()
+						'options' => $this->get_cat_list(),
 					),
 				),
 			),
