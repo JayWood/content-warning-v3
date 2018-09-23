@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: warning, message, lading page, front page, enter page, adult content, consent, age verification, validation
 Requires at least: 3.5
 Tested up to: 4.7.3
-Stable tag: 3.7.2
+Stable tag: 3.8
 
 A plugin that provides a warning box with a ton more options completely re-written from the ground up.
 == Description ==
@@ -104,6 +104,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 1. Preview of the dialog shown by colorbox, for more info check the youtube video.
 
 == Changelog ==
+
+= 3.8 =
+* Fixed various non-localized strings.
+* Fixed various PHPCS issues
+* Removed some empty localized strings, fixed up settings page to match.
+* Update settings page category section to be more obvious. They're no longer checkboxes.
+* Fixed text rendering on admin page.
 
 = 3.7.2 =
 * Removed some rogue logging methods.
