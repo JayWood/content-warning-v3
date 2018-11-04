@@ -1,8 +1,4 @@
 # Content Warning v3
-[![Rating](https://img.shields.io/wordpress/plugin/r/content-warning-v2.svg)](https://wordpress.org/plugins/content-warning-v2/)
-[![Plugin Version](https://img.shields.io/wordpress/plugin/v/content-warning-v2.svg)](https://wordpress.org/plugins/content-warning-v2/)
-[![Tested Version](https://img.shields.io/wordpress/v/content-warning-v2.svg)](http://wordpress.org/)
-[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/content-warning-v2.svg)](https://wordpress.org/plugins/content-warning-v2/)
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
@@ -31,7 +27,7 @@ This plugin allows you to do the following:
 
 
 [Report an issue](https://github.com/JayWood/content-warning-v3/issues) | [Make a pull request](https://github.com/JayWood/content-warning-v3/pulls)   
-[Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk) | [Download from Official Wordpress.org](http://wordpress.org/plugins/content-warning-v2)
+[Check the Youtube Video](https://www.youtube.com/watch?v=0_ZNojpYuwk)
 
 **NOTE:**
 
