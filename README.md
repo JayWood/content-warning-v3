@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/License-GPLv2-orange.svg)
 [![Issues](https://img.shields.io/github/issues/JayWood/content-warning-v3.svg)](https://github.com/JayWood/content-warning-v3/issues)
 
-**Current Version:** 3.7.1   
+**Current Version:** 3.8   
 **Tested Up To:** 4.7.3  
 **Author:** [Jay Wood](http://github.com/JayWood)   
 **Author URI:** http://plugish.com   
@@ -70,6 +70,13 @@ Please do not contact me with questions like this.  If you cannot be descriptive
 * Upgrading to 3.7 will de-activate your plugin. This is because the name of the main plugin file was changed for localization purposes. Your settings are still saved you just have to re-activate the plugin.
 
 ## Changelog
+
+### 3.8
+* Fixed various non-localized strings.
+* Fixed various PHPCS issues
+* Removed some empty localized strings, fixed up settings page to match.
+* Update settings page category section to be more obvious. They're no longer checkboxes.
+* Fixed text rendering on admin page.
 
 ### 3.7.2 
 * Removed some rogue logging methods.

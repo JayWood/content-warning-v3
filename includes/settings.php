@@ -36,7 +36,7 @@ class CWV2_Settings {
 			if ( ! empty( $cur ) && in_array( $cur, $haystack ) ) {
 				$cur = $haystack = 1;
 			} else {
-				$cur = 0;
+				$cur      = 0;
 				$haystack = 1;
 			}
 		}
@@ -57,7 +57,7 @@ class CWV2_Settings {
 			if ( ! empty( $cur ) && in_array( $cur, $haystack ) ) {
 				$cur = $haystack = 1;
 			} else {
-				$cur = 0;
+				$cur      = 0;
 				$haystack = 1;
 			}
 		}
@@ -81,13 +81,13 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		?><fieldset><?php
 		foreach ( $options as $op_value => $label ) {
 			?>
-			<label for="<?php echo $op_value; ?>">
-				<input id="<?php echo $op_value; ?>" type="checkbox" value="<?php echo $op_value; ?>" name="<?php echo $field_id; ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
+			<label for="<?php echo esc_attr( $field_id ); ?>">
+				<input id="<?php echo esc_attr( $field_id ); ?>" type="checkbox" value="<?php echo esc_attr( $op_value ); ?>" name="<?php echo esc_attr( $field_id ); ?>[]" <?php $this->checked_array( $option_value, $op_value ); ?>/><?php echo $label; ?>
 			</label>
 			<?php
 		}
@@ -109,13 +109,13 @@ class CWV2_Settings {
 
 		$field_id    = $args['id'];
 		$description = $args['desc'];
-		$default     = empty( $args['default'] ) ? array() : $args['default'];
+		$default     = empty( $args['default'] ) ? 0 : $args['default'];
 		$options     = empty( $args['options'] ) ? array() : $args['options'];
 		if ( empty( $field_id ) ) {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		$attributes = '';
 
@@ -125,7 +125,7 @@ class CWV2_Settings {
 			}
 		}
 
-		?><input type="number" name="<?php echo $field_id; ?>" value="<?php echo $option_value; ?>" id="<?php echo $field_id; ?>" <?php echo $attributes; ?>/><?php
+		?><input type="number" name="<?php echo esc_attr( $field_id ); ?>" value="<?php echo $option_value; ?>" id="<?php echo esc_attr( $field_id ); ?>" <?php echo $attributes; ?>/><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php
@@ -143,14 +143,14 @@ class CWV2_Settings {
 
 		$field_id    = $args['id'];
 		$description = $args['desc'];
-		$default     = empty( $args['default'] ) ? array() : $args['default'];
+		$default     = empty( $args['default'] ) ? '' : $args['default'];
 		if ( empty( $field_id ) ) {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
-		?><input type="text" name="<?php echo $field_id; ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo $field_id; ?>" class="regular-text" /><?php
+		?><input type="text" name="<?php echo esc_attr( $field_id ); ?>" value="<?php echo esc_attr( $option_value ); ?>" id="<?php echo esc_attr( $field_id ); ?>" class="regular-text" /><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php
@@ -173,7 +173,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		?><fieldset><?php
 		foreach ( $options as $op_value => $label ) {
@@ -207,7 +207,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		if ( ! empty( $option_value ) ) {
 			$option_value = esc_url( $option_value );
@@ -243,7 +243,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 		$attributes = '';
 
 		if ( ! empty( $options ) ) {
@@ -276,7 +276,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		$attributes = '';
 
@@ -286,7 +286,7 @@ class CWV2_Settings {
 			}
 		}
 
-		?><textarea name="<?php echo $field_id; ?>" id="<?php echo $field_id; ?>" class="regular-text" <?php echo $attributes; ?>><?php echo esc_attr( $option_value ); ?></textarea><?php
+		?><textarea name="<?php echo esc_attr( $field_id ); ?>" id="<?php echo esc_attr( $field_id ); ?>" class="regular-text" <?php echo $attributes; ?>><?php echo esc_attr( $option_value ); ?></textarea><?php
 
 		if ( ! empty( $description ) ) {
 			?><p class="description"><?php echo $description; ?></p><?php
@@ -305,7 +305,7 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 
 		wp_editor( $option_value, $field_id, $options );
 
@@ -330,9 +330,9 @@ class CWV2_Settings {
 			return;
 		}
 
-		$option_value = get_option( $field_id, $field_id, $default );
+		$option_value = get_option( $field_id, $default );
 		?>
-		<select name="<?php echo $field_id; ?>[]" id="<?php echo $field_id; ?>" class="cwv2_select2 widefat" multiple="multiple">
+		<select name="<?php echo esc_attr( $field_id ); ?>[]" id="<?php echo esc_attr( $field_id ); ?>" class="cwv2_select2 widefat" multiple="multiple">
 			<?php foreach ( $options as $k => $v ) : ?>
 				<option value="<?php echo $k; ?>" <?php $this->selected_array( $option_value, $k ); ?>><?php echo $v; ?></option>
 			<?php endforeach; ?>
